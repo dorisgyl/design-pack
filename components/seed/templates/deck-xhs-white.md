@@ -1,0 +1,464 @@
+---
+slug: packs/design-pack/templates/deck-xhs-white
+type: template
+lang: en
+category: slides
+title: "White Editorial Deck"
+title_zh: "白底杂志风 Deck"
+description: "White-background editorial deck that doubles as Xiaohongshu-style image posts and a 16:9 slide deck for NevoFlux storytelling."
+tags: [editorial, rainbow, macaron, template]
+sample_image: packs/design-pack/assets/templates/deck-xhs-white.svg
+source: html-anything/deck-xhs-white
+---
+
+## Design guidance
+
+A white-background "magazine" deck designed to work two ways at once: as a vertical Xiaohongshu (XHS) image-and-text post and as a landscape slide deck. The voice is editorial and opinionated, leaning on big display type and one strong highlight per slide.
+
+### Layout
+- Pure white background with a thin 10-color rainbow bar pinned across the top of every slide.
+- An 80-110px display headline with a purple -> blue -> green -> orange -> pink gradient applied to the key phrase.
+- A set of macaron-soft cards (pink / purple / blue / green / orange) for grouped content, grids, and call-to-action items.
+- A black pill `.xw-focus` for the single most important word, plus a large quote block (`.xw-hero` / `.xw-quote`) for the punchline of each slide.
+
+### Design details
+- One idea per slide, one highlight per slide. Use the gradient text on the headline and the black `.xw-focus` pill (or the soft colored focus variants) for the words that carry the argument.
+- Keep the cards visually quiet: a label in uppercase, a bold `.main` line, and a one-line `.desc`. Let the soft background colors do the differentiation, not heavy borders.
+- The codebox is a near-black panel with monospace type; use the `cm` / `kw` / `st` / `hl` spans to color comments, keys, strings, and highlights.
+- Charts are inline SVG horizontal bars - no external chart library, no images, no external URLs. Backgrounds, gradients, and bars are all CSS or inline SVG so the page stays fully self-contained.
+- Each slide carries a topbar (a rainbow-dot tag + page counter) and a footer (layout name + page number) so the deck reads as a paginated magazine.
+
+## Template (HTML)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>White Editorial · NevoFlux Deck</title>
+<style>/* html-ppt :: shared webfonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@200;300;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+</style>
+<style>/* html-ppt :: base.css — reset + shared tokens + layout primitives */
+/* Default tokens. Themes in assets/themes/*.css override the :root block. */
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f7f7f8;
+  --surface: #ffffff;
+  --surface-2: #f2f2f4;
+  --border: rgba(0,0,0,.08);
+  --border-strong: rgba(0,0,0,.16);
+  --text-1: #111216;
+  --text-2: #55596a;
+  --text-3: #8a8f9e;
+  --accent: #3b6cff;
+  --accent-2: #7a5cff;
+  --accent-3: #ff5c8a;
+  --good: #1aaf6c;
+  --warn: #f5a524;
+  --bad:  #e0445a;
+  --grad: linear-gradient(135deg,#3b6cff,#7a5cff 55%,#ff5c8a);
+  --grad-soft: linear-gradient(135deg,#eef2ff,#f5ecff 55%,#ffeef5);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-lg: 26px;
+  --shadow: 0 10px 30px rgba(18,24,40,.08), 0 2px 6px rgba(18,24,40,.04);
+  --shadow-lg: 0 24px 60px rgba(18,24,40,.14), 0 6px 16px rgba(18,24,40,.06);
+  --font-sans: 'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;
+  --font-serif: 'Playfair Display','Noto Serif SC',Georgia,serif;
+  --font-mono: 'JetBrains Mono','IBM Plex Mono',SFMono-Regular,Menlo,monospace;
+  --font-display: var(--font-sans);
+  --letter-tight: -.03em;
+  --letter-normal: -.01em;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text-1);
+  font-family:var(--font-sans);font-weight:400;line-height:1.6;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  letter-spacing:var(--letter-normal)}
+img,svg,video{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,kbd,pre,samp{font-family:var(--font-mono)}
+
+/* ================= SLIDE SYSTEM ================= */
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--bg)}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:72px 96px;
+  box-sizing:border-box;
+  opacity:0;pointer-events:none;
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
+  transform:translateX(30px);
+  overflow:hidden;
+}
+.slide.is-active{opacity:1;pointer-events:auto;transform:translateX(0);z-index:2}
+.slide.is-prev{transform:translateX(-30px)}
+
+/* single-page standalone (used when a layout file is opened directly) */
+body.single .slide{position:relative;width:100vw;height:100vh;opacity:1;transform:none;pointer-events:auto}
+
+/* ================= TYPOGRAPHY ================= */
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3)}
+.kicker{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+h1.title,.h1{font-family:var(--font-display);font-size:72px;line-height:1.05;font-weight:800;letter-spacing:var(--letter-tight);margin:0 0 18px;color:var(--text-1)}
+h2.title,.h2{font-family:var(--font-display);font-size:54px;line-height:1.1;font-weight:700;letter-spacing:var(--letter-tight);margin:0 0 14px}
+h3,.h3{font-size:32px;line-height:1.2;font-weight:600;letter-spacing:var(--letter-normal);margin:0 0 10px}
+h4,.h4{font-size:22px;line-height:1.3;font-weight:600;margin:0 0 8px}
+.lede{font-size:22px;line-height:1.55;color:var(--text-2);font-weight:300;max-width:62ch}
+.dim{color:var(--text-2)}
+.dim2{color:var(--text-3)}
+.mono{font-family:var(--font-mono)}
+.serif{font-family:var(--font-serif)}
+.gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* ================= LAYOUT PRIMITIVES ================= */
+.stack>*+*{margin-top:14px}
+.row{display:flex;gap:24px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.grid{display:grid;gap:24px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.center{display:flex;align-items:center;justify-content:center;text-align:center}
+.fill{flex:1}
+.sp-t{padding-top:24px}.sp-b{padding-bottom:24px}
+.mt-s{margin-top:8px}.mt-m{margin-top:18px}.mt-l{margin-top:32px}
+.mb-s{margin-bottom:8px}.mb-m{margin-bottom:18px}.mb-l{margin-bottom:32px}
+
+/* ================= CARDS ================= */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px 28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card-soft{background:var(--surface-2);border:1px solid var(--border)}
+.card-outline{background:transparent;border:1.5px solid var(--border-strong);box-shadow:none}
+.card-accent{background:var(--surface);border-top:3px solid var(--accent)}
+.card-hover{transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.card-hover:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+
+.pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:12px;font-weight:500;
+  background:var(--surface-2);color:var(--text-2);border:1px solid var(--border)}
+.pill-accent{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);border-color:color-mix(in srgb,var(--accent) 28%,transparent)}
+
+/* ================= BARS / DIVIDERS ================= */
+.divider{height:1px;background:var(--border);width:100%}
+.divider-accent{height:3px;width:72px;background:var(--accent);border-radius:2px}
+
+/* ================= CHROME (header/footer/progress) ================= */
+.deck-header{position:absolute;top:24px;left:40px;right:40px;display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;z-index:10;pointer-events:none}
+.deck-footer{position:absolute;bottom:24px;left:40px;right:40px;display:flex;align-items:center;justify-content:space-between;
+  font-size:12px;color:var(--text-3);z-index:10;pointer-events:none}
+.slide-number::before{content:attr(data-current)}
+.slide-number::after{content:" / " attr(data-total)}
+.progress-bar{position:fixed;left:0;right:0;bottom:0;height:3px;background:transparent;z-index:20}
+.progress-bar > span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s var(--ease)}
+
+/* ================= PRESENTER / OVERVIEW ================= */
+.notes{display:none!important}
+.notes-overlay{position:fixed;inset:auto 0 0 0;max-height:42vh;background:rgba(20,22,30,.95);color:#e8ebf4;
+  padding:20px 32px;font-size:16px;line-height:1.6;border-top:1px solid rgba(255,255,255,.1);transform:translateY(100%);
+  transition:transform .3s var(--ease);z-index:40;overflow:auto;font-family:var(--font-sans)}
+.notes-overlay.open{transform:translateY(0)}
+.overview{position:fixed;inset:0;background:rgba(10,12,18,.92);backdrop-filter:blur(12px);z-index:50;
+  display:none;padding:40px;overflow:auto}
+.overview.open{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-content:start}
+.overview .thumb{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  aspect-ratio:16/9;overflow:hidden;cursor:pointer;position:relative;color:var(--text-1);padding:16px;
+  font-size:11px;transition:transform .2s var(--ease)}
+.overview .thumb:hover{transform:scale(1.04)}
+.overview .thumb .n{position:absolute;top:8px;left:10px;font-weight:700;font-size:14px;color:var(--text-3)}
+.overview .thumb .t{position:absolute;bottom:10px;left:14px;right:14px;font-weight:600;color:var(--text-1)}
+
+/* ================= PRESENTER VIEW ================= */
+/* Presenter view opens in a separate popup window (S key).
+ * All presenter styles are self-contained in the popup HTML generated by runtime.js.
+ * The audience window (this file) is NOT affected — it stays as normal deck view.
+ * Only the .notes class below is needed to hide speaker notes from audience. */
+
+/* ================= UTILITY ================= */
+.hidden{display:none!important}
+.nowrap{white-space:nowrap}
+.tr{text-align:right}.tc{text-align:center}.tl{text-align:left}
+.uppercase{text-transform:uppercase;letter-spacing:.12em}
+
+/* ================= PRINT ================= */
+@media print{
+  .slide{position:relative;opacity:1!important;transform:none!important;page-break-after:always;height:100vh}
+  .deck-header,.deck-footer,.progress-bar,.notes-overlay,.overview{display:none!important}
+}
+
+</style>
+<style>/* xhs-white-editorial — 白底杂志风 */
+.tpl-xhs-white-editorial{
+  --xw-bg:#ffffff;
+  --xw-ink:#111318;
+  --xw-ink2:#475467;
+  --xw-muted:#98a2b3;
+  --xw-line:#eaecf3;
+  --xw-purple:#7b61ff;
+  --xw-pink:#ff5fa2;
+  --xw-blue:#4e8cff;
+  --xw-green:#17b26a;
+  --xw-orange:#ff9d42;
+  --xw-soft-purple:#f4efff;
+  --xw-soft-pink:#fff0f6;
+  --xw-soft-blue:#eef4ff;
+  --xw-soft-green:#edfdf3;
+  --xw-soft-orange:#fff5ea;
+  background:var(--xw-bg);
+  color:var(--xw-ink);
+  font-family:'Inter','Noto Sans SC','PingFang SC',-apple-system,sans-serif;
+}
+.tpl-xhs-white-editorial .slide{background:#fff;padding:72px 88px}
+.tpl-xhs-white-editorial .xw-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.tpl-xhs-white-editorial .xw-tag{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid var(--xw-line);border-radius:999px;font-size:15px;color:var(--xw-ink2);background:#fff}
+.tpl-xhs-white-editorial .xw-tag .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,#7b61ff,#4e8cff,#17b26a,#ff9d42,#ff5fa2)}
+.tpl-xhs-white-editorial .xw-page{font-size:14px;color:var(--xw-muted);letter-spacing:.1em}
+.tpl-xhs-white-editorial .xw-kicker{font-size:18px;color:var(--xw-ink2);margin-top:6px;font-weight:500}
+.tpl-xhs-white-editorial .xw-title{font-size:84px;line-height:1.02;letter-spacing:-2px;font-weight:850;margin:18px 0 0;color:var(--xw-ink)}
+.tpl-xhs-white-editorial .xw-title-md{font-size:60px;line-height:1.05;letter-spacing:-1.5px;font-weight:800;margin:14px 0 0}
+.tpl-xhs-white-editorial .xw-grad{background:linear-gradient(90deg,#7b61ff 0%,#4e8cff 25%,#17b26a 48%,#ff9d42 72%,#ff5fa2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tpl-xhs-white-editorial .xw-sub{font-size:24px;line-height:1.45;color:#1f2937;margin-top:22px;max-width:900px}
+.tpl-xhs-white-editorial .xw-focus{display:inline-block;padding:6px 14px;border-radius:14px;background:#111318;color:#fff;font-weight:700}
+.tpl-xhs-white-editorial .xw-focus-blue{display:inline-block;padding:6px 14px;border-radius:14px;background:var(--xw-soft-blue);color:#174ea6;font-weight:700}
+.tpl-xhs-white-editorial .xw-focus-pink{display:inline-block;padding:6px 14px;border-radius:14px;background:var(--xw-soft-pink);color:#c11574;font-weight:700}
+.tpl-xhs-white-editorial .xw-focus-orange{display:inline-block;padding:6px 14px;border-radius:14px;background:var(--xw-soft-orange);color:#b54708;font-weight:700}
+.tpl-xhs-white-editorial .xw-focus-green{display:inline-block;padding:6px 14px;border-radius:14px;background:var(--xw-soft-green);color:#067647;font-weight:700}
+.tpl-xhs-white-editorial .xw-hero{margin-top:28px;border:1px solid var(--xw-line);border-radius:28px;padding:30px 34px;background:linear-gradient(180deg,#fff 0%,#fcfcff 100%);box-shadow:0 18px 48px rgba(17,19,24,.08)}
+.tpl-xhs-white-editorial .xw-quote{font-size:38px;line-height:1.3;font-weight:800;letter-spacing:-.5px}
+.tpl-xhs-white-editorial .xw-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.tpl-xhs-white-editorial .xw-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:22px}
+.tpl-xhs-white-editorial .xw-card{border:1px solid var(--xw-line);border-radius:24px;padding:24px 26px;box-shadow:0 10px 24px rgba(17,19,24,.04);background:#fff}
+.tpl-xhs-white-editorial .xw-card.soft-purple{background:var(--xw-soft-purple)}
+.tpl-xhs-white-editorial .xw-card.soft-pink{background:var(--xw-soft-pink)}
+.tpl-xhs-white-editorial .xw-card.soft-blue{background:var(--xw-soft-blue)}
+.tpl-xhs-white-editorial .xw-card.soft-green{background:var(--xw-soft-green)}
+.tpl-xhs-white-editorial .xw-card.soft-orange{background:var(--xw-soft-orange)}
+.tpl-xhs-white-editorial .xw-label{font-size:14px;font-weight:800;opacity:.7;margin-bottom:10px;letter-spacing:.08em;text-transform:uppercase}
+.tpl-xhs-white-editorial .xw-card .main{font-size:28px;line-height:1.22;font-weight:850;letter-spacing:-.5px}
+.tpl-xhs-white-editorial .xw-card .desc{font-size:16px;line-height:1.5;color:#475467;margin-top:12px}
+.tpl-xhs-white-editorial .xw-steps{margin-top:18px}
+.tpl-xhs-white-editorial .xw-step{display:flex;gap:18px;align-items:flex-start;margin:16px 0}
+.tpl-xhs-white-editorial .xw-num{flex:0 0 48px;height:48px;border-radius:50%;background:#111318;color:#fff;display:grid;place-items:center;font-size:20px;font-weight:900}
+.tpl-xhs-white-editorial .xw-txt{font-size:22px;line-height:1.45;font-weight:700}
+.tpl-xhs-white-editorial .xw-codebox{background:#0f1117;color:#e4e2d8;border-radius:18px;padding:22px 26px;font-family:'JetBrains Mono',monospace;font-size:15px;line-height:1.75;margin-top:20px;border:1px solid #1f222c}
+.tpl-xhs-white-editorial .xw-codebox .cm{color:#6b6a62}
+.tpl-xhs-white-editorial .xw-codebox .kw{color:#c88f64}
+.tpl-xhs-white-editorial .xw-codebox .st{color:#a8c292}
+.tpl-xhs-white-editorial .xw-codebox .hl{color:#e9c58a;font-weight:600}
+.tpl-xhs-white-editorial .xw-footer{position:absolute;left:88px;right:88px;bottom:44px;display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:var(--xw-muted)}
+.tpl-xhs-white-editorial .xw-topline{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#6366f1,#8b5cf6,#a855f7,#ec4899,#f43f5e,#f97316,#eab308,#22c55e,#06b6d4,#6366f1)}
+.tpl-xhs-white-editorial .xw-pill{display:inline-block;padding:8px 16px;border-radius:999px;font-size:14px;font-weight:700;margin:0 8px 8px 0;background:#fff;border:1px solid var(--xw-line);color:#394150}
+.tpl-xhs-white-editorial .xw-big-stat{font-size:96px;font-weight:900;letter-spacing:-4px;line-height:1}
+.tpl-xhs-white-editorial .xw-big-stat small{font-size:22px;color:var(--xw-muted);font-weight:700;letter-spacing:0;margin-left:6px}
+
+</style>
+<style>
+/* Static-preview fallback (runtime.js is absent — keep every slide visible) */
+.deck{height:auto;min-height:100vh;overflow:visible}
+.slide{position:relative;inset:auto;opacity:1;pointer-events:auto;transform:none;height:100vh;page-break-after:always}
+.deck-header,.deck-footer,.slide-number,.progress-bar,.notes-overlay,.overview{pointer-events:none}
+.notes{display:none!important}
+</style></head>
+<body class="tpl-xhs-white-editorial">
+<div class="deck">
+
+  <!-- 1. COVER -->
+  <section class="slide is-active">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>NevoFlux · The agentic browser</div>
+      <div class="xw-page">01 / 08</div>
+    </div>
+    <div class="xw-kicker">The one thing we keep coming back to</div>
+    <h1 class="xw-title">The browser that<br>has a <span class="xw-grad">GBrain</span></h1>
+    <p class="xw-sub">NevoFlux remembers everything you read. Its GBrain knowledge base makes every tab <span class="xw-focus">searchable</span>, <span class="xw-focus">linked</span>, and <span class="xw-focus">recallable</span>.</p>
+    <div class="xw-hero">
+      <div class="xw-quote">A browser shouldn't just <span class="xw-focus-orange">open pages</span> —<br>it should <span class="xw-focus">remember and reason</span>.</div>
+    </div>
+    <div class="xw-footer"><span>White · Strong focus · Editorial</span><span>Cover · 01</span></div>
+  </section>
+
+  <!-- 2. SECTION DIVIDER -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>Chapter · 01</div>
+      <div class="xw-page">02 / 08</div>
+    </div>
+    <div style="margin-top:120px">
+      <div class="xw-kicker" style="font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:#98a2b3">Chapter One</div>
+      <h1 class="xw-title" style="font-size:110px;margin-top:20px">Meet the <span class="xw-grad">GBrain</span></h1>
+      <p class="xw-sub" style="font-size:28px">Every page you visit becomes memory your agent can search.</p>
+    </div>
+    <div class="xw-footer"><span>Section Divider</span><span>02 / 08</span></div>
+  </section>
+
+  <!-- 3. CONTENT — 4 card grid -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>What lives inside NevoFlux</div>
+      <div class="xw-page">03 / 08</div>
+    </div>
+    <h2 class="xw-title-md">Four layers that make the browser <span class="xw-grad">think</span></h2>
+    <div class="xw-grid-2">
+      <div class="xw-card soft-pink"><div class="xw-label">GBrain</div><div class="main">Capture · index · recall</div><div class="desc">Every tab folds into one searchable knowledge base</div></div>
+      <div class="xw-card soft-blue"><div class="xw-label">Canvas</div><div class="main">Build apps · dashboards · notes</div><div class="desc">Turn what you browse into a live Canvas app</div></div>
+      <div class="xw-card soft-green"><div class="xw-label">Agent</div><div class="main">Plan · click · automate</div><div class="desc">The agent runs real tasks across your tabs</div></div>
+      <div class="xw-card soft-orange"><div class="xw-label">Packs</div><div class="main">Skills · templates · workflows</div><div class="desc">Design packs drop new capabilities in instantly</div></div>
+    </div>
+    <div class="xw-footer"><span>Content · Grid 2x2</span><span>03 / 08</span></div>
+  </section>
+
+  <!-- 4. STEPS -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>How GBrain actually works</div>
+      <div class="xw-page">04 / 08</div>
+    </div>
+    <h2 class="xw-title-md">From open tab to <span class="xw-grad">recallable memory</span></h2>
+    <div class="xw-steps">
+      <div class="xw-step"><div class="xw-num">1</div><div class="xw-txt">You browse — NevoFlux captures the page locally</div></div>
+      <div class="xw-step"><div class="xw-num">2</div><div class="xw-txt">GBrain chunks, embeds, and links it to what you already know</div></div>
+      <div class="xw-step"><div class="xw-num">3</div><div class="xw-txt">Ask in plain language and the agent retrieves the source</div></div>
+      <div class="xw-step"><div class="xw-num">4</div><div class="xw-txt">Drop the result into a <span class="xw-focus">Canvas app</span></div></div>
+    </div>
+    <div class="xw-hero"><div class="xw-quote" style="font-size:30px">NevoFlux makes "<span class="xw-focus-blue">find it again</span>" cheap,<br>and "<span class="xw-focus">connect it, build on it</span>" effortless.</div></div>
+    <div class="xw-footer"><span>Content · Steps</span><span>04 / 08</span></div>
+  </section>
+
+  <!-- 5. CODE EXAMPLE -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>A design skill you can ship tonight</div>
+      <div class="xw-page">05 / 08</div>
+    </div>
+    <h2 class="xw-title-md">You don't write a prompt,<br>you write a <span class="xw-grad">design skill</span></h2>
+    <pre class="xw-codebox"><span class="cm"># packs/design-pack/skills/deck-xhs-white/SKILL.md</span>
+<span class="kw">name</span>: <span class="st">deck-xhs-white</span>
+<span class="kw">description</span>: <span class="st">"White editorial deck for NevoFlux GBrain stories."</span>
+
+<span class="kw">slots</span>:
+  - <span class="hl">cover</span>:     <span class="st">"Headline + gradient phrase + one black focus pill."</span>
+  - <span class="hl">grid</span>:      <span class="st">"Four macaron cards — GBrain, Canvas, Agent, Packs."</span>
+  - <span class="hl">steps</span>:     <span class="st">"Numbered flow from open tab to recallable memory."</span>
+  - <span class="hl">chart</span>:     <span class="st">"Inline SVG bars — no images, no external URLs."</span></pre>
+    <div class="xw-footer"><span>Content · Code Block</span><span>05 / 08</span></div>
+  </section>
+
+  <!-- 6. CHART — SVG bar -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>Where NevoFlux saves you time</div>
+      <div class="xw-page">06 / 08</div>
+    </div>
+    <h2 class="xw-title-md">Less <span class="xw-focus-pink">searching</span>, more <span class="xw-focus-green">building</span></h2>
+    <svg viewBox="0 0 960 380" style="width:100%;max-width:1000px;margin-top:30px" xmlns="http://www.w3.org/2000/svg">
+      <g font-family="Inter, sans-serif" font-size="16" fill="#475467">
+        <!-- baseline -->
+        <line x1="180" y1="330" x2="940" y2="330" stroke="#eaecf3" stroke-width="2"/>
+        <!-- rows -->
+        <g transform="translate(0,40)">
+          <text x="170" y="30" text-anchor="end" font-weight="700" fill="#111">Re-finding tabs</text>
+          <rect x="180" y="10" width="520" height="28" rx="14" fill="#fff0f6"/>
+          <rect x="180" y="10" width="120" height="28" rx="14" fill="#ff5fa2"/>
+          <text x="710" y="30" fill="#c11574" font-weight="700">-65% time</text>
+        </g>
+        <g transform="translate(0,100)">
+          <text x="170" y="30" text-anchor="end" font-weight="700" fill="#111">Manual research</text>
+          <rect x="180" y="10" width="520" height="28" rx="14" fill="#eef4ff"/>
+          <rect x="180" y="10" width="200" height="28" rx="14" fill="#4e8cff"/>
+          <text x="710" y="30" fill="#174ea6" font-weight="700">-40% time</text>
+        </g>
+        <g transform="translate(0,160)">
+          <text x="170" y="30" text-anchor="end" font-weight="700" fill="#111">Note-taking</text>
+          <rect x="180" y="10" width="520" height="28" rx="14" fill="#fff5ea"/>
+          <rect x="180" y="10" width="320" height="28" rx="14" fill="#ff9d42"/>
+          <text x="710" y="30" fill="#b54708" font-weight="700">break-even</text>
+        </g>
+        <g transform="translate(0,220)">
+          <text x="170" y="30" text-anchor="end" font-weight="700" fill="#111">GBrain recall</text>
+          <rect x="180" y="10" width="520" height="28" rx="14" fill="#edfdf3"/>
+          <rect x="180" y="10" width="440" height="28" rx="14" fill="#17b26a"/>
+          <text x="710" y="30" fill="#067647" font-weight="700">+85% faster</text>
+        </g>
+        <g transform="translate(0,280)">
+          <text x="170" y="30" text-anchor="end" font-weight="700" fill="#111">Canvas building</text>
+          <rect x="180" y="10" width="520" height="28" rx="14" fill="#f4efff"/>
+          <rect x="180" y="10" width="500" height="28" rx="14" fill="#7b61ff"/>
+          <text x="710" y="30" fill="#5b21b6" font-weight="700">+110% output</text>
+        </g>
+      </g>
+    </svg>
+    <div class="xw-footer"><span>Chart · Horizontal Bars</span><span>06 / 08</span></div>
+  </section>
+
+  <!-- 7. CTA -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>Three things to try tonight</div>
+      <div class="xw-page">07 / 08</div>
+    </div>
+    <h2 class="xw-title-md">Stop bookmarking,<br>start <span class="xw-grad">remembering</span></h2>
+    <div class="xw-grid-3">
+      <div class="xw-card soft-purple"><div class="xw-label">Tonight</div><div class="main">Turn on<br>GBrain</div><div class="desc">Let one day of browsing become searchable memory</div></div>
+      <div class="xw-card soft-blue"><div class="xw-label">This week</div><div class="main">Build a<br>Canvas app</div><div class="desc">Ask the agent to assemble what you read into one view</div></div>
+      <div class="xw-card soft-green"><div class="xw-label">This month</div><div class="main">Install a<br>design pack</div><div class="desc">Drop in skills and templates and ship faster</div></div>
+    </div>
+    <div class="xw-hero"><div class="xw-quote" style="font-size:32px">The browser isn't a window anymore,<br>it's <span class="xw-focus">a brain you can build on</span>.</div></div>
+    <div class="xw-footer"><span>CTA</span><span>07 / 08</span></div>
+  </section>
+
+  <!-- 8. THANKS -->
+  <section class="slide">
+    <div class="xw-topline"></div>
+    <div class="xw-topbar">
+      <div class="xw-tag"><span class="dot"></span>Thanks for reading</div>
+      <div class="xw-page">08 / 08</div>
+    </div>
+    <div style="margin-top:100px">
+      <div class="xw-big-stat xw-grad">Thanks<small> · NevoFlux</small></div>
+      <p class="xw-sub" style="font-size:28px;margin-top:36px">If your tabs keep slipping away too, tell me in the comments —<br>what do you most want your browser to remember for you?</p>
+      <div style="margin-top:40px">
+        <span class="xw-pill">@nevoflux</span>
+        <span class="xw-pill">White editorial deck</span>
+        <span class="xw-pill">design-pack · full-deck</span>
+      </div>
+    </div>
+    <div class="xw-footer"><span>End</span><span>08 / 08</span></div>
+  </section>
+
+</div>
+
+</body>
+</html>
+```
+
+## Usage
+
+- Slide 1 (Cover): hero headline with a gradient key phrase + a one-line `.xw-sub` with two or three black `.xw-focus` pills, plus a `.xw-hero` quote block for the punchline.
+- Slide 2 (Section divider): chapter kicker + oversized title + a single subtitle line; reuse for each new chapter.
+- Slide 3 (2x2 grid): four `.xw-card` items in pink/blue/green/orange, each with an uppercase `.xw-label`, a bold `.main`, and a one-line `.desc`.
+- Slide 4 (Steps): numbered `.xw-step` rows for a linear flow, capped by a `.xw-hero` quote.
+- Slide 5 (Code): the dark `.xw-codebox` with `cm` / `kw` / `st` / `hl` spans for comments, keys, strings, and highlights.
+- Slide 6 (Chart): inline SVG horizontal bars; edit the bar widths, fills, and labels to your data (no external chart library).
+- Slide 7 (CTA): three `.xw-card` action items (Tonight / This week / This month) + a closing `.xw-hero` quote.
+- Slide 8 (Thanks): a big gradient stat word, a closing prompt, and `.xw-pill` tags for handle / template name / pack.
+- Keep one highlight per slide; keep all CSS, class names, and structure unchanged and only edit the visible text.

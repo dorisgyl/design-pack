@@ -637,16 +637,532 @@ slug = "packs/design-pack/specs/workflow/output-skill"
 from = "components/seed/specs/workflow/output-skill.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/article-magazine"
+from = "components/seed/templates/article-magazine.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/article-magazine-zh"
+from = "components/seed/templates/article-magazine-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/blog-post"
+from = "components/seed/templates/blog-post.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/blog-post-zh"
+from = "components/seed/templates/blog-post-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/card-twitter"
+from = "components/seed/templates/card-twitter.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/card-twitter-zh"
+from = "components/seed/templates/card-twitter-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/card-xiaohongshu"
+from = "components/seed/templates/card-xiaohongshu.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/card-xiaohongshu-zh"
+from = "components/seed/templates/card-xiaohongshu-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/competitive-teardown"
+from = "components/seed/templates/competitive-teardown.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/competitive-teardown-zh"
+from = "components/seed/templates/competitive-teardown-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/dashboard"
+from = "components/seed/templates/dashboard.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/dashboard-zh"
+from = "components/seed/templates/dashboard-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/data-report"
+from = "components/seed/templates/data-report.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/data-report-zh"
+from = "components/seed/templates/data-report-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/dating-web"
+from = "components/seed/templates/dating-web.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/dating-web-zh"
+from = "components/seed/templates/dating-web-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-blueprint"
+from = "components/seed/templates/deck-blueprint.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-blueprint-zh"
+from = "components/seed/templates/deck-blueprint-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-course-module"
+from = "components/seed/templates/deck-course-module.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-course-module-zh"
+from = "components/seed/templates/deck-course-module-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-dir-key-nav"
+from = "components/seed/templates/deck-dir-key-nav.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-dir-key-nav-zh"
+from = "components/seed/templates/deck-dir-key-nav-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-graphify-dark"
+from = "components/seed/templates/deck-graphify-dark.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-graphify-dark-zh"
+from = "components/seed/templates/deck-graphify-dark-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-guizang-editorial"
+from = "components/seed/templates/deck-guizang-editorial.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-guizang-editorial-zh"
+from = "components/seed/templates/deck-guizang-editorial-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-hermes-cyber"
+from = "components/seed/templates/deck-hermes-cyber.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-hermes-cyber-zh"
+from = "components/seed/templates/deck-hermes-cyber-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-magazine-web"
+from = "components/seed/templates/deck-magazine-web.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-magazine-web-zh"
+from = "components/seed/templates/deck-magazine-web-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-obsidian-claude"
+from = "components/seed/templates/deck-obsidian-claude.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-obsidian-claude-zh"
+from = "components/seed/templates/deck-obsidian-claude-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-open-slide-canvas"
+from = "components/seed/templates/deck-open-slide-canvas.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-open-slide-canvas-zh"
+from = "components/seed/templates/deck-open-slide-canvas-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-pitch"
+from = "components/seed/templates/deck-pitch.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-pitch-zh"
+from = "components/seed/templates/deck-pitch-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-presenter-mode"
+from = "components/seed/templates/deck-presenter-mode.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-presenter-mode-zh"
+from = "components/seed/templates/deck-presenter-mode-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-product-launch"
+from = "components/seed/templates/deck-product-launch.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-product-launch-zh"
+from = "components/seed/templates/deck-product-launch-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-replit"
+from = "components/seed/templates/deck-replit.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-replit-zh"
+from = "components/seed/templates/deck-replit-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-safety-alert"
+from = "components/seed/templates/deck-safety-alert.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-safety-alert-zh"
+from = "components/seed/templates/deck-safety-alert-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-simple"
+from = "components/seed/templates/deck-simple.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-simple-zh"
+from = "components/seed/templates/deck-simple-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-swiss-international"
+from = "components/seed/templates/deck-swiss-international.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-swiss-international-zh"
+from = "components/seed/templates/deck-swiss-international-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-tech-sharing"
+from = "components/seed/templates/deck-tech-sharing.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-tech-sharing-zh"
+from = "components/seed/templates/deck-tech-sharing-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-pastel"
+from = "components/seed/templates/deck-xhs-pastel.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-pastel-zh"
+from = "components/seed/templates/deck-xhs-pastel-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-post"
+from = "components/seed/templates/deck-xhs-post.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-post-zh"
+from = "components/seed/templates/deck-xhs-post-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-white"
+from = "components/seed/templates/deck-xhs-white.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/deck-xhs-white-zh"
+from = "components/seed/templates/deck-xhs-white-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/digital-eguide"
+from = "components/seed/templates/digital-eguide.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/digital-eguide-zh"
+from = "components/seed/templates/digital-eguide-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/doc-kami-parchment"
+from = "components/seed/templates/doc-kami-parchment.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/doc-kami-parchment-zh"
+from = "components/seed/templates/doc-kami-parchment-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/docs-page"
+from = "components/seed/templates/docs-page.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/docs-page-zh"
+from = "components/seed/templates/docs-page-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/email-marketing"
+from = "components/seed/templates/email-marketing.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/email-marketing-zh"
+from = "components/seed/templates/email-marketing-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/eng-runbook"
+from = "components/seed/templates/eng-runbook.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/eng-runbook-zh"
+from = "components/seed/templates/eng-runbook-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/exec-briefing-memo"
+from = "components/seed/templates/exec-briefing-memo.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/exec-briefing-memo-zh"
+from = "components/seed/templates/exec-briefing-memo-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/experiment-readout"
+from = "components/seed/templates/experiment-readout.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/experiment-readout-zh"
+from = "components/seed/templates/experiment-readout-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/feature-grid"
 from = "components/seed/templates/feature-grid.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/finance-report"
+from = "components/seed/templates/finance-report.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/finance-report-zh"
+from = "components/seed/templates/finance-report-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/flowai-team-dashboard"
+from = "components/seed/templates/flowai-team-dashboard.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/flowai-team-dashboard-zh"
+from = "components/seed/templates/flowai-team-dashboard-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-data-chart-nyt"
+from = "components/seed/templates/frame-data-chart-nyt.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-data-chart-nyt-zh"
+from = "components/seed/templates/frame-data-chart-nyt-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-flowchart-sticky"
+from = "components/seed/templates/frame-flowchart-sticky.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-flowchart-sticky-zh"
+from = "components/seed/templates/frame-flowchart-sticky-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-glitch-title"
+from = "components/seed/templates/frame-glitch-title.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-glitch-title-zh"
+from = "components/seed/templates/frame-glitch-title-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-light-leak-cinema"
+from = "components/seed/templates/frame-light-leak-cinema.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-light-leak-cinema-zh"
+from = "components/seed/templates/frame-light-leak-cinema-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-liquid-bg-hero"
+from = "components/seed/templates/frame-liquid-bg-hero.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-liquid-bg-hero-zh"
+from = "components/seed/templates/frame-liquid-bg-hero-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-logo-outro"
+from = "components/seed/templates/frame-logo-outro.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-logo-outro-zh"
+from = "components/seed/templates/frame-logo-outro-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-macos-notification"
+from = "components/seed/templates/frame-macos-notification.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/frame-macos-notification-zh"
+from = "components/seed/templates/frame-macos-notification-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/gamified-app"
+from = "components/seed/templates/gamified-app.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/gamified-app-zh"
+from = "components/seed/templates/gamified-app-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/hr-onboarding"
+from = "components/seed/templates/hr-onboarding.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/hr-onboarding-zh"
+from = "components/seed/templates/hr-onboarding-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/invoice"
+from = "components/seed/templates/invoice.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/invoice-zh"
+from = "components/seed/templates/invoice-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/kanban-board"
+from = "components/seed/templates/kanban-board.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/kanban-board-zh"
+from = "components/seed/templates/kanban-board-zh.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/landing-hero"
 from = "components/seed/templates/landing-hero.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/live-dashboard"
+from = "components/seed/templates/live-dashboard.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/live-dashboard-zh"
+from = "components/seed/templates/live-dashboard-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/magazine-poster"
+from = "components/seed/templates/magazine-poster.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/magazine-poster-zh"
+from = "components/seed/templates/magazine-poster-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/meeting-notes"
+from = "components/seed/templates/meeting-notes.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/meeting-notes-zh"
+from = "components/seed/templates/meeting-notes-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mobile-app"
+from = "components/seed/templates/mobile-app.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mobile-app-zh"
+from = "components/seed/templates/mobile-app-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mobile-onboarding"
+from = "components/seed/templates/mobile-onboarding.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mobile-onboarding-zh"
+from = "components/seed/templates/mobile-onboarding-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mockup-device-3d"
+from = "components/seed/templates/mockup-device-3d.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/mockup-device-3d-zh"
+from = "components/seed/templates/mockup-device-3d-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/motion-frames"
+from = "components/seed/templates/motion-frames.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/motion-frames-zh"
+from = "components/seed/templates/motion-frames-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pm-spec"
+from = "components/seed/templates/pm-spec.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pm-spec-zh"
+from = "components/seed/templates/pm-spec-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/poster-hero"
+from = "components/seed/templates/poster-hero.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/poster-hero-zh"
+from = "components/seed/templates/poster-hero-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/ppt-keynote"
+from = "components/seed/templates/ppt-keynote.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/ppt-keynote-zh"
+from = "components/seed/templates/ppt-keynote-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pricing-page"
+from = "components/seed/templates/pricing-page.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pricing-page-zh"
+from = "components/seed/templates/pricing-page-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/pricing-table"
 from = "components/seed/templates/pricing-table.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/prototype-web"
+from = "components/seed/templates/prototype-web.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/resume-modern"
+from = "components/seed/templates/resume-modern.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/saas-landing"
+from = "components/seed/templates/saas-landing.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/saas-landing-zh"
+from = "components/seed/templates/saas-landing-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-carousel"
+from = "components/seed/templates/social-carousel.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-media-dashboard"
+from = "components/seed/templates/social-media-dashboard.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-media-matrix"
+from = "components/seed/templates/social-media-matrix.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-reddit-card"
+from = "components/seed/templates/social-reddit-card.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-reddit-card-zh"
+from = "components/seed/templates/social-reddit-card-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-spotify-card"
+from = "components/seed/templates/social-spotify-card.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-x-post-card"
+from = "components/seed/templates/social-x-post-card.md"
 # <<< seeds (generated) <<<
 
 [components.dashboard]

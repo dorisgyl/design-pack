@@ -60,10 +60,12 @@ function buildCatalog() {
   for (const file of walk(SEED_DIR).sort()) {
     const { data } = readPage(file);
     if (!data.slug || !data.type) continue;
+    if (data.lang === 'zh') continue; // zh pages are retrieval-only — one dashboard card per template
     const item = {
       slug: data.slug,
       type: data.type,
       title: data.title || basename(file, '.md'),
+      title_zh: data.title_zh || '',
       description: data.description || '',
       category: data.category || '',
       collection: data.collection || '',
@@ -102,7 +104,7 @@ const APP_JS = `
 
   function groupLabelOf(it){
     if (it.type === 'requirement') return '设计要求';
-    if (it.type === 'template') return '模板';
+    if (it.type === 'template') return it.category ? '模板 · ' + it.category : '模板';
     if (it.collection === 'taste') return '设计品味 (taste)';
     if (it.collection === 'workflow') return '工作流 / 产出 (workflow)';
     if (it.type === 'spec' && it.category) return '指南 · ' + it.category;
@@ -116,8 +118,9 @@ const APP_JS = `
       var g = groupLabelOf(it);
       (byGroup[g] = byGroup[g] || []).push(it);
     });
+    var tmplCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('模板 · ') === 0; }).sort();
     var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
-    var order = ['设计要求', '设计规范', '设计品味 (taste)', '工作流 / 产出 (workflow)', '模板'].concat(guideCats);
+    var order = ['设计要求', '设计规范', '设计品味 (taste)', '工作流 / 产出 (workflow)', '模板'].concat(tmplCats, guideCats);
     order.forEach(function(g){
       var items = byGroup[g];
       if (!items || !items.length) return;
@@ -128,7 +131,7 @@ const APP_JS = `
       var grid = document.createElement('div'); grid.className = 'cards';
       items.forEach(function(it){
         var card = document.createElement('label'); card.className = 'card';
-        card.setAttribute('data-search', (it.title + ' ' + it.description + ' ' + (it.category || '')).toLowerCase());
+        card.setAttribute('data-search', (it.title + ' ' + (it.title_zh || '') + ' ' + it.description + ' ' + (it.category || '')).toLowerCase());
         if (it.thumbnail){
           var img = document.createElement('img'); img.className = 'thumb'; img.src = it.thumbnail;
           img.alt = it.title + ' 样例'; img.loading = 'lazy'; card.appendChild(img);
@@ -137,8 +140,10 @@ const APP_JS = `
         var cb = document.createElement('input'); cb.type = 'checkbox'; cb.setAttribute('data-slug', it.slug);
         var box = document.createElement('div');
         var t = document.createElement('div'); t.className = 'card__title'; t.textContent = it.title;
+        box.appendChild(t);
+        if (it.title_zh) { var tz = document.createElement('div'); tz.className = 'card__title-zh'; tz.textContent = it.title_zh; box.appendChild(tz); }
         var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = it.description || ''; d.title = it.description || '';
-        box.appendChild(t); box.appendChild(d);
+        box.appendChild(d);
         row.appendChild(cb); row.appendChild(box);
         card.appendChild(row);
         grid.appendChild(card);
@@ -252,6 +257,7 @@ ${TOKENS_CSS}
   .card__row{ display:flex; align-items:flex-start; gap:var(--space-3); }
   .card input{ margin-top:3px; width:18px; height:18px; accent-color:var(--primary); flex:none; }
   .card__title{ font-weight:600; line-height:1.3; }
+  .card__title-zh{ color:var(--text-muted); font-size:.8rem; line-height:1.3; margin-top:1px; }
   .card__desc{ color:var(--text-muted); font-size:.875rem; line-height:1.5; margin:0;
     display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
   .thumb{ width:100%; aspect-ratio:8/5; object-fit:cover; border-radius:var(--radius-md);

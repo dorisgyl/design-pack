@@ -1,0 +1,203 @@
+---
+slug: packs/design-pack/templates/email-marketing
+type: template
+lang: en
+category: email
+title: "NevoFlux Product Launch Email"
+title_zh: "营销邮件"
+description: "A self-contained 600px single-column product-launch email with masthead, hero, CTA, and a specs grid, built for email-client compatibility."
+tags: [email, newsletter, mjml, template]
+sample_image: packs/design-pack/assets/templates/email-marketing.svg
+source: html-anything/email-marketing
+---
+## Design guidance
+
+Template: brand product-launch email.
+
+Intent: a pure HTML email, 600px single column, compatible with email clients.
+
+Layout:
+- Masthead (centered wordmark)
+- Hero image block (SVG placeholder)
+- Headline lockup (with a skewed-italic accent)
+- Body copy + primary CTA button
+- Specifications grid (3 columns)
+- Footer (social + unsubscribe)
+
+Design details:
+- Use `<table role='presentation'>` as a layout fallback for older clients.
+- Set colors with inline `style` attributes (do not rely on CSS classes), since many email clients strip `<style>` blocks.
+
+## Template (HTML)
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEVOFLUX — Meet GBrain</title>
+  <style>
+    :root {
+      --page: #d9d6d0;
+      --paper: #f4efe7;
+      --ink: #1a1816;
+      --muted: #6b6964;
+      --border: #d8d3c8;
+      --accent: #d8482b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.55 'Inter', -apple-system, system-ui, sans-serif; }
+    .frame { max-width: 680px; margin: 0 auto; background: var(--paper); padding: 0; }
+    .masthead { display: flex; justify-content: space-between; align-items: center; padding: 22px 32px; border-bottom: 1px solid var(--border); }
+    .wordmark { display: flex; align-items: center; gap: 10px; font-family: 'Anton', 'Bebas Neue', Impact, sans-serif; font-size: 22px; letter-spacing: 0.04em; }
+    .wordmark .lockup { display: flex; align-items: center; gap: 8px; }
+    .wordmark .mark { width: 22px; height: 22px; background: var(--accent); transform: skew(-12deg); display: inline-block; }
+    .wordmark .est { font: 11px/1 ui-monospace, monospace; color: var(--muted); padding: 4px 6px; border: 1px solid var(--border); border-radius: 3px; letter-spacing: 0.08em; }
+    .nav { display: flex; gap: 28px; font-size: 12px; letter-spacing: 0.18em; color: var(--ink); }
+    .nav a { color: inherit; text-decoration: none; }
+
+    .hero { position: relative; aspect-ratio: 4 / 3; background:
+      radial-gradient(circle at 30% 20%, #ffd6b8 0%, transparent 55%),
+      radial-gradient(circle at 75% 70%, #f59a6c 0%, transparent 60%),
+      linear-gradient(135deg, #c9c4b8 0%, #aaa39a 100%); overflow: hidden; }
+    .hero .stamp-tl { position: absolute; top: 18px; left: 22px; font: 11px/1 ui-monospace, monospace; color: rgba(26,24,22,0.78); letter-spacing: 0.18em; }
+    .hero .stamp-bl { position: absolute; bottom: 18px; left: 22px; font: 11px/1 ui-monospace, monospace; color: rgba(26,24,22,0.78); letter-spacing: 0.18em; }
+    .hero .stamp-br { position: absolute; bottom: 18px; right: 22px; font: 11px/1 ui-monospace, monospace; color: rgba(26,24,22,0.6); letter-spacing: 0.18em; }
+    .hero svg.shoe { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 78%; height: auto; filter: drop-shadow(0 18px 26px rgba(26,24,22,0.18)); }
+
+    .article { padding: 44px 44px 12px; }
+    .eyebrow { font: 11px/1 ui-monospace, monospace; color: var(--accent); letter-spacing: 0.22em; margin-bottom: 28px; display: flex; gap: 12px; align-items: center; }
+    .eyebrow span.bar { display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+    h1.lockup { font-family: 'Anton', 'Bebas Neue', Impact, sans-serif; font-weight: 400; font-size: clamp(56px, 9vw, 96px); line-height: 0.95; letter-spacing: -0.005em; margin: 0 0 28px; text-transform: uppercase; }
+    h1.lockup .axis { color: var(--accent); display: inline-block; transform: skew(-8deg); }
+    p.body { font-size: 16px; line-height: 1.55; color: var(--ink); margin: 0 0 30px; max-width: 56ch; }
+    p.body em { font-style: italic; color: var(--accent); }
+
+    .cta { display: inline-flex; align-items: center; gap: 14px; background: var(--ink); color: var(--paper); padding: 14px 22px; font: 12px/1 'Inter', sans-serif; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; }
+    .cta .arrow { display: inline-block; width: 22px; height: 1px; background: var(--paper); position: relative; }
+    .cta .arrow::after { content: ''; position: absolute; right: 0; top: -3px; border: 4px solid transparent; border-left-color: var(--paper); }
+
+    .specs { padding: 56px 44px 12px; border-top: 1px solid var(--border); margin-top: 44px; }
+    .specs .head { font: 11px/1 ui-monospace, monospace; color: var(--accent); letter-spacing: 0.22em; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .specs .head span.bar { display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+    .specs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 48px; }
+    .spec .num { font-family: 'Anton', 'Bebas Neue', Impact, sans-serif; font-size: 56px; line-height: 0.9; letter-spacing: -0.005em; }
+    .spec .num sup { font-size: 18px; vertical-align: top; margin-left: 4px; color: var(--muted); font-family: ui-monospace, monospace; letter-spacing: 0.04em; }
+    .spec .label { font: 11px/1.45 ui-monospace, monospace; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 8px; max-width: 22ch; }
+
+    .footer { padding: 56px 44px 40px; margin-top: 32px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+    .footer .left { display: flex; flex-direction: column; gap: 12px; font-size: 12px; color: var(--muted); }
+    .footer .marks { display: flex; align-items: center; gap: 10px; }
+    .footer .right { font: 11px/1.6 ui-monospace, monospace; color: var(--muted); letter-spacing: 0.06em; text-align: right; }
+    .footer a { color: var(--muted); }
+
+    @media (max-width: 540px) {
+      .article, .specs, .footer { padding-left: 24px; padding-right: 24px; }
+      h1.lockup { font-size: 48px; }
+      .nav { display: none; }
+      .specs-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame" data-od-id="email">
+    <header class="masthead" data-od-id="masthead">
+      <div class="wordmark">
+        <span class="mark"></span>
+        <span class="lockup">NEVOFLUX</span>
+        <span class="est">EST · 2024</span>
+      </div>
+      <nav class="nav"><a href="#">BROWSER</a><a href="#">GBRAIN</a><a href="#">PACKS</a></nav>
+    </header>
+
+    <div class="hero" data-od-id="hero">
+      <div class="stamp-tl">— NEVOFLUX</div>
+      <svg class="shoe" viewBox="0 0 600 280" aria-hidden="true">
+        <defs>
+          <linearGradient id="upper" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffe0c4"/>
+            <stop offset="55%" stop-color="#f78c4c"/>
+            <stop offset="100%" stop-color="#c8442d"/>
+          </linearGradient>
+          <linearGradient id="midsole" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fff8ee"/>
+            <stop offset="100%" stop-color="#e7dccd"/>
+          </linearGradient>
+        </defs>
+        <path d="M 60 180 C 80 130, 160 90, 230 92 C 290 94, 330 110, 380 115 C 430 120, 470 125, 500 145 C 530 165, 540 195, 520 210 L 100 210 C 80 210, 55 200, 60 180 Z" fill="url(#upper)" stroke="#7c2615" stroke-width="2"/>
+        <path d="M 60 180 L 100 210 L 520 210 L 540 200 C 550 190, 545 175, 530 175 L 90 175 C 75 175, 60 175, 60 180 Z" fill="url(#midsole)" stroke="#7c2615" stroke-width="2"/>
+        <path d="M 100 210 L 100 230 L 540 230 L 540 220" fill="none" stroke="#7c2615" stroke-width="3" stroke-linecap="round"/>
+        <g stroke="#7c2615" stroke-width="2" fill="none" opacity="0.85">
+          <path d="M 200 110 C 220 130, 230 145, 240 165"/>
+          <path d="M 250 105 C 270 125, 280 140, 290 160"/>
+          <path d="M 300 105 C 320 125, 330 140, 340 160"/>
+          <path d="M 350 110 C 370 130, 380 145, 390 165"/>
+        </g>
+        <g fill="#7c2615">
+          <circle cx="220" cy="160" r="3"/>
+          <circle cx="270" cy="158" r="3"/>
+          <circle cx="320" cy="158" r="3"/>
+          <circle cx="370" cy="160" r="3"/>
+        </g>
+        <path d="M 405 145 Q 470 130, 500 150 Q 470 165, 410 162 Z" fill="#fffbf5" stroke="#7c2615" stroke-width="2"/>
+      </svg>
+      <div class="stamp-bl">— GBRAIN RELEASE</div>
+      <div class="stamp-br">v0.4 · 04—2026</div>
+    </div>
+
+    <section class="article" data-od-id="article">
+      <div class="eyebrow"><span class="bar"></span>NEW · LOCAL KNOWLEDGE BASE · GBRAIN</div>
+      <h1 class="lockup" data-od-id="headline">
+        Meet the<br/>
+        <span class="axis">GBrain.</span><br/>
+        A browser that remembers.
+      </h1>
+      <p class="body">A private, on-device knowledge base woven into the NevoFlux browser. Every page you visit, every Canvas app you build, every agent run — captured, indexed, and ready to recall offline. Faster to answer, quieter about your data. First public preview ships as <em>GBrain v0.4</em>.</p>
+      <a class="cta" href="#" data-od-id="cta">Try GBrain <span class="arrow"></span></a>
+    </section>
+
+    <section class="specs" data-od-id="specs">
+      <div class="head"><span class="bar"></span>SPECIFICATIONS · GBRAIN v0.4</div>
+      <div class="specs-grid">
+        <div class="spec">
+          <div class="num">100<sup>%</sup></div>
+          <div class="label">On-device indexing, no cloud sync</div>
+        </div>
+        <div class="spec">
+          <div class="num">40<sup>MS</sup></div>
+          <div class="label">Median semantic recall latency</div>
+        </div>
+        <div class="spec">
+          <div class="num">12<sup>K</sup></div>
+          <div class="label">Pages indexed per gigabyte of storage</div>
+        </div>
+        <div class="spec">
+          <div class="num" style="font-size:42px;">SDK-1</div>
+          <div class="label">Agent &amp; Canvas query SDK built in</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" data-od-id="footer">
+      <div class="left">
+        <div class="marks"><span style="display:inline-block;width:18px;height:18px;background:var(--accent);transform:skew(-12deg);"></span><span class="lockup" style="font-family:'Anton',sans-serif;font-size:18px;letter-spacing:0.04em;">NEVOFLUX</span></div>
+        <div>Sent because you joined the NevoFlux preview list</div>
+        <div><a href="#">Unsubscribe</a> · <a href="#">View in browser</a></div>
+      </div>
+      <div class="right">© 2026 NEVOFLUX<br/>ALL RIGHTS RESERVED</div>
+    </footer>
+  </div>
+</body>
+</html>
+```
+
+## Usage
+
+Fill these slots to adapt the template:
+- Masthead: `wordmark .lockup` for the brand name, `.nav` links for top-level destinations.
+- Hero: swap the inline SVG placeholder and the three corner stamps (`stamp-tl`, `stamp-bl`, `stamp-br`) for product line, release name, and version/date.
+- Article: `eyebrow` (category tag line), `h1.lockup` headline (wrap the accent word in `<span class="axis">`), and `p.body` (one tight paragraph; emphasize a launch name with `<em>`).
+- CTA: the single `.cta` button text and href.
+- Specs grid: four `.spec` cells, each a big `.num` (with a `<sup>` unit) plus a short uppercase `.label`.
+- Footer: brand mark, a sending-reason line, unsubscribe / view-in-browser links, and the copyright block.

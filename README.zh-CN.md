@@ -32,6 +32,7 @@ components/
     design-build/SKILL.md                  # 检索 + 生成(看板 & 侧边栏共用)
     design-curate/SKILL.md                 # 导入/扩展 + 重建看板
   seed/{requirements,specs,templates}/*.md # 原创设计内容(only-if-absent 种入 GBrain)
+  seed/templates/<id>.md + <id>-zh.md      # 从 html-anything 导入(中英双版),内容改写为 NevoFlux
   seed/specs/{taste,workflow}/*.md         # 从 taste-skill 导入:9 个品味 + 4 个工作流 skill
   seed/guides/<category>/*.md              # 从 modern-web-guidance 导入的 137 篇指南
   canvas-app/dist/index.html               # 预构建看板(由 build 脚本生成)
@@ -57,6 +58,10 @@ scripts/
   - `collection: workflow`(4 个 → `specs/workflow/`):output(防截断)、image-to-code、
     imagegen-web、imagegen-mobile —— 产出/资产生成流程。看板组「工作流 / 产出 (workflow)」。
   - 重新导入:`node scripts/import-taste.mjs [skills 目录]`(分类映射在脚本的 `WORKFLOW` 集合里)。
+- **导入模板(来自 html-anything)**:每个 `SKILL.md` + `example.html` 转成 `type: template` 页,放在
+  `packs/design-pack/templates/`,**中英两版**(`<id>` 英 + `<id>-zh` 中)便于 GBrain 双语检索。
+  example.html **格式样式保持不变**,只把可见内容改写为 NevoFlux 相关;`example.md`(样例领域数据)跳过。
+  看板按「模板 · <分类>」分组,zh 页仅供检索(每模板一张卡)。通过多 agent workflow 改写。
 
 ## 内容模型
 
