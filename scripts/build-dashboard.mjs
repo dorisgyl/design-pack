@@ -1,14 +1,14 @@
 // build-dashboard.mjs — generate the pre-built design-pack selection dashboard.
 //
-// Reads the seed pages, extracts a lightweight catalog from their frontmatter,
-// generates an SVG thumbnail for each template, and emits a single
+// Recursively reads the seed pages, extracts a lightweight catalog from their
+// frontmatter, generates an SVG thumbnail per template, and emits a single
 // self-contained components/canvas-app/dist/index.html (no external URLs).
+// Guides (type=spec with a category) are grouped under "指南 · <category>".
 //
-// This is also the REFERENCE IMPLEMENTATION of design-curate's rebuild step:
-// at runtime the agent does the same thing, but pulls real template images via
-// GBrain file_url instead of generating SVG placeholders.
-import { readdirSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
-import { join, dirname, resolve } from 'node:path';
+// This is also the REFERENCE IMPLEMENTATION of design-curate's rebuild step: at
+// runtime the agent does the same, but pulls real template images via file_url.
+import { readdirSync, mkdirSync, writeFileSync, existsSync, statSync } from 'node:fs';
+import { join, dirname, resolve, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readPage } from './frontmatter.mjs';
 
@@ -17,11 +17,18 @@ const SEED_DIR = join(ROOT, 'components', 'seed');
 const OUT_DIR = join(ROOT, 'components', 'canvas-app', 'dist');
 const OUT_FILE = join(OUT_DIR, 'index.html');
 
-const TYPE_DIRS = ['requirements', 'specs', 'templates'];
-const TYPE_LABEL = { requirement: '设计要求', spec: '设计规范', template: '模板' };
-
 function xmlEscape(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function walk(dir) {
+  const out = [];
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) out.push(...walk(p));
+    else if (name.endsWith('.md')) out.push(p);
+  }
+  return out;
 }
 
 // Deterministic SVG thumbnail: tokened gradient card with the template title.
@@ -50,21 +57,18 @@ function svgThumb(title) {
 
 function buildCatalog() {
   const items = [];
-  for (const sub of TYPE_DIRS) {
-    const dir = join(SEED_DIR, sub);
-    if (!existsSync(dir)) continue;
-    for (const file of readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
-      const { data } = readPage(join(dir, file));
-      const item = {
-        slug: data.slug,
-        type: data.type,
-        title: data.title,
-        description: data.description,
-        tags: data.tags || [],
-      };
-      if (data.type === 'template') item.thumbnail = svgThumb(data.title);
-      items.push(item);
-    }
+  for (const file of walk(SEED_DIR).sort()) {
+    const { data } = readPage(file);
+    if (!data.slug || !data.type) continue;
+    const item = {
+      slug: data.slug,
+      type: data.type,
+      title: data.title || basename(file, '.md'),
+      description: data.description || '',
+      category: data.category || '',
+    };
+    if (data.type === 'template') item.thumbnail = svgThumb(item.title);
+    items.push(item);
   }
   return items;
 }
@@ -92,7 +96,54 @@ const APP_JS = `
   var sendBtn = document.getElementById('send');
   var promptEl = document.getElementById('prompt');
   var errEl = document.getElementById('err');
+  var filterEl = document.getElementById('filter');
   var hasSDK = typeof window.NevofluxSDK !== 'undefined' && NevofluxSDK.agent;
+
+  function groupLabelOf(it){
+    if (it.type === 'requirement') return '设计要求';
+    if (it.type === 'template') return '模板';
+    if (it.type === 'spec' && it.category) return '指南 · ' + it.category;
+    return '设计规范';
+  }
+
+  function renderCatalog(){
+    var app = document.getElementById('app');
+    var byGroup = {};
+    CATALOG.forEach(function(it){
+      var g = groupLabelOf(it);
+      (byGroup[g] = byGroup[g] || []).push(it);
+    });
+    var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
+    var order = ['设计要求', '设计规范', '模板'].concat(guideCats);
+    order.forEach(function(g){
+      var items = byGroup[g];
+      if (!items || !items.length) return;
+      var sec = document.createElement('section'); sec.className = 'group-sec';
+      var h = document.createElement('div'); h.className = 'group';
+      h.textContent = g + ' (' + items.length + ')';
+      sec.appendChild(h);
+      var grid = document.createElement('div'); grid.className = 'cards';
+      items.forEach(function(it){
+        var card = document.createElement('label'); card.className = 'card';
+        card.setAttribute('data-search', (it.title + ' ' + it.description + ' ' + (it.category || '')).toLowerCase());
+        if (it.thumbnail){
+          var img = document.createElement('img'); img.className = 'thumb'; img.src = it.thumbnail;
+          img.alt = it.title + ' 样例'; img.loading = 'lazy'; card.appendChild(img);
+        }
+        var row = document.createElement('div'); row.className = 'card__row';
+        var cb = document.createElement('input'); cb.type = 'checkbox'; cb.setAttribute('data-slug', it.slug);
+        var box = document.createElement('div');
+        var t = document.createElement('div'); t.className = 'card__title'; t.textContent = it.title;
+        var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = it.description || '';
+        box.appendChild(t); box.appendChild(d);
+        row.appendChild(cb); row.appendChild(box);
+        card.appendChild(row);
+        grid.appendChild(card);
+      });
+      sec.appendChild(grid);
+      app.appendChild(sec);
+    });
+  }
 
   function selectedSlugs(){
     var out = [];
@@ -112,10 +163,29 @@ const APP_JS = `
     return lines.join('\\n');
   }
 
+  renderCatalog();
+
   document.addEventListener('change', function(e){
     if (e.target && e.target.matches('input[type=checkbox][data-slug]')) setSelectedCount();
   });
   setSelectedCount();
+
+  filterEl.addEventListener('input', function(){
+    var q = filterEl.value.trim().toLowerCase();
+    var secs = document.querySelectorAll('.group-sec');
+    var total = 0;
+    secs.forEach(function(sec){
+      var vis = 0;
+      sec.querySelectorAll('.card').forEach(function(card){
+        var ok = !q || card.getAttribute('data-search').indexOf(q) !== -1;
+        card.style.display = ok ? '' : 'none';
+        if (ok) vis++;
+      });
+      sec.style.display = vis ? '' : 'none';
+      total += vis;
+    });
+    document.getElementById('viscount').textContent = q ? (total + ' 项匹配') : '';
+  });
 
   if (!hasSDK){
     statusEl.textContent = '当前不在 NevoFlux 环境(NevofluxSDK 不可用)——可预览界面,但无法发送。';
@@ -160,9 +230,14 @@ ${TOKENS_CSS}
   *{ box-sizing:border-box; }
   body{ margin:0; font-family:var(--font-sans); background:var(--bg); color:var(--text);
     padding:var(--space-6); }
-  header.top{ max-width:1100px; margin:0 auto var(--space-6); }
+  header.top{ max-width:1100px; margin:0 auto var(--space-4); }
   h1{ font-size:1.563rem; margin:0 0 var(--space-2); }
-  .lead{ color:var(--text-muted); margin:0; line-height:1.5; }
+  .lead{ color:var(--text-muted); margin:0 0 var(--space-4); line-height:1.5; }
+  .filterbar{ display:flex; gap:var(--space-3); align-items:center; }
+  #filter{ flex:1; padding:var(--space-3); border:1px solid var(--border); border-radius:var(--radius-md);
+    background:var(--surface); color:var(--text); font:inherit; }
+  #filter:focus-visible{ outline:2px solid var(--primary); outline-offset:1px; }
+  #viscount{ color:var(--text-muted); font-size:.8rem; white-space:nowrap; }
   main{ max-width:1100px; margin:0 auto; }
   .group{ margin:var(--space-8) 0 var(--space-4); font-size:.8rem; font-weight:600;
     letter-spacing:.04em; text-transform:uppercase; color:var(--text-muted); }
@@ -201,7 +276,11 @@ ${TOKENS_CSS}
 <body>
 <header class="top">
   <h1>设计依据选择</h1>
-  <p class="lead">勾选要应用的要求 / 规范 / 模板,在下方写明要生成的内容,发送给 agent。agent 会据此检索 GBrain 并生成一个新画布。</p>
+  <p class="lead">勾选要应用的要求 / 规范 / 模板 / 指南,在下方写明要生成的内容,发送给 agent。agent 会据此检索 GBrain 并生成一个新画布。</p>
+  <div class="filterbar">
+    <input id="filter" type="search" placeholder="筛选(标题/描述/分类)…" aria-label="筛选依据"/>
+    <span id="viscount"></span>
+  </div>
 </header>
 <main id="app"></main>
 
@@ -217,35 +296,6 @@ ${TOKENS_CSS}
 
 <script>
   var CATALOG = ${JSON.stringify(catalog)};
-  var TYPE_LABEL = ${JSON.stringify(TYPE_LABEL)};
-  (function renderCatalog(){
-    var app = document.getElementById('app');
-    var order = ['requirement','spec','template'];
-    order.forEach(function(type){
-      var items = CATALOG.filter(function(it){ return it.type === type; });
-      if (!items.length) return;
-      var h = document.createElement('div'); h.className='group'; h.textContent = TYPE_LABEL[type] || type;
-      app.appendChild(h);
-      var grid = document.createElement('div'); grid.className='cards';
-      items.forEach(function(it){
-        var card = document.createElement('label'); card.className='card';
-        if (it.thumbnail){
-          var img = document.createElement('img'); img.className='thumb'; img.src = it.thumbnail;
-          img.alt = it.title + ' 样例'; card.appendChild(img);
-        }
-        var row = document.createElement('div'); row.className='card__row';
-        var cb = document.createElement('input'); cb.type='checkbox'; cb.setAttribute('data-slug', it.slug);
-        var box = document.createElement('div');
-        var t = document.createElement('div'); t.className='card__title'; t.textContent = it.title;
-        var d = document.createElement('p'); d.className='card__desc'; d.textContent = it.description || '';
-        box.appendChild(t); box.appendChild(d);
-        row.appendChild(cb); row.appendChild(box);
-        card.appendChild(row);
-        grid.appendChild(card);
-      });
-      app.appendChild(grid);
-    });
-  })();
 ${APP_JS}
 </script>
 </body>
@@ -257,8 +307,11 @@ function main() {
   const catalog = buildCatalog();
   mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(OUT_FILE, renderHtml(catalog), 'utf8');
+  const byType = catalog.reduce((a, c) => ((a[c.type] = (a[c.type] || 0) + 1), a), {});
   console.log(
-    `built dashboard with ${catalog.length} catalog items → components/canvas-app/dist/index.html`
+    `built dashboard with ${catalog.length} catalog items (${Object.entries(byType)
+      .map(([k, v]) => `${v} ${k}`)
+      .join(', ')}) → components/canvas-app/dist/index.html`
   );
 }
 
