@@ -32,11 +32,13 @@ components/
     design-build/SKILL.md                  # 检索 + 生成(看板 & 侧边栏共用)
     design-curate/SKILL.md                 # 导入/扩展 + 重建看板
   seed/{requirements,specs,templates}/*.md # 原创设计内容(only-if-absent 种入 GBrain)
+  seed/specs/taste/*.md                    # 从 taste-skill 导入的 13 个设计品味/风格 skill
   seed/guides/<category>/*.md              # 从 modern-web-guidance 导入的 137 篇指南
   canvas-app/dist/index.html               # 预构建看板(由 build 脚本生成)
 scripts/
   frontmatter.mjs                          # 极简 frontmatter 解析(无依赖)
   import-guides.mjs                        # 一次性:modern-web-guidance/guides → seed/guides/**
+  import-taste.mjs                         # 一次性:taste-skill/skills → seed/specs/taste/**
   sync-pack-seeds.mjs                      # 由 seed/** 重生成 pack.toml 的 [[components.seed]] 列表
   build-dashboard.mjs                      # seeds → dist/index.html(curate 重建步骤的参考实现)
   validate-pack.mjs                        # 不变量校验(本地校验门)
@@ -49,6 +51,10 @@ scripts/
   的 `guides/` 导入,归为 `type: spec`,按分类(accessibility / css / forms / performance /
   user-experience / …)放在 `packs/design-pack/guides/<分类>/`。看板里按「指南 · <分类>」分组,支持筛选。
   重新导入:`node scripts/import-guides.mjs [guides 目录]`。
+- **导入品味 skill(13 个)**:从 `taste-skill/skills` 导入(brandkit、brutalist、minimalist、soft、
+  taste、redesign、image-to-code、imagegen-web/mobile、stitch、output…),归为 `type: spec` +
+  `collection: taste`,放在 `packs/design-pack/specs/taste/`。看板单独成组「设计品味 (taste)」。
+  重新导入:`node scripts/import-taste.mjs [skills 目录]`。
 
 ## Content model
 
@@ -60,6 +66,7 @@ scripts/
 
 ```bash
 node scripts/import-guides.mjs      # (可选)重新导入 modern-web-guidance 指南
+node scripts/import-taste.mjs       # (可选)重新导入 taste-skill 品味 skill
 node scripts/sync-pack-seeds.mjs    # 增删 seed 后,同步 pack.toml 的 seed 列表
 node scripts/build-dashboard.mjs    # 改了 seed 后重建看板
 node scripts/validate-pack.mjs      # 校验不变量(Seed⊆Protected、frontmatter、看板自包含…)

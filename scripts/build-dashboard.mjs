@@ -66,6 +66,7 @@ function buildCatalog() {
       title: data.title || basename(file, '.md'),
       description: data.description || '',
       category: data.category || '',
+      collection: data.collection || '',
     };
     if (data.type === 'template') item.thumbnail = svgThumb(item.title);
     items.push(item);
@@ -102,6 +103,7 @@ const APP_JS = `
   function groupLabelOf(it){
     if (it.type === 'requirement') return '设计要求';
     if (it.type === 'template') return '模板';
+    if (it.collection === 'taste') return '设计品味 (taste)';
     if (it.type === 'spec' && it.category) return '指南 · ' + it.category;
     return '设计规范';
   }
@@ -114,7 +116,7 @@ const APP_JS = `
       (byGroup[g] = byGroup[g] || []).push(it);
     });
     var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
-    var order = ['设计要求', '设计规范', '模板'].concat(guideCats);
+    var order = ['设计要求', '设计规范', '设计品味 (taste)', '模板'].concat(guideCats);
     order.forEach(function(g){
       var items = byGroup[g];
       if (!items || !items.length) return;
@@ -134,7 +136,7 @@ const APP_JS = `
         var cb = document.createElement('input'); cb.type = 'checkbox'; cb.setAttribute('data-slug', it.slug);
         var box = document.createElement('div');
         var t = document.createElement('div'); t.className = 'card__title'; t.textContent = it.title;
-        var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = it.description || '';
+        var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = it.description || ''; d.title = it.description || '';
         box.appendChild(t); box.appendChild(d);
         row.appendChild(cb); row.appendChild(box);
         card.appendChild(row);
@@ -249,7 +251,8 @@ ${TOKENS_CSS}
   .card__row{ display:flex; align-items:flex-start; gap:var(--space-3); }
   .card input{ margin-top:3px; width:18px; height:18px; accent-color:var(--primary); flex:none; }
   .card__title{ font-weight:600; line-height:1.3; }
-  .card__desc{ color:var(--text-muted); font-size:.875rem; line-height:1.5; margin:0; }
+  .card__desc{ color:var(--text-muted); font-size:.875rem; line-height:1.5; margin:0;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
   .thumb{ width:100%; aspect-ratio:8/5; object-fit:cover; border-radius:var(--radius-md);
     border:1px solid var(--border); background:var(--surface-2); }
   .composer{ position:sticky; bottom:0; margin-top:var(--space-8);

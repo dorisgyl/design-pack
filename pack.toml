@@ -581,6 +581,58 @@ slug = "packs/design-pack/specs/spacing-layout"
 from = "components/seed/specs/spacing-layout.md"
 
 [[components.seed]]
+slug = "packs/design-pack/specs/taste/brandkit"
+from = "components/seed/specs/taste/brandkit.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/brutalist-skill"
+from = "components/seed/specs/taste/brutalist-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/gpt-tasteskill"
+from = "components/seed/specs/taste/gpt-tasteskill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/image-to-code-skill"
+from = "components/seed/specs/taste/image-to-code-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/imagegen-frontend-mobile"
+from = "components/seed/specs/taste/imagegen-frontend-mobile.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/imagegen-frontend-web"
+from = "components/seed/specs/taste/imagegen-frontend-web.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/minimalist-skill"
+from = "components/seed/specs/taste/minimalist-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/output-skill"
+from = "components/seed/specs/taste/output-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/redesign-skill"
+from = "components/seed/specs/taste/redesign-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/soft-skill"
+from = "components/seed/specs/taste/soft-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/stitch-skill"
+from = "components/seed/specs/taste/stitch-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/taste-skill"
+from = "components/seed/specs/taste/taste-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/taste/taste-skill-v1"
+from = "components/seed/specs/taste/taste-skill-v1.md"
+
+[[components.seed]]
 slug = "packs/design-pack/specs/typography-scale"
 from = "components/seed/specs/typography-scale.md"
 
