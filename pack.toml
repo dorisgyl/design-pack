@@ -1,0 +1,57 @@
+[pack]
+name = "design-pack"
+namespace = "packs/design-pack"
+version = "0.1.0"
+protocol = "pack-protocol/0.1"
+min_nevoflux = "0.3.0"
+description = "Modern design requirements, specs, and templates — retrieved from GBrain and used to generate designs."
+license = "MIT"
+authors = ["YULIN GAN"]
+
+[components.skills]
+dir = "components/skills"
+
+# Every seed slug below is covered by this prefix (Seed ⊆ Protected).
+[components.protected]
+prefixes = ["packs/design-pack/"]
+
+# --- Requirements ---
+[[components.seed]]
+slug = "packs/design-pack/requirements/accessibility-baseline"
+from = "components/seed/requirements/accessibility-baseline.md"
+
+[[components.seed]]
+slug = "packs/design-pack/requirements/responsive-baseline"
+from = "components/seed/requirements/responsive-baseline.md"
+
+# --- Specs ---
+[[components.seed]]
+slug = "packs/design-pack/specs/color-system"
+from = "components/seed/specs/color-system.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/typography-scale"
+from = "components/seed/specs/typography-scale.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/spacing-layout"
+from = "components/seed/specs/spacing-layout.md"
+
+# --- Templates ---
+[[components.seed]]
+slug = "packs/design-pack/templates/landing-hero"
+from = "components/seed/templates/landing-hero.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pricing-table"
+from = "components/seed/templates/pricing-table.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/feature-grid"
+from = "components/seed/templates/feature-grid.md"
+
+[components.dashboard]
+artifact_id = "design-pack-board"
+content_type = "project"
+files_from = "components/canvas-app/dist"
+entry = "index.html"
