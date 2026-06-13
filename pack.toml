@@ -1125,8 +1125,16 @@ slug = "packs/design-pack/templates/prototype-web"
 from = "components/seed/templates/prototype-web.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/prototype-web-zh"
+from = "components/seed/templates/prototype-web-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/resume-modern"
 from = "components/seed/templates/resume-modern.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/resume-modern-zh"
+from = "components/seed/templates/resume-modern-zh.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/saas-landing"
@@ -1141,12 +1149,24 @@ slug = "packs/design-pack/templates/social-carousel"
 from = "components/seed/templates/social-carousel.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/social-carousel-zh"
+from = "components/seed/templates/social-carousel-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/social-media-dashboard"
 from = "components/seed/templates/social-media-dashboard.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/social-media-dashboard-zh"
+from = "components/seed/templates/social-media-dashboard-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/social-media-matrix"
 from = "components/seed/templates/social-media-matrix.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-media-matrix-zh"
+from = "components/seed/templates/social-media-matrix-zh.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/social-reddit-card"
@@ -1161,8 +1181,96 @@ slug = "packs/design-pack/templates/social-spotify-card"
 from = "components/seed/templates/social-spotify-card.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/social-spotify-card-zh"
+from = "components/seed/templates/social-spotify-card-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/social-x-post-card"
 from = "components/seed/templates/social-x-post-card.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/social-x-post-card-zh"
+from = "components/seed/templates/social-x-post-card-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/sprite-animation"
+from = "components/seed/templates/sprite-animation.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/sprite-animation-zh"
+from = "components/seed/templates/sprite-animation-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/team-okrs"
+from = "components/seed/templates/team-okrs.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/team-okrs-zh"
+from = "components/seed/templates/team-okrs-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/vfx-text-cursor"
+from = "components/seed/templates/vfx-text-cursor.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/vfx-text-cursor-zh"
+from = "components/seed/templates/vfx-text-cursor-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/video-hyperframes"
+from = "components/seed/templates/video-hyperframes.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/video-hyperframes-zh"
+from = "components/seed/templates/video-hyperframes-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/waitlist-page"
+from = "components/seed/templates/waitlist-page.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/waitlist-page-zh"
+from = "components/seed/templates/waitlist-page-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-brutalist"
+from = "components/seed/templates/web-proto-brutalist.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-brutalist-zh"
+from = "components/seed/templates/web-proto-brutalist-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-editorial"
+from = "components/seed/templates/web-proto-editorial.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-editorial-zh"
+from = "components/seed/templates/web-proto-editorial-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-soft"
+from = "components/seed/templates/web-proto-soft.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/web-proto-soft-zh"
+from = "components/seed/templates/web-proto-soft-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/weekly-update"
+from = "components/seed/templates/weekly-update.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/weekly-update-zh"
+from = "components/seed/templates/weekly-update-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/wireframe-sketch"
+from = "components/seed/templates/wireframe-sketch.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/wireframe-sketch-zh"
+from = "components/seed/templates/wireframe-sketch-zh.md"
 # <<< seeds (generated) <<<
 
 [components.dashboard]
