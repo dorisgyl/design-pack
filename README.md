@@ -32,7 +32,7 @@ components/
     design-build/SKILL.md                  # 检索 + 生成(看板 & 侧边栏共用)
     design-curate/SKILL.md                 # 导入/扩展 + 重建看板
   seed/{requirements,specs,templates}/*.md # 原创设计内容(only-if-absent 种入 GBrain)
-  seed/specs/taste/*.md                    # 从 taste-skill 导入的 13 个设计品味/风格 skill
+  seed/specs/{taste,workflow}/*.md         # 从 taste-skill 导入:9 个品味 + 4 个工作流 skill
   seed/guides/<category>/*.md              # 从 modern-web-guidance 导入的 137 篇指南
   canvas-app/dist/index.html               # 预构建看板(由 build 脚本生成)
 scripts/
@@ -51,10 +51,12 @@ scripts/
   的 `guides/` 导入,归为 `type: spec`,按分类(accessibility / css / forms / performance /
   user-experience / …)放在 `packs/design-pack/guides/<分类>/`。看板里按「指南 · <分类>」分组,支持筛选。
   重新导入:`node scripts/import-guides.mjs [guides 目录]`。
-- **导入品味 skill(13 个)**:从 `taste-skill/skills` 导入(brandkit、brutalist、minimalist、soft、
-  taste、redesign、image-to-code、imagegen-web/mobile、stitch、output…),归为 `type: spec` +
-  `collection: taste`,放在 `packs/design-pack/specs/taste/`。看板单独成组「设计品味 (taste)」。
-  重新导入:`node scripts/import-taste.mjs [skills 目录]`。
+- **导入 taste-skill(13 个)**:从 `taste-skill/skills` 导入,均 `type: spec`,分两类:
+  - `collection: taste`(9 个 → `specs/taste/`):brandkit、brutalist、minimalist、soft、taste(+v1)、
+    redesign、stitch、gpt-taste —— 美学/品味系统。看板组「设计品味 (taste)」。
+  - `collection: workflow`(4 个 → `specs/workflow/`):output(防截断)、image-to-code、
+    imagegen-web、imagegen-mobile —— 产出/资产生成流程。看板组「工作流 / 产出 (workflow)」。
+  重新导入:`node scripts/import-taste.mjs [skills 目录]`(分类映射在脚本的 `WORKFLOW` 集合里)。
 
 ## Content model
 

@@ -1,10 +1,10 @@
 ---
-slug: packs/design-pack/specs/taste/output-skill
+slug: packs/design-pack/specs/workflow/output-skill
 type: spec
-collection: taste
+collection: workflow
 title: "Full-Output Enforcement"
 description: "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output."
-tags: [taste, design, full-output-enforcement]
+tags: [workflow, design, full-output-enforcement]
 source: taste-skill/output-skill
 ---
 

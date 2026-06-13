@@ -104,6 +104,7 @@ const APP_JS = `
     if (it.type === 'requirement') return '设计要求';
     if (it.type === 'template') return '模板';
     if (it.collection === 'taste') return '设计品味 (taste)';
+    if (it.collection === 'workflow') return '工作流 / 产出 (workflow)';
     if (it.type === 'spec' && it.category) return '指南 · ' + it.category;
     return '设计规范';
   }
@@ -116,7 +117,7 @@ const APP_JS = `
       (byGroup[g] = byGroup[g] || []).push(it);
     });
     var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
-    var order = ['设计要求', '设计规范', '设计品味 (taste)', '模板'].concat(guideCats);
+    var order = ['设计要求', '设计规范', '设计品味 (taste)', '工作流 / 产出 (workflow)', '模板'].concat(guideCats);
     order.forEach(function(g){
       var items = byGroup[g];
       if (!items || !items.length) return;

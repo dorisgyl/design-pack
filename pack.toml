@@ -593,24 +593,8 @@ slug = "packs/design-pack/specs/taste/gpt-tasteskill"
 from = "components/seed/specs/taste/gpt-tasteskill.md"
 
 [[components.seed]]
-slug = "packs/design-pack/specs/taste/image-to-code-skill"
-from = "components/seed/specs/taste/image-to-code-skill.md"
-
-[[components.seed]]
-slug = "packs/design-pack/specs/taste/imagegen-frontend-mobile"
-from = "components/seed/specs/taste/imagegen-frontend-mobile.md"
-
-[[components.seed]]
-slug = "packs/design-pack/specs/taste/imagegen-frontend-web"
-from = "components/seed/specs/taste/imagegen-frontend-web.md"
-
-[[components.seed]]
 slug = "packs/design-pack/specs/taste/minimalist-skill"
 from = "components/seed/specs/taste/minimalist-skill.md"
-
-[[components.seed]]
-slug = "packs/design-pack/specs/taste/output-skill"
-from = "components/seed/specs/taste/output-skill.md"
 
 [[components.seed]]
 slug = "packs/design-pack/specs/taste/redesign-skill"
@@ -635,6 +619,22 @@ from = "components/seed/specs/taste/taste-skill-v1.md"
 [[components.seed]]
 slug = "packs/design-pack/specs/typography-scale"
 from = "components/seed/specs/typography-scale.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/workflow/image-to-code-skill"
+from = "components/seed/specs/workflow/image-to-code-skill.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/workflow/imagegen-frontend-mobile"
+from = "components/seed/specs/workflow/imagegen-frontend-mobile.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/workflow/imagegen-frontend-web"
+from = "components/seed/specs/workflow/imagegen-frontend-web.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/workflow/output-skill"
+from = "components/seed/specs/workflow/output-skill.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/feature-grid"

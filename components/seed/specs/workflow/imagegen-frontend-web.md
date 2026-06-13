@@ -1,10 +1,10 @@
 ---
-slug: packs/design-pack/specs/taste/imagegen-frontend-web
+slug: packs/design-pack/specs/workflow/imagegen-frontend-web
 type: spec
-collection: taste
+collection: workflow
 title: "Hard Output Rule — Read First"
 description: "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate."
-tags: [taste, design, imagegen-frontend-web]
+tags: [workflow, design, imagegen-frontend-web]
 source: taste-skill/imagegen-frontend-web
 ---
 

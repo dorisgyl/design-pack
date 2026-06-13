@@ -1,10 +1,10 @@
 ---
-slug: packs/design-pack/specs/taste/image-to-code-skill
+slug: packs/design-pack/specs/workflow/image-to-code-skill
 type: spec
-collection: taste
+collection: workflow
 title: "Core Directive: Image-First Website Design To Code"
 description: "Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop."
-tags: [taste, design, image-to-code]
+tags: [workflow, design, image-to-code]
 source: taste-skill/image-to-code-skill
 ---
 
