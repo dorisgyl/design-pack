@@ -1,47 +1,46 @@
 ---
-slug: packs/design-pack/templates/feature-grid
+slug: packs/design-pack/templates/feature-grid-zh
 type: template
-lang: en
-title: "Feature Grid"
-title_zh: "特性网格 (Feature Grid)"
-description: "Responsive feature-card grid; each card has an icon, title, and description."
-tags: [features, grid, cards, template]
+lang: zh
+title: "特性网格 (Feature Grid)"
+title_en: "Feature Grid"
+description: "响应式特性卡网格,每张含图标 + 标题 + 描述。"
+tags: [features, grid, cards, 模板]
 sample_image: packs/design-pack/assets/templates/feature-grid.svg
 source: design-pack/original
 ---
 
-# Feature Grid
+# 特性网格 (Feature Grid)
 
-A responsive feature-card grid (`auto-fit`) for showcasing 3–6 selling points. Uses the grid and
-spacing from [[spacing-layout]] and the semantic colors from [[color-system]]; satisfies
-[[accessibility-baseline]] and [[responsive-baseline]].
+自适应特性卡网格(`auto-fit`),用于展示 3–6 个卖点。引用 [[spacing-layout]] 的栅格与间距、
+[[color-system]] 的语义色,满足 [[accessibility-baseline]] 与 [[responsive-baseline]]。
 
-## Slots
-- Section `title` / `subtitle`; each card `icon` (SVG/emoji) · `title` · `desc`.
+## 插槽
+- 区块 `title` / `subtitle`;每张卡 `icon`(SVG/emoji) · `title` · `desc`。
 
-## HTML
+## HTML 片段
 
 ```html
 <section class="dp-features">
   <header class="dp-features__head">
-    <h2 class="dp-features__title">Why choose us</h2>
-    <p class="dp-features__sub">Make the differentiated value clear in three lines — focus on outcomes, not features.</p>
+    <h2 class="dp-features__title">为什么选择我们</h2>
+    <p class="dp-features__sub">三句话讲清差异化价值,聚焦结果而非功能。</p>
   </header>
   <div class="dp-features__grid">
     <article class="dp-feature">
       <div class="dp-feature__icon" aria-hidden="true">⚡</div>
-      <h3 class="dp-feature__title">Instant onboarding</h3>
-      <p class="dp-feature__desc">Zero config out of the box — run your first flow in minutes.</p>
+      <h3 class="dp-feature__title">极速上手</h3>
+      <p class="dp-feature__desc">零配置开箱即用,几分钟跑通第一个流程。</p>
     </article>
     <article class="dp-feature">
       <div class="dp-feature__icon" aria-hidden="true">🔒</div>
-      <h3 class="dp-feature__title">Secure by default</h3>
-      <p class="dp-feature__desc">End-to-end encryption and least privilege; your data stays yours.</p>
+      <h3 class="dp-feature__title">默认安全</h3>
+      <p class="dp-feature__desc">端到端加密与最小权限,数据始终在你掌控。</p>
     </article>
     <article class="dp-feature">
       <div class="dp-feature__icon" aria-hidden="true">🧩</div>
-      <h3 class="dp-feature__title">Flexible &amp; extensible</h3>
-      <p class="dp-feature__desc">Modular design — compose as needed and grow with your business.</p>
+      <h3 class="dp-feature__title">灵活扩展</h3>
+      <p class="dp-feature__desc">模块化设计,按需拼装,随业务自由生长。</p>
     </article>
   </div>
 </section>

@@ -1,35 +1,34 @@
 ---
-slug: packs/design-pack/templates/landing-hero
+slug: packs/design-pack/templates/landing-hero-zh
 type: template
-lang: en
-title: "Landing Hero"
-title_zh: "落地页 Hero 区"
-description: "Marketing landing-page hero: eyebrow + headline + subhead + dual CTA + visual block."
-tags: [landing, hero, marketing, template]
+lang: zh
+title: "落地页 Hero 区"
+title_en: "Landing Hero"
+description: "营销落地页首屏:眼标 + 主标题 + 副文 + 双 CTA + 视觉块。"
+tags: [landing, hero, marketing, 模板]
 sample_image: packs/design-pack/assets/templates/landing-hero.svg
 source: design-pack/original
 ---
 
-# Landing Hero
+# 落地页 Hero 区
 
-The above-the-fold hero of a marketing landing page. Uses the tokens from
-[[color-system]], [[typography-scale]], and [[spacing-layout]], and satisfies
-[[accessibility-baseline]] and [[responsive-baseline]].
+营销落地页首屏。引用配色 [[color-system]]、字阶 [[typography-scale]]、间距 [[spacing-layout]] 的 token。
+满足 [[accessibility-baseline]] 与 [[responsive-baseline]]。
 
-## Slots
-- `eyebrow` (optional) · `title` headline · `subhead` · `cta_primary` / `cta_secondary` · `visual` (right-hand visual).
+## 插槽
+- `eyebrow` 眼标(可选)· `title` 主标题 · `subhead` 副文 · `cta_primary` / `cta_secondary` · `visual` 右侧视觉。
 
-## HTML
+## HTML 片段
 
 ```html
 <section class="dp-hero">
   <div class="dp-hero__copy">
-    <p class="dp-hero__eyebrow">Get started</p>
-    <h1 class="dp-hero__title">Turn an idea into a shipped product in minutes</h1>
-    <p class="dp-hero__sub">State your core value in one line. Focus on what the user gets, not a feature list.</p>
+    <p class="dp-hero__eyebrow">现在开始</p>
+    <h1 class="dp-hero__title">把想法,几分钟内变成上线的产品</h1>
+    <p class="dp-hero__sub">一句话讲清你的核心价值。聚焦用户能得到什么,而不是功能清单。</p>
     <div class="dp-hero__actions">
-      <a class="dp-btn dp-btn--primary" href="#get-started">Start free</a>
-      <a class="dp-btn dp-btn--ghost" href="#demo">See demo</a>
+      <a class="dp-btn dp-btn--primary" href="#get-started">免费开始</a>
+      <a class="dp-btn dp-btn--ghost" href="#demo">看演示</a>
     </div>
   </div>
   <div class="dp-hero__visual" aria-hidden="true"></div>

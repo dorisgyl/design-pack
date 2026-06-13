@@ -1,54 +1,53 @@
 ---
-slug: packs/design-pack/templates/pricing-table
+slug: packs/design-pack/templates/pricing-table-zh
 type: template
-lang: en
-title: "Pricing Table (3 tiers)"
-title_zh: "定价表 (3 档)"
-description: "Three-tier pricing with a highlighted featured tier, feature lists, and a CTA per tier."
-tags: [pricing, table, conversion, template]
+lang: zh
+title: "定价表 (3 档)"
+title_en: "Pricing Table (3 tiers)"
+description: "三档定价,含主推档高亮、特性清单与每档 CTA。"
+tags: [pricing, table, conversion, 模板]
 sample_image: packs/design-pack/assets/templates/pricing-table.svg
 source: design-pack/original
 ---
 
-# Pricing Table (3 tiers)
+# 定价表 (3 档)
 
-Three pricing cards with the middle tier highlighted as "featured". Uses
-[[color-system]] / [[spacing-layout]] / [[typography-scale]], and satisfies
-[[accessibility-baseline]] (contrast, focus) and [[responsive-baseline]] (stacks on narrow screens).
+三档定价卡,中间档高亮为“主推”。引用 [[color-system]] / [[spacing-layout]] / [[typography-scale]],
+满足 [[accessibility-baseline]](对比、焦点)与 [[responsive-baseline]](窄屏堆叠)。
 
-## Slots
-- Per tier: `name` · `price` · `period` · `features[]` · `cta` · `featured` (bool).
+## 插槽
+- 每档:`name` · `price` · `period` · `features[]` · `cta` · `featured`(bool)。
 
-## HTML
+## HTML 片段
 
 ```html
 <section class="dp-pricing">
   <article class="dp-plan">
-    <h3 class="dp-plan__name">Starter</h3>
-    <p class="dp-plan__price">$0<span>/mo</span></p>
+    <h3 class="dp-plan__name">入门</h3>
+    <p class="dp-plan__price">¥0<span>/月</span></p>
     <ul class="dp-plan__features">
-      <li>1 project</li><li>Community support</li><li>Base component library</li>
+      <li>1 个项目</li><li>社区支持</li><li>基础组件库</li>
     </ul>
-    <a class="dp-btn dp-btn--ghost" href="#free">Get started</a>
+    <a class="dp-btn dp-btn--ghost" href="#free">开始使用</a>
   </article>
 
   <article class="dp-plan dp-plan--featured">
-    <span class="dp-plan__badge">Most popular</span>
-    <h3 class="dp-plan__name">Pro</h3>
-    <p class="dp-plan__price">$99<span>/mo</span></p>
+    <span class="dp-plan__badge">最受欢迎</span>
+    <h3 class="dp-plan__name">专业</h3>
+    <p class="dp-plan__price">¥99<span>/月</span></p>
     <ul class="dp-plan__features">
-      <li>Unlimited projects</li><li>Priority support</li><li>All templates</li><li>Team collaboration</li>
+      <li>无限项目</li><li>优先支持</li><li>全部模板</li><li>团队协作</li>
     </ul>
-    <a class="dp-btn dp-btn--primary" href="#pro">Upgrade to Pro</a>
+    <a class="dp-btn dp-btn--primary" href="#pro">升级专业版</a>
   </article>
 
   <article class="dp-plan">
-    <h3 class="dp-plan__name">Enterprise</h3>
-    <p class="dp-plan__price">Custom</p>
+    <h3 class="dp-plan__name">企业</h3>
+    <p class="dp-plan__price">定制</p>
     <ul class="dp-plan__features">
-      <li>SSO / audit</li><li>Dedicated support</li><li>SLA</li>
+      <li>SSO / 审计</li><li>专属支持</li><li>SLA 保障</li>
     </ul>
-    <a class="dp-btn dp-btn--ghost" href="#enterprise">Contact us</a>
+    <a class="dp-btn dp-btn--ghost" href="#enterprise">联系我们</a>
   </article>
 </section>
 

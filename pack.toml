@@ -921,6 +921,10 @@ slug = "packs/design-pack/templates/feature-grid"
 from = "components/seed/templates/feature-grid.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/feature-grid-zh"
+from = "components/seed/templates/feature-grid-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/finance-report"
 from = "components/seed/templates/finance-report.md"
 
@@ -1029,6 +1033,10 @@ slug = "packs/design-pack/templates/landing-hero"
 from = "components/seed/templates/landing-hero.md"
 
 [[components.seed]]
+slug = "packs/design-pack/templates/landing-hero-zh"
+from = "components/seed/templates/landing-hero-zh.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/live-dashboard"
 from = "components/seed/templates/live-dashboard.md"
 
@@ -1119,6 +1127,10 @@ from = "components/seed/templates/pricing-page-zh.md"
 [[components.seed]]
 slug = "packs/design-pack/templates/pricing-table"
 from = "components/seed/templates/pricing-table.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/pricing-table-zh"
+from = "components/seed/templates/pricing-table-zh.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/prototype-web"
