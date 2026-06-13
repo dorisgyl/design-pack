@@ -83,13 +83,24 @@ nevoflux pack install pack.toml
 
 沙箱试跑:指定 `XDG_CONFIG_HOME` 与 `NEVOFLUX_DATA_DIR` 到临时目录,做 validate → install → uninstall。
 
+## 工具名核实(已对照源码)
+
+对照 `nevoflux-agent/crates/daemon/src/resources/gbrain-tools.json` 与 `nevoflux` 自带 skill
+(`brain-recall` / `brain-capture` / `app`)确认:
+
+- **GBrain 工具名正确**:`get_page` / `put_page` / `query` / `search` / `list_pages` /
+  `file_upload`(参数 `path`、`page_slug`)/ `file_url`(参数 `storage_path`)。
+- **访问方式**:skill 不直接在 `allowed_tools` 里列这些工具名,而是声明 `tool_search` +
+  `tool_call_dynamic`(动态发现并调用)——本 pack 两个 skill 已照此写。
+- **frontmatter 键是 `allowed_tools`(下划线)**,不是 pack 文档示例里的 `allowed-tools`。
+- **Canvas 工具**:`create_artifact`(新建,ambient,`app` skill 的 `allowed_tools: []` 即用它)、
+  `browser_read_artifact` / `browser_edit_artifact`(原地读改已存在的 artifact)。
+
 ## 待验证(随平台落地确认)
 
 1. `namespace` 是否允许带斜杠(`packs/design-pack`)—— 以 `nevoflux pack validate` 为准。
-2. **重建看板如何原地替换**已安装的 `design-pack-board` artifact(`create_artifact` 是否按 id upsert);
-   回退:看板读 GBrain 目录页/storage。见 `design-curate/SKILL.md`。
-3. **GBrain 工具确切注册名 / `allowed-tools` 写法** —— 用 `tool_search` 核实(参见
-   nevoflux `docs/reference/skills/brain/gbrain-tools.md`)。
+2. **重建看板原地替换** `design-pack-board`:用 `browser_read_artifact` + `browser_edit_artifact`
+   就地改,或 `create_artifact` 重建(保持 `artifact_id`)。落地时确认哪种最稳。见 `design-curate/SKILL.md`。
 
 参考:`docs/superpowers/specs/2026-06-13-design-pack-design.md`(设计)、
 `docs/superpowers/plans/2026-06-13-design-pack.md`(实现计划)。
