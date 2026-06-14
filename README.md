@@ -44,10 +44,46 @@ Ship interfaces that are **modern, accessible, responsive, and not templated** �
 
 ## The two skills
 
-- **`design-build`** — retrieve + generate. Fetches the selected pages (`get_page`) and expands
-  semantically (`query`), then generates a new Canvas artifact. Shared by the dashboard and the sidebar.
-- **`design-curate`** — import / extend. Writes new requirements / specs / templates into
-  `packs/design-pack/…` (uploading sample images) and rebuilds the dashboard.
+### `design-build` — retrieve & generate
+
+Pulls in the design bases you reference and generates a new Canvas app (HTML) that follows them.
+
+**From the dashboard** (*My Canvas → design-pack*): tick the requirements / specs / templates /
+guides you want, type what to build, and click **Generate**. The dashboard composes the message for you.
+
+**From the sidebar** — just ask in chat, no dashboard needed. For example:
+
+> Use design-pack's **color-system** spec and the **landing-hero** template to build a dark-theme
+> SaaS analytics landing page. Emphasize "ten-minute onboarding".
+
+> 用 design-pack 的**配色规范** + **定价表**模板,做一个三档定价页,中间档高亮。
+
+> Following design-pack's **accessibility-baseline** and **responsive-baseline**, generate a
+> sign-up form with inline validation.
+
+> Build a portfolio hero in the **brutalist** taste from design-pack.
+
+The agent fetches the full pages from GBrain (the ones you named, plus semantically related guides),
+then opens a **new canvas** with the generated UI. Tip: name a template, a spec, or a taste by its
+title — or open the dashboard if you're not sure what's available.
+
+### `design-curate` — import & extend
+
+Adds **your own** requirements / specs / templates into the pack's GBrain space and rebuilds the
+dashboard so they become selectable like the built-ins. For example:
+
+> Add a spec to design-pack called **acme-brand**: the only accent is `#0EA5E9`, headings use Geist,
+> spacing is 8pt-based, corners are 12px.
+
+> Import this as a design-pack **template** (category: card) and generate a sample image for it:
+> ```html
+> <article class="quote-card">…</article>
+> ```
+
+> 给 design-pack 新增一个**要求**:所有交互元素必须有可见焦点态,文字对比度 ≥ 4.5:1。
+
+After it writes the pages (and uploads any sample images), the dashboard rebuilds and your new bases
+appear alongside the built-in ones — ready for `design-build` to use.
 
 ## Install
 

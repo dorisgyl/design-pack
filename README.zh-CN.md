@@ -37,10 +37,42 @@
 
 ## 两个 skill
 
-- **`design-build`**——检索 + 生成。取回选中页面(`get_page`)并语义扩展(`query`),再生成一个新的
-  Canvas artifact。看板与侧边栏共用。
-- **`design-curate`**——导入 / 扩展。把新的要求 / 规范 / 模板写入 `packs/design-pack/…`(并上传样例图),
-  然后重建看板。
+### `design-build`——检索 + 生成
+
+取回你点名的设计依据,生成一个遵循它们的新 Canvas 应用(HTML)。
+
+**从看板**(*My Canvas → design-pack*):勾选想用的要求 / 规范 / 模板 / 指南,写明要做什么,点**生成**。
+看板会替你拼好消息。
+
+**从侧边栏**——直接对话即可,不必打开看板。例如:
+
+> 用 design-pack 的**配色规范** + **定价表**模板,做一个三档定价页,中间档高亮。
+
+> Use design-pack's **color-system** spec and the **landing-hero** template to build a dark-theme
+> SaaS analytics landing page. Emphasize "ten-minute onboarding".
+
+> 按 design-pack 的**无障碍基线**和**响应式基线**,生成一个带内联校验的注册表单。
+
+> 用 design-pack 里的 **brutalist(野兽派)**品味,做一个作品集 Hero。
+
+agent 会从 GBrain 取回完整页面(你点名的 + 语义相关的指南),然后打开一个**新画布**呈现生成的 UI。
+小贴士:直接用标题点名某个模板 / 规范 / 品味即可;不确定有什么就打开看板看看。
+
+### `design-curate`——导入 + 扩展
+
+把**你自己**的要求 / 规范 / 模板加进本 pack 的 GBrain 空间,并重建看板,让它们像内置内容一样可被选用。例如:
+
+> 给 design-pack 加一个**规范**,叫 **acme-brand**:唯一强调色是 `#0EA5E9`,标题用 Geist,
+> 间距基于 8pt,圆角 12px。
+
+> 把这段 HTML 作为 design-pack **模板**导入(分类 card)并生成一张样例图:
+> ```html
+> <article class="quote-card">…</article>
+> ```
+
+> 给 design-pack 新增一个**要求**:所有交互元素必须有可见焦点态,文字对比度 ≥ 4.5:1。
+
+写入页面(并上传样例图)后,看板会重建,你的新依据就会和内置内容并列出现——随后 `design-build` 即可使用。
 
 ## 安装
 
