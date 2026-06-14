@@ -165,6 +165,9 @@ const TOKENS_CSS = `
 // cleanly inside the builder's template literal below.
 const APP_JS = `
   var lang = 'zh';
+  var activeChip = 'all';
+  var navById = {};
+  var spyObserver = null;
   var statusEl = document.getElementById('status');
   var streamEl = document.getElementById('stream');
   var sendBtn = document.getElementById('send');
@@ -175,6 +178,24 @@ const APP_JS = `
   var statusIsReady = true;
 
   function s(){ return STR[lang]; }
+
+  var CHIPS = [
+    { k:'all', zh:'全部', en:'All' },
+    { k:'requirement', zh:'设计要求', en:'Requirements' },
+    { k:'spec', zh:'设计规范', en:'Specs' },
+    { k:'taste', zh:'设计品味', en:'Taste' },
+    { k:'workflow', zh:'工作流', en:'Workflow' },
+    { k:'template', zh:'模板', en:'Templates' },
+    { k:'guide', zh:'指南', en:'Guides' }
+  ];
+  function chipKeyOf(it){
+    if (it.type === 'requirement') return 'requirement';
+    if (it.type === 'template') return 'template';
+    if (it.collection === 'taste') return 'taste';
+    if (it.collection === 'workflow') return 'workflow';
+    if (it.type === 'spec' && it.category) return 'guide';
+    return 'spec';
+  }
 
   function groupKeyOf(it){
     if (it.type === 'requirement') return '设计要求';
@@ -195,24 +216,65 @@ const APP_JS = `
   function subtitleOf(it){ var o = lang === 'en' ? it.title_zh : it.title_en; var p = titleOf(it); return o && o !== p ? o : ''; }
   function descOf(it){ return lang === 'en' ? (it.desc_en || it.desc_zh) : (it.desc_zh || it.desc_en); }
 
+  function renderChips(){
+    var bar = document.getElementById('chips');
+    bar.textContent = '';
+    CHIPS.forEach(function(c){
+      var n = c.k === 'all' ? CATALOG.length : CATALOG.filter(function(it){ return chipKeyOf(it) === c.k; }).length;
+      if (c.k !== 'all' && n === 0) return;
+      var b = document.createElement('button'); b.type = 'button';
+      b.className = 'chip' + (activeChip === c.k ? ' chip--on' : '');
+      var lbl = document.createElement('span'); lbl.textContent = lang === 'en' ? c.en : c.zh;
+      var cnt = document.createElement('span'); cnt.className = 'chip__n'; cnt.textContent = n;
+      b.appendChild(lbl); b.appendChild(cnt);
+      b.addEventListener('click', function(){ activeChip = c.k; renderChips(); applyFilter(); });
+      bar.appendChild(b);
+    });
+  }
+
+  function navHeader(nav, text){
+    var hd = document.createElement('div'); hd.className = 'nav-head'; hd.textContent = text; nav.appendChild(hd);
+  }
+
+  function setupSpy(){
+    if (spyObserver) spyObserver.disconnect();
+    if (!('IntersectionObserver' in window)) return;
+    spyObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var link = navById[en.target.id];
+        if (!link) return;
+        var keys = Object.keys(navById);
+        for (var i = 0; i < keys.length; i++) navById[keys[i]].classList.remove('navlink--active');
+        link.classList.add('navlink--active');
+      });
+    }, { rootMargin: '-8% 0px -82% 0px', threshold: 0 });
+    var secs = document.querySelectorAll('.group-sec');
+    for (var i = 0; i < secs.length; i++) spyObserver.observe(secs[i]);
+  }
+
   function renderCatalog(){
     var app = document.getElementById('app');
-    app.textContent = '';
+    var nav = document.getElementById('sidenav');
+    app.textContent = ''; nav.textContent = ''; navById = {};
     var byGroup = {};
     CATALOG.forEach(function(it){ var k = groupKeyOf(it); (byGroup[k] = byGroup[k] || []).push(it); });
     var tmplCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('模板 · ') === 0; }).sort();
     var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
     var order = ['设计要求', '设计规范', '设计品味 (taste)', '工作流 / 产出 (workflow)', '模板'].concat(tmplCats, guideCats);
-    order.forEach(function(key){
+    var tmplHdr = false, guideHdr = false;
+    order.forEach(function(key, idx){
       var items = byGroup[key];
       if (!items || !items.length) return;
-      var sec = document.createElement('section'); sec.className = 'group-sec';
+      var id = 'g' + idx;
+      var sec = document.createElement('section'); sec.className = 'group-sec'; sec.id = id;
       var h = document.createElement('div'); h.className = 'group';
       h.textContent = localizeGroup(key) + ' (' + items.length + ')';
       sec.appendChild(h);
       var grid = document.createElement('div'); grid.className = 'cards';
       items.forEach(function(it){
         var card = document.createElement('label'); card.className = 'card';
+        card.setAttribute('data-chip', chipKeyOf(it));
         card.setAttribute('data-search', (it.title_en + ' ' + (it.title_zh || '') + ' ' + (it.desc_en || '') + ' ' + (it.desc_zh || '') + ' ' + (it.category || '')).toLowerCase());
         if (it.thumbnail){
           var img = document.createElement('img'); img.className = 'thumb'; img.src = it.thumbnail;
@@ -223,18 +285,34 @@ const APP_JS = `
         if (window._dpSel && window._dpSel[it.slug]) cb.checked = true;
         var box = document.createElement('div');
         var t = document.createElement('div'); t.className = 'card__title'; t.textContent = titleOf(it);
-        box.appendChild(t);
-        // Monolingual per mode: no cross-language subtitle. EN shows English only,
-        // 中文 shows Chinese only (the other language stays searchable via data-search).
         var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = descOf(it) || ''; d.title = descOf(it) || '';
-        box.appendChild(d);
+        box.appendChild(t); box.appendChild(d);
         row.appendChild(cb); row.appendChild(box);
         card.appendChild(row);
         grid.appendChild(card);
       });
       sec.appendChild(grid);
       app.appendChild(sec);
+
+      // side nav entry (group the template/guide categories under sub-headers)
+      var isT = key.indexOf('模板 · ') === 0, isG = key.indexOf('指南 · ') === 0;
+      if (isT && !tmplHdr){ navHeader(nav, lang === 'en' ? 'Templates' : '模板'); tmplHdr = true; }
+      if (isG && !guideHdr){ navHeader(nav, lang === 'en' ? 'Guides' : '指南'); guideHdr = true; }
+      var label = (isT || isG) ? localizeGroup(key).replace(/^.*?·\\s*/, '') : localizeGroup(key);
+      var link = document.createElement('a'); link.href = '#' + id;
+      link.className = 'navlink' + ((isT || isG) ? ' navlink--sub' : '');
+      var ln = document.createElement('span'); ln.textContent = label;
+      var lc = document.createElement('span'); lc.className = 'navlink__n'; lc.textContent = items.length;
+      link.appendChild(ln); link.appendChild(lc);
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        var el = document.getElementById(this.getAttribute('href').slice(1));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      nav.appendChild(link);
+      navById[id] = link;
     });
+    setupSpy();
     applyFilter();
   }
 
@@ -261,14 +339,18 @@ const APP_JS = `
     secs.forEach(function(sec){
       var vis = 0;
       sec.querySelectorAll('.card').forEach(function(card){
-        var ok = !q || card.getAttribute('data-search').indexOf(q) !== -1;
+        var okChip = activeChip === 'all' || card.getAttribute('data-chip') === activeChip;
+        var okText = !q || card.getAttribute('data-search').indexOf(q) !== -1;
+        var ok = okChip && okText;
         card.style.display = ok ? '' : 'none';
         if (ok) vis++;
       });
       sec.style.display = vis ? '' : 'none';
+      var link = navById[sec.id];
+      if (link) link.style.display = vis ? '' : 'none';
       total += vis;
     });
-    document.getElementById('viscount').textContent = q ? (total + s().matchN) : '';
+    document.getElementById('viscount').textContent = (q || activeChip !== 'all') ? (total + s().matchN) : '';
   }
 
   function applyChrome(){
@@ -293,7 +375,7 @@ const APP_JS = `
     }
   });
 
-  function setLang(l){ lang = l; applyChrome(); renderCatalog(); }
+  function setLang(l){ lang = l; applyChrome(); renderChips(); renderCatalog(); }
 
   document.getElementById('lang-toggle').addEventListener('click', function(){ setLang(lang === 'zh' ? 'en' : 'zh'); });
   filterEl.addEventListener('input', applyFilter);
@@ -325,6 +407,7 @@ const APP_JS = `
   });
 
   applyChrome();
+  renderChips();
   renderCatalog();
 `;
 
@@ -339,7 +422,7 @@ function renderHtml(catalog) {
 ${TOKENS_CSS}
   *{ box-sizing:border-box; }
   body{ margin:0; font-family:var(--font-sans); background:var(--bg); color:var(--text); padding:var(--space-6); }
-  header.top{ max-width:1100px; margin:0 auto var(--space-4); }
+  header.top{ max-width:1180px; margin:0 auto var(--space-4); }
   .topbar{ display:flex; justify-content:space-between; align-items:center; gap:var(--space-4); }
   h1{ font-size:1.563rem; margin:0; }
   .lang{ flex:none; min-height:34px; padding:0 var(--space-4); border:1px solid var(--border);
@@ -347,14 +430,37 @@ ${TOKENS_CSS}
     font-weight:600; cursor:pointer; }
   .lang:hover{ border-color:var(--primary); }
   .lang:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
-  .lead{ color:var(--text-muted); margin:var(--space-2) 0 var(--space-4); line-height:1.5; }
-  .filterbar{ display:flex; gap:var(--space-3); align-items:center; }
+  .lead{ color:var(--text-muted); margin:var(--space-2) 0 var(--space-3); line-height:1.5; }
+  .toolbar{ display:flex; gap:var(--space-3); align-items:center; }
   #filter{ flex:1; padding:var(--space-3); border:1px solid var(--border); border-radius:var(--radius-md);
     background:var(--surface); color:var(--text); font:inherit; }
   #filter:focus-visible{ outline:2px solid var(--primary); outline-offset:1px; }
   #viscount{ color:var(--text-muted); font-size:.8rem; white-space:nowrap; }
-  main{ max-width:1100px; margin:0 auto; }
-  .group{ margin:var(--space-8) 0 var(--space-4); font-size:.8rem; font-weight:600;
+  .chips{ display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3); }
+  .chip{ display:inline-flex; align-items:center; gap:6px; min-height:30px; padding:0 var(--space-3);
+    border:1px solid var(--border); border-radius:var(--radius-full); background:var(--surface);
+    color:var(--text); font:inherit; font-size:.85rem; cursor:pointer; }
+  .chip:hover{ border-color:var(--primary); }
+  .chip--on{ background:var(--primary); color:var(--primary-contrast); border-color:var(--primary); }
+  .chip__n{ font-size:.72rem; opacity:.65; }
+  .chip--on .chip__n{ opacity:.85; }
+  .layout{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:208px 1fr;
+    gap:var(--space-8); align-items:start; }
+  .sidenav{ position:sticky; top:var(--space-3); align-self:start; max-height:calc(100dvh - var(--space-8));
+    overflow:auto; display:flex; flex-direction:column; gap:1px; }
+  .nav-head{ font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--text-muted); margin:var(--space-3) 0 var(--space-1); padding:0 var(--space-2); }
+  .navlink{ display:flex; justify-content:space-between; align-items:center; gap:var(--space-2);
+    padding:6px var(--space-2); border-radius:var(--radius-sm); color:var(--text-muted);
+    text-decoration:none; font-size:.85rem; line-height:1.25; }
+  .navlink:hover{ background:var(--surface); color:var(--text); }
+  .navlink--sub{ padding-left:var(--space-4); }
+  .navlink--active{ background:var(--surface-2); color:var(--text); font-weight:600; }
+  .navlink__n{ flex:none; font-size:.72rem; color:var(--text-muted); }
+  main{ min-width:0; }
+  .group-sec{ scroll-margin-top:var(--space-3); }
+  .group-sec:first-child .group{ margin-top:0; }
+  .group{ margin:var(--space-6) 0 var(--space-4); font-size:.8rem; font-weight:600;
     letter-spacing:.04em; text-transform:uppercase; color:var(--text-muted); }
   .cards{ display:grid; gap:var(--space-4); grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
   .card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg);
@@ -369,7 +475,7 @@ ${TOKENS_CSS}
     display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
   .thumb{ width:100%; aspect-ratio:8/5; object-fit:cover; object-position:top; border-radius:var(--radius-md);
     border:1px solid var(--border); background:var(--surface-2); }
-  .composer{ position:sticky; bottom:0; margin-top:var(--space-8); background:var(--bg);
+  .composer{ position:sticky; bottom:0; max-width:1180px; margin:var(--space-8) auto 0; background:var(--bg);
     border-top:1px solid var(--border); padding:var(--space-4) 0 var(--space-2); }
   .composer .meta{ display:flex; justify-content:space-between; align-items:center;
     color:var(--text-muted); font-size:.8rem; margin-bottom:var(--space-2); }
@@ -387,6 +493,10 @@ ${TOKENS_CSS}
   #status.warn{ color:#a66a00; }
   #stream{ white-space:pre-wrap; font-family:ui-monospace,Consolas,monospace; font-size:.8rem;
     color:var(--text-muted); max-height:180px; overflow:auto; margin-top:var(--space-2); }
+  @media (max-width:820px){
+    .layout{ grid-template-columns:1fr; }
+    .sidenav{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -396,12 +506,16 @@ ${TOKENS_CSS}
     <button id="lang-toggle" class="lang" type="button"></button>
   </div>
   <p class="lead" id="t-lead"></p>
-  <div class="filterbar">
+  <div class="toolbar">
     <input id="filter" type="search" aria-label="filter"/>
     <span id="viscount"></span>
   </div>
+  <div class="chips" id="chips"></div>
 </header>
-<main id="app"></main>
+<div class="layout">
+  <aside class="sidenav" id="sidenav" aria-label="sections"></aside>
+  <main id="app"></main>
+</div>
 
 <div class="composer">
   <div class="meta"><span id="selcount"></span><span id="status"></span></div>
