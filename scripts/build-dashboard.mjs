@@ -188,6 +188,21 @@ const APP_JS = `
     { k:'template', zh:'模板', en:'Templates' },
     { k:'guide', zh:'指南', en:'Guides' }
   ];
+  // Category labels (template + guide sub-categories) for the nav and headings.
+  var CAT = {
+    slides:{zh:'幻灯片',en:'Slides'}, doc:{zh:'文档',en:'Docs'}, card:{zh:'卡片',en:'Cards'},
+    dashboard:{zh:'仪表盘',en:'Dashboards'}, video:{zh:'视频',en:'Video'}, poster:{zh:'海报',en:'Posters'},
+    article:{zh:'文章',en:'Articles'}, mobile:{zh:'移动端',en:'Mobile'}, prototype:{zh:'原型',en:'Prototypes'},
+    data:{zh:'数据',en:'Data'}, finance:{zh:'财务',en:'Finance'}, email:{zh:'邮件',en:'Email'},
+    resume:{zh:'简历',en:'Resume'},
+    accessibility:{zh:'无障碍',en:'Accessibility'}, 'built-in-ai':{zh:'内置 AI',en:'Built-in AI'},
+    css:{zh:'CSS',en:'CSS'}, 'css-layout':{zh:'CSS 布局',en:'CSS Layout'}, forms:{zh:'表单',en:'Forms'},
+    html:{zh:'HTML',en:'HTML'}, passkeys:{zh:'通行密钥',en:'Passkeys'}, performance:{zh:'性能',en:'Performance'},
+    privacy:{zh:'隐私',en:'Privacy'}, security:{zh:'安全',en:'Security'},
+    'user-experience':{zh:'用户体验',en:'User Experience'}, webmcp:{zh:'WebMCP',en:'WebMCP'}
+  };
+  function catLabel(cat){ var m = CAT[cat]; return m ? (lang === 'en' ? m.en : m.zh) : cat; }
+
   function chipKeyOf(it){
     if (it.type === 'requirement') return 'requirement';
     if (it.type === 'template') return 'template';
@@ -208,8 +223,8 @@ const APP_JS = `
   function localizeGroup(key){
     var t = s();
     if (t.groups[key]) return t.groups[key];
-    if (key.indexOf('模板 · ') === 0) return t.tmplPrefix + key.slice('模板 · '.length);
-    if (key.indexOf('指南 · ') === 0) return t.guidePrefix + key.slice('指南 · '.length);
+    if (key.indexOf('模板 · ') === 0) return t.tmplPrefix + catLabel(key.slice('模板 · '.length));
+    if (key.indexOf('指南 · ') === 0) return t.guidePrefix + catLabel(key.slice('指南 · '.length));
     return key;
   }
   function titleOf(it){ return lang === 'en' ? (it.title_en || it.title_zh) : (it.title_zh || it.title_en); }
