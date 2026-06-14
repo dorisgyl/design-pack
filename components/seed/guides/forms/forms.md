@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/forms
 type: spec
 title: "forms"
 description: "Single-Sentence Mental Model: 'Expose mutually exclusive options as visible radio buttons when choices are fewer than six; use <select> only when space is constrained or the list…"
+title_zh: "表单"
+description_zh: "一句话心智模型：'当选项少于六个时，将互斥选项以可见的单选按钮形式呈现；仅当空间受限或列表较长时才使用 <select>…'"
 tags: [forms, guide, modern-web]
 category: forms
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkeys
 type: spec
 title: "Passkeys Orientation Guide"
 description: "This guide provides high-density, action-oriented orientation for implementing secure, framework-agnostic passkey authentication and credential management in modern web…"
+title_zh: "Passkeys 入门指南"
+description_zh: "本指南提供高密度、面向操作的入门指引，帮助你在现代 Web 应用中实现安全、框架无关的 passkey 身份验证与凭据管理…"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

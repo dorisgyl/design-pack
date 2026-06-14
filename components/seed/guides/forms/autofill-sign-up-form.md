@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/autofill-sign-up-form
 type: spec
 title: "Build a sign-up form that follows best practice"
 description: "Use cross-platform browser features to build sign-up forms that are secure, accessible and easy to use."
+title_zh: "构建遵循最佳实践的注册表单"
+description_zh: "利用跨平台的浏览器功能，构建安全、无障碍且易于使用的注册表单。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

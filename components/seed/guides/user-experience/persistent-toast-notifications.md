@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/persistent-toast-notifications
 type: spec
 title: "Creating Toast Notifications"
 description: "Toast notifications are transient status messages."
+title_zh: "创建 Toast 通知"
+description_zh: "Toast 通知是短暂的状态消息。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

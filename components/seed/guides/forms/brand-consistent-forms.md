@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/brand-consistent-forms
 type: spec
 title: "Brand-Consistent Forms"
 description: "Customizing standard HTML form elements like checkboxes and radio buttons has historically been difficult."
+title_zh: "品牌一致的表单"
+description_zh: "长期以来，自定义复选框和单选按钮等标准 HTML 表单元素一直是个难题。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

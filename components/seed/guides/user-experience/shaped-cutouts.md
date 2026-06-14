@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/shaped-cutouts
 type: spec
 title: "shaped cutouts"
 description: "CSS Masking allows you to clip an element to a custom shape, such as adding a notch to a card or creating a shaped border."
+title_zh: "异形镂空"
+description_zh: "CSS Masking 允许你将元素裁剪为自定义形状，例如为卡片添加缺口或创建异形边框。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

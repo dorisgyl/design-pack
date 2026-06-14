@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-entry-exit-effects
 type: spec
 title: "Add entry and exit effects to elements as they enter or exit the scrollport"
 description: "Entry and exit effects are animations that are triggered when an element enters or leaves the viewport."
+title_zh: "在元素进入或离开 scrollport 时为其添加进入和退出效果"
+description_zh: "进入和退出效果是当元素进入或离开视口时触发的动画。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "High-Agency Frontend Skill"
 description: "The original v1 taste-skill, preserved for projects depending on its exact behavior. The current default is `design-taste-frontend` (v2 experimental), which is a substantial rewrite. Use this v1 install name only if you need exact backward compatibility."
+title_zh: "高自主性前端技能"
+description_zh: "最初的 v1 版 taste-skill，为依赖其确切行为的项目保留。当前默认版本是 `design-taste-frontend`（v2 实验版），属于大幅重写。仅在需要精确向后兼容时才使用此 v1 安装名称。"
 tags: [taste, design, design-taste-frontend-v1]
 source: taste-skill/taste-skill-v1
 ---

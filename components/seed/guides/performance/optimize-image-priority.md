@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/optimize-image-priority
 type: spec
 title: "Optimize image priority"
 description: "Browsers use heuristics to assign loading priorities to images, but these defaults may not always align with your page's Largest Contentful Paint (LCP)."
+title_zh: "优化图片加载优先级"
+description_zh: "浏览器通过启发式规则为图片分配加载优先级，但这些默认值未必总能与页面的 Largest Contentful Paint (LCP) 相匹配。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

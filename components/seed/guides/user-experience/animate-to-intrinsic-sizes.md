@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/animate-to-intrinsic-sizes
 type: spec
 title: "Animate to Intrinsic Sizes"
 description: "Animating elements to dynamic sizes like block-size: auto or inline-size: max-content has historically required JavaScript or fragile 'max-height' hacks."
+title_zh: "为元素添加到固有尺寸的动画"
+description_zh: "将元素动画过渡到 block-size: auto 或 inline-size: max-content 等动态尺寸，过去往往需要 JavaScript 或脆弱的 'max-height' 技巧。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/optimize-script-priority
 type: spec
 title: "Optimize script priority"
 description: "Browsers assign default priorities to scripts based on where they appear in the document and whether they have attributes like async or defer."
+title_zh: "优化脚本加载优先级"
+description_zh: "浏览器会根据脚本在文档中出现的位置以及是否带有 async 或 defer 等属性，为其分配默认优先级。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/interest-triggered-tooltips
 type: spec
 title: "Show a tooltip when hovering"
 description: "Users expect to see additional related information without completely changing their context."
+title_zh: "悬停时显示工具提示"
+description_zh: "用户希望在不完全切换上下文的情况下看到额外的相关信息。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

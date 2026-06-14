@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/defer-rendering-heavy-content
 type: spec
 title: "Defer rendering heavy content"
 description: "Web pages with extensive content—such as infinite scrolls, complex dashboards, or dense articles can suffer from slow initial rendering and sluggish interactions."
+title_zh: "延迟渲染繁重内容"
+description_zh: "内容繁多的网页——例如无限滚动、复杂仪表盘或密集文章——可能存在初始渲染缓慢和交互卡顿的问题。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

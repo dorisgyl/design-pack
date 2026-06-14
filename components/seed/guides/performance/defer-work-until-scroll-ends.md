@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/defer-work-until-scroll-ends
 type: spec
 title: "Defer Work Until Scroll Ends"
 description: "Scrolling on the web should be smooth and responsive."
+title_zh: "延迟工作直到滚动结束"
+description_zh: "Web 上的滚动应当流畅且响应迅速。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

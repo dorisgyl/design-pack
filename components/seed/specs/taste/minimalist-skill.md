@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "Protocol: Premium Utilitarian Minimalism UI Architect"
 description: "Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows."
+title_zh: "协议：高端实用主义极简 UI 架构师"
+description_zh: "简洁的编辑风格界面。暖色单色调配色、字体对比、扁平 bento 网格、柔和的粉彩。不使用渐变，不使用厚重阴影。"
 tags: [taste, design, minimalist-ui]
 source: taste-skill/minimalist-skill
 ---

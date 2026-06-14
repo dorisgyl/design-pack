@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/autofill-payment-form
 type: spec
 title: "Build a payment form that follows best practice"
 description: "Payment forms are the single most critical part of the checkout process."
+title_zh: "构建遵循最佳实践的支付表单"
+description_zh: "支付表单是结账流程中最为关键的环节。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

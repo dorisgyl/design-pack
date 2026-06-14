@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/child-state-based-styling
 type: spec
 title: "child state based styling"
 description: "Historically, CSS selectors could only traverse downwards—you could style a child based on its parent, but not a parent based on its child."
+title_zh: "基于子元素状态的样式设置"
+description_zh: "过去，CSS 选择器只能向下遍历——你可以根据父元素来设置子元素的样式，却无法根据子元素来设置父元素的样式。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

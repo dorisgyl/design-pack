@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/webmcp/agentic-forms
 type: spec
 title: "agentic forms"
 description: "The Declarative API transforms standard HTML <form> elements into WebMCP tools via attributes."
+title_zh: "智能体表单"
+description_zh: "声明式 API 通过属性将标准 HTML <form> 元素转换为 WebMCP 工具。"
 tags: [webmcp, guide, modern-web]
 category: webmcp
 ---

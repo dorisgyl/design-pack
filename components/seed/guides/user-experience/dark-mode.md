@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/dark-mode
 type: spec
 title: "Dark mode"
 description: "The color-scheme property indicates which color schemes (such as light or dark) your page supports."
+title_zh: "深色模式"
+description_zh: "color-scheme 属性用于声明你的页面支持哪些配色方案（例如浅色或深色）。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

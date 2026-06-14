@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/branded-select-styling
 type: spec
 title: "Branded Select Styling"
 description: "The customizable select API offers a declarative, CSS-driven way to style <select> elements to perfectly match your brand's design system."
+title_zh: "品牌化的 Select 样式"
+description_zh: "可定制的 select API 提供了一种声明式、由 CSS 驱动的方式来设置 <select> 元素的样式，使其完美契合你的品牌设计系统。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

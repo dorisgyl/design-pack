@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/animated-select-picker
 type: spec
 title: "Animated Select Picker"
 description: "The customizable select API offers a declarative, CSS-driven way to animate <select> elements and their dropdown pickers."
+title_zh: "动画化的下拉选择器"
+description_zh: "可定制的 select API 提供了一种声明式、由 CSS 驱动的方式，用于为 <select> 元素及其下拉选择器添加动画。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

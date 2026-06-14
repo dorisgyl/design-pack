@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-progress-indicator
 type: spec
 title: "Build a Scroll Progress Indicator"
 description: "A scroll progress indicator is a common user interface pattern that visually communicates the user's progress through a scrollable document or container."
+title_zh: "构建滚动进度指示器"
+description_zh: "滚动进度指示器是一种常见的用户界面模式，用于直观地展示用户在可滚动文档或容器中的浏览进度。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

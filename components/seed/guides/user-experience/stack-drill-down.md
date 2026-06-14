@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/stack-drill-down
 type: spec
 title: "Stack Drill Down"
 description: "A stack drill-down is a hierarchical navigation pattern, common in mobile apps, where activating a link pushes a new full-screen view on top of the previous one."
+title_zh: "堆栈式逐层下钻"
+description_zh: "堆栈式下钻是一种常见于移动应用的层级导航模式：激活链接时会在前一视图之上推入一个新的全屏视图。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/detect-initial-visibility-state
 type: spec
 title: "detect initial visibility state"
 description: "Determining if a page was initially loaded in the background (e.g., opened in a new background tab) is critical for accurate performance monitoring."
+title_zh: "检测初始可见性状态"
+description_zh: "判断页面最初是否在后台加载（例如在新的后台标签页中打开）对于准确的性能监控至关重要。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

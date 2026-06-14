@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/select-menu-interaction
 type: spec
 title: "Select Menu Interaction"
 description: "For mandatory dropdowns (e.g., 'Choose a Country'), standard validation flags the field as invalid immediately if the default option has an empty value."
+title_zh: "选择菜单交互"
+description_zh: "对于必填下拉菜单（例如'选择国家/地区'），如果默认选项的值为空，标准验证会立即将该字段标记为无效。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

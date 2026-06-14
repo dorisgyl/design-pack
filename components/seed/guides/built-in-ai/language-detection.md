@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/built-in-ai/language-detection
 type: spec
 title: "language detection"
 description: "The Language Detector API is a client-side web API designed to identify the language of a given text string."
+title_zh: "语言检测"
+description_zh: "Language Detector API 是一个客户端 Web API，用于识别给定文本字符串的语言。"
 tags: [built-in-ai, guide, modern-web]
 category: built-in-ai
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/autofill-address-form
 type: spec
 title: "Build an address form that follows best practice"
 description: "Create a form that makes it as easy as possible for users to enter address data on desktop and mobile."
+title_zh: "构建遵循最佳实践的地址表单"
+description_zh: "创建一个表单，让用户在桌面端和移动端都能尽可能轻松地输入地址数据。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

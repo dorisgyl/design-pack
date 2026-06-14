@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/fluid-scaling
 type: spec
 title: "fluid scaling"
 description: "Fluid scaling allows components to adjust their internal proportions (like font sizes and spacing) based on their current dimensions."
+title_zh: "流式缩放"
+description_zh: "流式缩放让组件能够根据自身当前尺寸调整其内部比例（如字号和间距）。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

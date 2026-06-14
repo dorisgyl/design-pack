@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/webmcp/agentic-javascript-tools
 type: spec
 title: "agentic javascript tools"
 description: "The Imperative API uses document.modelContext.registerTool() to programmatically define JavaScript tools."
+title_zh: "智能体 JavaScript 工具"
+description_zh: "命令式 API 使用 document.modelContext.registerTool() 以编程方式定义 JavaScript 工具。"
 tags: [webmcp, guide, modern-web]
 category: webmcp
 ---

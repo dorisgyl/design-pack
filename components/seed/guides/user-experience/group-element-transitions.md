@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/group-element-transitions
 type: spec
 title: "group element transitions"
 description: "As items are added or removed from a list, or rearranged, transitions can help users maintain context."
+title_zh: "分组元素过渡"
+description_zh: "当列表中的项被添加、移除或重新排列时，过渡动画能帮助用户保持上下文。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

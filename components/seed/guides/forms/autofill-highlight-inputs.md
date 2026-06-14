@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/autofill-highlight-inputs
 type: spec
 title: "Use the CSS :autofill pseudo-class to highlight form fields that have been autofilled by the browser and not edited by the user"
 description: "Use the CSS :autofill to highlight fields that have (or have not been) autofilled, to help guide the user to successful form completion."
+title_zh: "使用 CSS :autofill 伪类高亮显示由浏览器自动填充且未被用户编辑的表单字段"
+description_zh: "使用 CSS :autofill 高亮显示已（或尚未）自动填充的字段，帮助引导用户顺利完成表单填写。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkey-conditional-create
 type: spec
 title: "Passkey Conditional Create (Post-Login Promotion)"
 description: "This guide details how to automatically and silently register a passkey for a user immediately after a successful password-based sign-in, minimizing friction and boosting passkey…"
+title_zh: "Passkey Conditional Create（登录后推广）"
+description_zh: "本指南详细介绍如何在用户成功完成基于密码的登录后，立即自动且静默地为其注册 passkey，从而最大限度减少摩擦并提升 passkey 采用率…"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

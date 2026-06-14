@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/reduce-style-repetition
 type: spec
 title: "Reduce Style Repetition with CSS Functions"
 description: "Maintaining large stylesheets often leads to repetitive logic, especially when dealing with design system tokens like gradients or responsive layout patterns."
+title_zh: "使用 CSS Functions 减少样式重复"
+description_zh: "维护大型样式表往往会产生重复的逻辑，在处理渐变或响应式布局模式等设计系统令牌时尤为明显。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

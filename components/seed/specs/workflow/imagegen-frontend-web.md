@@ -4,6 +4,8 @@ type: spec
 collection: workflow
 title: "Hard Output Rule — Read First"
 description: "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate."
+title_zh: "硬性输出规则——请先阅读"
+description_zh: "用于生成高端、注重转化的网站设计参考图的顶级前端图像艺术指导技能。关键输出规则——为每个 section 单独生成一张横向图像。含 8 个 section 的着陆页生成 8 张图像。绝不将多个 section 压缩进一张图像。强制构图多样性（不总是左文字 / 右图像）、自由使用背景图、多样的 CTA、多样的 hero 尺度（巨型 / 中型 / 极简迷你）、叙事概念主线、二次阅读亮点，以及所有图像统一一致的配色。针对着陆页、营销网站及产品样稿优化，便于开发者或编码模型精准复刻。"
 tags: [workflow, design, imagegen-frontend-web]
 source: taste-skill/imagegen-frontend-web
 ---

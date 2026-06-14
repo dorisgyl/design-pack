@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/built-in-ai/summarizer
 type: spec
 title: "summarizer"
 description: "The Summarizer API allows web developers to offer local, AI-powered text distillation directly within the browser using Gemini Nano in Chrome or Phi in Edge."
+title_zh: "摘要生成器"
+description_zh: "Summarizer API 允许 Web 开发者在浏览器中直接提供本地的、由 AI 驱动的文本提炼功能，在 Chrome 中使用 Gemini Nano，在 Edge 中使用 Phi。"
 tags: [built-in-ai, guide, modern-web]
 category: built-in-ai
 ---

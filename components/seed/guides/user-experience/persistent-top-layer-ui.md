@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/persistent-top-layer-ui
 type: spec
 title: "persistent top layer ui"
 description: "When moving an open <dialog>, popover, or fullscreen element in the DOM using traditional methods like appendChild() or insertBefore(), the browser implicitly removes the element…"
+title_zh: "持久化顶层 UI"
+description_zh: "在 DOM 中使用 appendChild() 或 insertBefore() 等传统方法移动已打开的 <dialog>、popover 或全屏元素时，浏览器会隐式地移除该元素……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

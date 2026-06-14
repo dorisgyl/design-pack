@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/interactive-content-in-3d-scenes
 type: spec
 title: "Enable interactive HTML content in 3D scenes"
 description: "The HTML-in-Canvas API allows rendering real DOM directly inside a canvas element."
+title_zh: "在 3D 场景中启用可交互的 HTML 内容"
+description_zh: "HTML-in-Canvas API 允许直接在 canvas 元素内渲染真实的 DOM。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

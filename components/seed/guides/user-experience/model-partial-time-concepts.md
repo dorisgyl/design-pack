@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/model-partial-time-concepts
 type: spec
 title: "Modeling Partial Time Concepts with Temporal"
 description: "Modeling date concepts that lack a full calendar date—such as credit card expirations, annual renewals, or daily alarms—has historically been error-prone with the legacy Date…"
+title_zh: "使用 Temporal 建模不完整的时间概念"
+description_zh: "对缺少完整日历日期的日期概念建模（例如信用卡有效期、年度续订或每日闹钟）一直是个易出错的难题，传统的 Date 对象尤其如此……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

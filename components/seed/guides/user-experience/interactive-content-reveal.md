@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/interactive-content-reveal
 type: spec
 title: "interactive content reveal"
 description: "Add performant, interactive reveal effects to your site with CSS masks and registered custom properties."
+title_zh: "交互式内容显现效果"
+description_zh: "使用 CSS masks 和已注册的 custom properties，为你的网站添加高性能的交互式显现效果。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

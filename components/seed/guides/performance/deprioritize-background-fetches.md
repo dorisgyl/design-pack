@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/deprioritize-background-fetches
 type: spec
 title: "Deprioritize background fetches"
 description: "When a page performs multiple simultaneous network requests, they often compete for the same bandwidth."
+title_zh: "降低后台 fetch 的优先级"
+description_zh: "当页面同时发起多个网络请求时，它们往往会争夺同一带宽。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

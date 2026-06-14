@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/declarative-button-actions
 type: spec
 title: "Declarative Button Actions"
 description: "The Invoker Commands API allows buttons to trigger actions on target elements declaratively using HTML attributes."
+title_zh: "声明式按钮操作"
+description_zh: "Invoker Commands API 让按钮能够通过 HTML 属性以声明式的方式在目标元素上触发操作。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

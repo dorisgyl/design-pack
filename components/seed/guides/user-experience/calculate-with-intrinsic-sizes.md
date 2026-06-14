@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/calculate-with-intrinsic-sizes
 type: spec
 title: "calculate with intrinsic sizes"
 description: "calc-size() is a CSS function for performing mathematical operations on intrinsic sizing keywords like auto, min-content, and fit-content."
+title_zh: "使用固有尺寸进行计算"
+description_zh: "calc-size() 是一个 CSS 函数，用于对 auto、min-content 和 fit-content 等固有尺寸关键字执行数学运算。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

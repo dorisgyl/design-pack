@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/shrinking-header-on-scroll
 type: spec
 title: "Shrinking headder on scroll"
 description: "A shrinking header on scroll is a common UI pattern where a fixed header element at the top of the page smoothly transitions to a smaller size as the user scrolls down."
+title_zh: "滚动时收缩的页头"
+description_zh: "滚动收缩页头是一种常见的 UI 模式：页面顶部的固定页头元素会随着用户向下滚动而平滑过渡为更小的尺寸。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/platform-controls-dismiss-dialog
 type: spec
 title: "platform controls dismiss dialog"
 description: "When a modal dialog is open, users expect to use familiar controls to dismiss them: pressing the <kbd>Esc</kbd> key on a keyboard, using the back button or gesture on mobile…"
+title_zh: "通过平台控件关闭对话框"
+description_zh: "当模态对话框打开时，用户期望使用熟悉的控件关闭它：在键盘上按 <kbd>Esc</kbd> 键、在移动端使用返回按钮或手势……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

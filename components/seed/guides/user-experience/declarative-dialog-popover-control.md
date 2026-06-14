@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/declarative-dialog-popover-contro
 type: spec
 title: "Overview"
 description: "Use the Invoker Commands API to toggle the visibility of <dialog> and [popover] elements directly from HTML buttons, eliminating the need for custom JavaScript event listeners."
+title_zh: "概述"
+description_zh: "使用 Invoker Commands API 直接通过 HTML 按钮切换 <dialog> 和 [popover] 元素的可见性，无需编写自定义的 JavaScript 事件监听器。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

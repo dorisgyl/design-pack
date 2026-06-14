@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/cross-document-transitions
 type: spec
 title: "cross document transitions"
 description: "Cross-document view transitions allow you to create smooth, app-like transitions between different pages of a Multi-Page Application (MPA)."
+title_zh: "跨文档过渡"
+description_zh: "跨文档 View Transitions 让你能在多页应用（MPA）的不同页面之间创建流畅的、类原生应用般的过渡效果。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

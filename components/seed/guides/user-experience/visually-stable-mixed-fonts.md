@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/visually-stable-mixed-fonts
 type: spec
 title: "visually stable mixed fonts"
 description: "When mixing different font families, for instance when inserting inline code snippets, or switching out font families for different themes, differences in 'x-height' (the height…"
+title_zh: "视觉稳定的混合字体"
+description_zh: "在混用不同字体族时，例如插入内联代码片段，或为不同主题切换字体族，'x-height'（小写字母的高度…）的差异可能…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

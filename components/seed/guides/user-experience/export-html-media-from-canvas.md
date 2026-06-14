@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/export-html-media-from-canvas
 type: spec
 title: "Export HTML content from canvas"
 description: "Web applications frequently need to capture and export rich HTML content—such as customized dashboards, styled documents, or interactive charts—as static images or video…"
+title_zh: "从 canvas 导出 HTML 内容"
+description_zh: "Web 应用常常需要将丰富的 HTML 内容（如自定义仪表板、带样式的文档或交互式图表）捕获并导出为静态图像或视频…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

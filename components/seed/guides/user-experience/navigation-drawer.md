@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/navigation-drawer
 type: spec
 title: "navigation drawer"
 description: "A navigation drawer is a panel that slides in from the edge of the viewport over the page content, dimming everything behind it."
+title_zh: "导航抽屉"
+description_zh: "导航抽屉是一个从视口边缘滑入、覆盖在页面内容之上的面板，并使其后方的所有内容变暗。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

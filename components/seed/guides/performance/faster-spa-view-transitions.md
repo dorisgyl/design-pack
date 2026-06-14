@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/faster-spa-view-transitions
 type: spec
 title: "Faster SPA View Transitions via State Caching"
 description: "Enable instant navigation between views in a Single-Page Application (SPA) by caching the rendered state of inactive views instead of destroying them."
+title_zh: "通过状态缓存加速 SPA 视图切换"
+description_zh: "通过缓存非活动视图的渲染状态而非销毁它们，在 Single-Page Application (SPA) 中实现视图间的即时导航。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

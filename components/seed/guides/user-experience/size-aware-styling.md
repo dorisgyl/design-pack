@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/size-aware-styling
 type: spec
 title: "size aware styling"
 description: "Size-aware styling allows components to change their layout or appearance based on the space available to them, rather than the size of the whole screen."
+title_zh: "尺寸感知样式"
+description_zh: "尺寸感知样式让组件能够根据自身可用空间（而非整个屏幕的尺寸）来改变布局或外观。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

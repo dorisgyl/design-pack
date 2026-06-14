@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/anchor-positioning-tab-underline
 type: spec
 title: "anchor positioning tab underline"
 description: "In a tab menu, you should provide visual hints to users about what page they are on."
+title_zh: "使用 anchor positioning 实现标签页下划线"
+description_zh: "在标签页菜单中，你应当为用户提供视觉提示，告知其当前所在的页面。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

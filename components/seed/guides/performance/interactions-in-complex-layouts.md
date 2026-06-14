@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/interactions-in-complex-layouts
 type: spec
 title: "Optimizing Interactions in Complex Layouts"
 description: "Maintain high frame rates (60FPS) and eliminate interaction latency during drag-and-drop or heavy mutations in complex, multi-column layouts like Kanban boards or massive data…"
+title_zh: "优化复杂布局中的交互"
+description_zh: "在 Kanban 看板或大型数据网格等复杂的多列布局中，于拖放或大量变更操作期间保持高帧率（60FPS）并消除交互延迟。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

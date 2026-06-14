@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/complex-shapes
 type: spec
 title: "complex shapes"
 description: "To clip elements to complex, free-form shapes like brush strokes or organic textures, use CSS Masking (mask-image)."
+title_zh: "复杂形状"
+description_zh: "要将元素裁剪为笔触或有机纹理等复杂的自由形状，请使用 CSS 遮罩（mask-image）。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

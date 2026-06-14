@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/privacy/privacy
 type: spec
 title: "Web Privacy Guidelines for Developers"
 description: "Web application developers must treat privacy as a foundational architectural requirement, not just a legal compliance checkbox."
+title_zh: "面向开发者的 Web 隐私指南"
+description_zh: "Web 应用开发者必须将隐私视为一项基础性的架构需求，而不仅仅是一个法律合规的勾选项。"
 tags: [privacy, guide, modern-web]
 category: privacy
 ---

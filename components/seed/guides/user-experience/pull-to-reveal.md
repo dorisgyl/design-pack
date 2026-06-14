@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/pull-to-reveal
 type: spec
 title: "Pull to Reveal"
 description: "'Pull to reveal' is a UI pattern where content (such as a search bar or refresh control) is hidden above the top of a scrollable area on initial load, and the user can pull down…"
+title_zh: "下拉显示"
+description_zh: "'下拉显示'是一种 UI 模式，初次加载时内容（如搜索栏或刷新控件）隐藏在可滚动区域顶部上方，用户可以下拉……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

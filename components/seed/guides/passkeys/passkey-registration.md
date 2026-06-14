@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkey-registration
 type: spec
 title: "Passkey Registration Guide"
 description: "This guide details how to enable users to register a passkey for their account, providing a highly secure, phishing-resistant passwordless sign-in alternative."
+title_zh: "Passkey 注册指南"
+description_zh: "本指南详细介绍如何让用户为其账户注册 passkey，从而提供一种高度安全、抗钓鱼的无密码登录替代方案。"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

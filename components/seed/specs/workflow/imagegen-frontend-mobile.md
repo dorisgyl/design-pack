@@ -4,6 +4,8 @@ type: spec
 collection: workflow
 title: "Core Directive: Premium Mobile App Image Direction"
 description: "Elite mobile app image-generation skill for creating premium, app-native screen concepts and flows. Designed for iOS, Android, and cross-platform mobile products. Prioritizes clean hierarchy, comfortably readable text, strong multi-screen consistency, controlled color palettes, non-generic creative direction, textured surfaces, image-led composition, tasteful custom iconography, and clean phone mockup framing. By default, screens should be shown inside a subtle premium iPhone or similar phone mockup with a visible frame, while the main focus stays on the app content itself. This skill generates images only. It does not write code."
+title_zh: "核心指令：高端移动应用图像方向"
+description_zh: "用于创作高端、应用原生的屏幕概念与流程的顶级移动应用图像生成技能。专为 iOS、Android 及跨平台移动产品设计。优先考虑清晰的层级、舒适可读的文字、强多屏一致性、克制的配色、非通用的创意方向、带纹理的表面、以图像为主导的构图、考究的自定义图标，以及简洁的手机外框呈现。默认情况下，屏幕应展示在精致高端的 iPhone 或类似手机外框中并带有可见边框，同时主要焦点仍保持在应用内容本身。此技能仅生成图像，不编写代码。"
 tags: [workflow, design, imagegen-frontend-mobile]
 source: taste-skill/imagegen-frontend-mobile
 ---

@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "SKILL: Industrial Brutalism & Tactical Telemetry UI"
 description: "Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects. For data-heavy dashboards, portfolios, or editorial sites that need to feel like declassified blueprints."
+title_zh: "SKILL：工业野兽派与战术遥测 UI"
+description_zh: "将瑞士字体印刷与军用终端美学融合的原始机械界面。刚性网格、极端字号对比、实用主义配色、模拟降质效果。适用于需要呈现解密蓝图质感的数据密集型仪表盘、作品集或编辑类网站。"
 tags: [taste, design, industrial-brutalist-ui]
 source: taste-skill/brutalist-skill
 ---

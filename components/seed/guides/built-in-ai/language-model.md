@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/built-in-ai/language-model
 type: spec
 title: "language model"
 description: "The Prompt API allows developers to run natural language processing tasks directly in the browser using Gemini Nano."
+title_zh: "语言模型"
+description_zh: "Prompt API 允许开发者使用 Gemini Nano 直接在浏览器中运行自然语言处理任务。"
 tags: [built-in-ai, guide, modern-web]
 category: built-in-ai
 ---

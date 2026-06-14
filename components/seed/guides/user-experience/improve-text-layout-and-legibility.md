@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/improve-text-layout-and-legibilit
 type: spec
 title: "Improve Text Layout and Legibility"
 description: "The layout of text, particularly at the ends of lines and and ends of paragraphs, can impact the legibility and aesthetic appeal of a page."
+title_zh: "改善文本排版与易读性"
+description_zh: "文本的排版，尤其是在行尾和段落末尾处，会影响页面的易读性和美观度。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

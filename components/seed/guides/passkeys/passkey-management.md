@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkey-management
 type: spec
 title: "Passkey Management Guide"
 description: "This guide details how to enable users to view, rename, and delete their registered passkeys while keeping saved credentials perfectly synchronized between the server and the…"
+title_zh: "Passkey 管理指南"
+description_zh: "本指南详细介绍如何让用户查看、重命名和删除已注册的 passkey，同时使用 Signal API 在服务器与用户的密码管理器之间保持已保存凭据完全同步…"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-snap-realtime-feedback
 type: spec
 title: "scroll snap realtime feedback"
 description: "Users expect immediate visual feedback when interacting with UI elements like carousels or galleries."
+title_zh: "滚动捕捉的实时反馈"
+description_zh: "用户在与轮播或画廊等 UI 元素交互时，期望获得即时的视觉反馈。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

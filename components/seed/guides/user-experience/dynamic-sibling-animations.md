@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/dynamic-sibling-animations
 type: spec
 title: "Creating a stagger animation"
 description: "Stagger animations provide an interesting effect where multiple ordered elements animate sequentially with a slight delay between each, rather than all animating at once."
+title_zh: "创建交错动画"
+description_zh: "交错动画能营造出一种有趣的效果：多个有序元素依次播放动画，每个元素之间略有延迟，而非一次性同时播放。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

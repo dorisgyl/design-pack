@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/conditional-async-dependencies
 type: spec
 title: "conditional async dependencies"
 description: "Top-level await allows modules to act as asynchronous functions, meaning they can pause module execution to await promises."
+title_zh: "条件式异步依赖"
+description_zh: "Top-level await 让模块可以像异步函数一样运行，即它们可以暂停模块执行以 await promise。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

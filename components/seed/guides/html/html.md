@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/html/html
 type: spec
 title: "html"
 description: "Definition of the &lt;figure&gt; element from the <cite>HTML Living Standard</cite>"
+title_zh: "html"
+description_zh: "来自 <cite>HTML Living Standard</cite> 的 &lt;figure&gt; 元素定义"
 tags: [html, guide, modern-web]
 category: html
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/carousel-snap-highlights
 type: spec
 title: "carousel snap highlights"
 description: "Scroll-state container queries allow you to style elements based on their current scroll state, such as whether an element is 'stuck' (via sticky positioning) or 'snapped' (via…"
+title_zh: "轮播吸附高亮"
+description_zh: "scroll-state 容器查询允许你根据元素当前的滚动状态来设置样式，例如某个元素是否处于“吸顶”（通过 sticky 定位）或“吸附”（通过滚动吸附）状态……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/apply-webgl-shaders
 type: spec
 title: "Apply WebGL shaders to HTML content"
 description: "WebGL shaders provide powerful GPU-accelerated visual effects, enabling advanced capabilities like dynamic ripple distortions, lighting models, color grading, and custom vertex…"
+title_zh: "将 WebGL 着色器应用于 HTML 内容"
+description_zh: "WebGL 着色器提供强大的 GPU 加速视觉效果，可实现动态波纹扭曲、光照模型、调色以及自定义顶点变换等高级功能。HTML-in-Canvas API 允许开发者将 WebGL 纹理应用于 HTML 内容，从而可以将高性能的片元着色器和顶点着色器原生应用于完全可交互的 UI 组件，如按钮、输入框和富文本，同时保留原生的可访问性、文本选择和 DOM 事件处理…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

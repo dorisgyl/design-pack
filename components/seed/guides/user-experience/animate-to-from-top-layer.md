@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/animate-to-from-top-layer
 type: spec
 title: "animate to from top layer"
 description: "Elements that render in the 'top layer' (like <dialog>, elements with the popover attribute, or tooltips) have historically been difficult to animate because they toggle between…"
+title_zh: "为进出 top layer 的元素添加动画"
+description_zh: "渲染在 'top layer' 中的元素（如 <dialog>、带 popover 属性的元素或 tooltips）一直以来都难以添加动画，因为它们会在显示与隐藏状态之间切换…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

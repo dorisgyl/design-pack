@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/light-dismiss-a-dialog
 type: spec
 title: "light dismiss a dialog"
 description: "Modern modal dialogs often support 'light-dismiss,' allowing users to close a dialog by clicking or tapping the backdrop (the area outside the dialog)."
+title_zh: "轻触关闭对话框（light dismiss）"
+description_zh: "现代模态对话框通常支持“轻触关闭（light-dismiss）”，允许用户通过点击或轻触背景遮罩（对话框之外的区域）来关闭对话框。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/manage-recurring-intervals
 type: spec
 title: "Managing Recurring Intervals with Temporal"
 description: "Calculating recurring intervals, such as subscription billing cycles or payroll periods, has historically been error-prone with the legacy Date object."
+title_zh: "使用 Temporal 管理周期性间隔"
+description_zh: "计算周期性间隔（例如订阅计费周期或薪资发放周期）一直是个易出错的难题，传统的 Date 对象尤其如此。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

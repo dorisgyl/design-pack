@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/position-aware-tooltips
 type: spec
 title: "position aware tooltips"
 description: "When building tooltips or popovers with CSS Anchor Positioning, the browser can automatically 'flip' the element to a fallback position if it would otherwise overflow the viewport."
+title_zh: "位置感知的 tooltip"
+description_zh: "使用 CSS anchor positioning 构建 tooltip 或 popover 时，如果元素会溢出视口，浏览器可以自动将其'翻转'到备用位置。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

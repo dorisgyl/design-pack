@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/performance
 type: spec
 title: "performance"
 description: "The Critical Rendering Path dictates how quickly the browser converts HTML, CSS, and JavaScript into painted pixels."
+title_zh: "性能"
+description_zh: "Critical Rendering Path 决定了浏览器将 HTML、CSS 和 JavaScript 转换为绘制像素的速度。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

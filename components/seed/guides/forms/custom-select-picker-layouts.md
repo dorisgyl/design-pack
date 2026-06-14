@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/custom-select-picker-layouts
 type: spec
 title: "Custom Select Picker Layouts"
 description: "'Custom Select Picker Layouts' allow developers to break away from the traditional vertical list of options in a <select> dropdown."
+title_zh: "自定义 Select 选择器布局"
+description_zh: "'自定义 Select 选择器布局'让开发者得以摆脱 <select> 下拉框中传统的垂直选项列表。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

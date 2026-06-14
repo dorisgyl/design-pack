@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/parallax-scroll-effects
 type: spec
 title: "Build a Parallax Effect on Scroll"
 description: "A parallax effect on scroll is a visual technique where different layers of content move at varying speeds as the user scrolls down a page."
+title_zh: "构建滚动视差效果"
+description_zh: "滚动视差效果是一种视觉技术，当用户向下滚动页面时，不同层级的内容以不同速度移动。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

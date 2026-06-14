@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/overflow-clipping-control
 type: spec
 title: "Overflow Clipping Control"
 description: "While overflow: hidden is a 'blunt instrument' that almost always clips content strictly at the padding-box, overflow: clip combined with overflow-clip-margin provides the…"
+title_zh: "溢出裁剪控制"
+description_zh: "overflow: hidden 是一把'钝器'，几乎总是严格在 padding-box 处裁剪内容，而 overflow: clip 结合 overflow-clip-margin 则提供了……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

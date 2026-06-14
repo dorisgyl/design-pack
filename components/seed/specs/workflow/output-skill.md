@@ -4,6 +4,8 @@ type: spec
 collection: workflow
 title: "Full-Output Enforcement"
 description: "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output."
+title_zh: "完整输出强制规则"
+description_zh: "覆盖 LLM 默认的截断行为。强制生成完整代码，禁用占位符模式，并妥善处理 token 上限导致的分段。适用于任何需要详尽、完整无删减输出的任务。"
 tags: [workflow, design, full-output-enforcement]
 source: taste-skill/output-skill
 ---

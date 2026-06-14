@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/form-fields-automatically-fit-contents
 type: spec
 title: "form fields automatically fit contents"
 description: "By default, form controls like <input>, <textarea>, and <select> have fixed dimensions."
+title_zh: "表单字段自动适应内容"
+description_zh: "默认情况下，<input>、<textarea> 和 <select> 等表单控件具有固定的尺寸。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

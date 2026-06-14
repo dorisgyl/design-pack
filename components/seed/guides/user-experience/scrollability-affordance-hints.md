@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scrollability-affordance-hints
 type: spec
 title: "scrollability affordance hints"
 description: "Visual hints, like shadows or gradients, help users understand that they can scroll to see more content."
+title_zh: "可滚动性提示线索"
+description_zh: "阴影或渐变等视觉线索，可帮助用户理解他们能够通过滚动查看更多内容。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

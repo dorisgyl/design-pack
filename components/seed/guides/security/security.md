@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/security/security
 type: spec
 title: "Web Security"
 description: "Guidelines for implementing preventative security measures on the web safely and incrementally."
+title_zh: "Web 安全"
+description_zh: "关于如何在 Web 上安全、渐进地实施预防性安全措施的指南。"
 tags: [security, guide, modern-web]
 category: security
 ---

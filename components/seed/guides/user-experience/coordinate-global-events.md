@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/coordinate-global-events
 type: spec
 title: "Coordinating Global Events with Temporal"
 description: "Scheduling events across different time zones is notoriously difficult with the legacy Date object, especially around Daylight Saving Time (DST) transitions when hours can be…"
+title_zh: "使用 Temporal 协调全球事件"
+description_zh: "使用传统的 Date 对象在不同时区之间安排事件非常困难，尤其是在夏令时（DST）切换期间，此时可能会跳过或重复某些小时…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

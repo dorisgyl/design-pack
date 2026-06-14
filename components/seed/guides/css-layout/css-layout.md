@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/css-layout/css-layout
 type: spec
 title: "CSS Layouts and Responsive Design"
 description: "Lean on the browser's layout engine when possible for better performance."
+title_zh: "CSS 布局与响应式设计"
+description_zh: "尽可能借助浏览器的布局引擎以获得更好的性能。"
 tags: [css-layout, guide, modern-web]
 category: css-layout
 ---

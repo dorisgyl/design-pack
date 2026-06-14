@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/resilient-context-menus-and-neste
 type: spec
 title: "resilient context menus and nested dropdowns"
 description: "A revealed action panel or popover button group is a useful pattern for users to access additional functionality while taking up minimal space."
+title_zh: "弹性上下文菜单与嵌套下拉菜单"
+description_zh: "展开式操作面板或 popover 按钮组是一种实用的模式，让用户能在占用最少空间的同时访问额外功能。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/customize-scrollbar-color-and-thi
 type: spec
 title: "Customize the color or thickness of a scrollbar"
 description: "You can customize the appearance of scrollbars using the standard CSS properties scrollbar-color and scrollbar-width."
+title_zh: "自定义滚动条的颜色或粗细"
+description_zh: "你可以使用标准的 CSS 属性 scrollbar-color 和 scrollbar-width 来自定义滚动条的外观。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

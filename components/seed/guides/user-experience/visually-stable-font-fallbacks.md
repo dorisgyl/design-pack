@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/visually-stable-font-fallbacks
 type: spec
 title: "visually stable font fallbacks"
 description: "When web fonts load, they often replace a fallback font that has different dimensions, even if both are set to the same font-size."
+title_zh: "视觉稳定的字体回退"
+description_zh: "Web 字体加载时，往往会替换掉尺寸不同的回退字体，即便两者设置了相同的 font-size。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

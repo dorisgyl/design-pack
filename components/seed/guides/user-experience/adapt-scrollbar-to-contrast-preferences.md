@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/adapt-scrollbar-to-contrast-prefe
 type: spec
 title: "Adapt scrollbar to high-contrast preferences"
 description: "Users who enable high-contrast modes in their operating system or browser expect UI elements (like scrollbars) to be extremely legible, often relying on stark…"
+title_zh: "使滚动条适配高对比度偏好"
+description_zh: "在操作系统或浏览器中启用高对比度模式的用户，期望 UI 元素（如滚动条）极为清晰可辨，通常依赖鲜明的前景与背景区分…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

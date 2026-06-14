@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/visually-texture-content
 type: spec
 title: "visually texture content"
 description: "To apply realistic weathering or texture patterns (like grunge, noise, or paper texture) to an element, use CSS Masking (mask-image) with a repeating texture image."
+title_zh: "为内容添加视觉纹理"
+description_zh: "要为元素添加逼真的做旧或纹理图案（如做旧、噪点或纸张纹理），可使用 CSS Masking（mask-image）配合可重复的纹理图像。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

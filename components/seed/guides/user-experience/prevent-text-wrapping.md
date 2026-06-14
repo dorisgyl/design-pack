@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/prevent-text-wrapping
 type: spec
 title: "Prevent text wrapping"
 description: "Modern CSS provides the text-wrap property to control how text breaks within its container."
+title_zh: "防止文本换行"
+description_zh: "现代 CSS 提供了 text-wrap 属性来控制文本在其容器内的换行方式。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

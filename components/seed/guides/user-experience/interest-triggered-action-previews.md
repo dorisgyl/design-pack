@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/interest-triggered-action-preview
 type: spec
 title: "interest triggered action previews"
 description: "It can be beneficial to provide users a preview of their actions before they commit to them."
+title_zh: "由 interest 触发的操作预览"
+description_zh: "在用户确认操作之前，为其提供操作预览往往很有帮助。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

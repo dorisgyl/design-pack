@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/format-human-readable-durations
 type: spec
 title: "Formatting Human-Readable Durations with Temporal"
 description: "Presenting elapsed time or durations to users in a readable format (e.g., '1 hour and 30 minutes') has historically required manual math or external libraries."
+title_zh: "使用 Temporal 格式化人类可读的时长"
+description_zh: "以可读格式（例如 '1 hour and 30 minutes'）向用户呈现已用时间或时长，过去通常需要手动计算或使用外部库。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/directional-navigation-transition
 type: spec
 title: "directional navigation transitions"
 description: "Single Page Applications (SPAs) provide the appearance of navigation by replacing the content of the page without navigating to a new page."
+title_zh: "方向性导航过渡"
+description_zh: "单页应用（SPA）通过替换页面内容而非跳转到新页面，营造出导航的视觉效果。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

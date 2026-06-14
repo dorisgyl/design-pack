@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-target-on-load
 type: spec
 title: "Set a scroll target for the initial render"
 description: "The CSS property scroll-initial-target offers a declarative, CSS-only way to bring a specific descendant element into the visible area of its scroll container as soon as that…"
+title_zh: "为初始渲染设置滚动目标"
+description_zh: "CSS 属性 scroll-initial-target 提供了一种声明式的纯 CSS 方法，可在滚动容器渲染时立即将其某个特定后代元素带入可见区域……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

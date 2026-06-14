@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/animate-element-entry-exit
 type: spec
 title: "animate element entry exit"
 description: "In the past, CSS transitions could not animate elements when they were first added to the DOM or when their display property changed from none."
+title_zh: "为元素的进入与退出添加动画"
+description_zh: "过去，当元素首次被添加到 DOM 中，或其 display 属性从 none 变化时，CSS transitions 无法为其添加动画。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

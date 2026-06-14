@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/break-up-long-tasks
 type: spec
 title: "break up long tasks"
 description: "Heavy computations or long loops can block the main thread, causing the page to become unresponsive."
+title_zh: "拆分长任务"
+description_zh: "繁重的计算或长循环会阻塞主线程，导致页面失去响应。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

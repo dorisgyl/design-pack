@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/same-document-transitions
 type: spec
 title: "Same Document Transitions"
 description: "Web sites often provide multiple views of an object, for instance a list of products, and then a detail page for each product."
+title_zh: "同文档过渡"
+description_zh: "网站通常会为某个对象提供多个视图，例如商品列表，以及每件商品的详情页。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

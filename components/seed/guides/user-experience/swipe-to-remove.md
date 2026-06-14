@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/swipe-to-remove
 type: spec
 title: "Swipe to remove"
 description: "Swipe-to-remove patterns are common in mobile applications but can be challenging to implement cleanly on the web."
+title_zh: "滑动删除"
+description_zh: "滑动删除模式在移动应用中很常见，但在 Web 上要实现得干净利落却颇具挑战。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

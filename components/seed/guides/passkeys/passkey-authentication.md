@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkey-authentication
 type: spec
 title: "Passkey Authentication Guide"
 description: "This guide details how to implement returning user authentication using discoverable credentials, both through explicit button triggers and seamless browser autofill suggestions…"
+title_zh: "Passkey 身份验证指南"
+description_zh: "本指南详细介绍如何使用 discoverable credentials 实现回访用户身份验证，既可通过显式按钮触发，也可通过无缝的浏览器 autofill 建议（Conditional UI）实现…"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

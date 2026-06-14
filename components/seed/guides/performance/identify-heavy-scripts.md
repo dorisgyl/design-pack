@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/identify-heavy-scripts
 type: spec
 title: "Identify heavy-running JavaScript"
 description: "Heavy-running JavaScript can have a detrimental effect on both page load performance and interactivity."
+title_zh: "识别高耗时的 JavaScript"
+description_zh: "高耗时运行的 JavaScript 会对页面加载性能和交互性产生不利影响。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

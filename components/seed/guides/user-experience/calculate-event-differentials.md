@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/calculate-event-differentials
 type: spec
 title: "Calculating Event Differentials with Temporal"
 description: "Calculating the time elapsed between events (such as trial expirations, subscription durations, or prorated costs) has historically been difficult with the legacy Date object due…"
+title_zh: "使用 Temporal 计算事件时间差"
+description_zh: "计算事件之间经过的时间（例如试用到期、订阅时长或按比例计费）一直以来都很困难，因为传统的 Date 对象在时区、夏令时（DST）和解析不一致等方面存在诸多复杂性……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

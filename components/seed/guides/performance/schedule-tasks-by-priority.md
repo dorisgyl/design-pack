@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/schedule-tasks-by-priority
 type: spec
 title: "schedule tasks by priority"
 description: "When building complex web applications, tasks have different levels of urgency."
+title_zh: "按优先级调度任务"
+description_zh: "在构建复杂的 Web 应用时，任务具有不同的紧急程度。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

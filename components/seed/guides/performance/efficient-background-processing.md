@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/efficient-background-processing
 type: spec
 title: "Efficient Background Processing"
 description: "Pause heavy background tasks when a component is not being rendered by the browser to conserve system resources and battery life."
+title_zh: "高效的后台处理"
+description_zh: "当组件未被浏览器渲染时暂停繁重的后台任务，以节省系统资源和电池续航。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

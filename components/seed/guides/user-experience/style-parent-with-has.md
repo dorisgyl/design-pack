@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/style-parent-with-has
 type: spec
 title: "Style Parent with :has()"
 description: "Often, an error state requires styling elements outside the input itself—for example, changing the color of a parent fieldset border, highlighting the <label>, or showing a…"
+title_zh: "使用 :has() 设置父元素样式"
+description_zh: "错误状态常常需要为输入框之外的元素设置样式，例如更改父级 fieldset 边框的颜色、高亮 <label>，或在卡片标题中显示一个…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

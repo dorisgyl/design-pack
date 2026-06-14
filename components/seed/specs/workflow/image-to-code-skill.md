@@ -4,6 +4,8 @@ type: spec
 collection: workflow
 title: "Core Directive: Image-First Website Design To Code"
 description: "Elite website image-to-code skill for Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. In Codex, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop."
+title_zh: "核心指令：图像优先的网站设计转代码"
+description_zh: "面向 Codex 的顶级网站 image-to-code 技能。对于视觉重要的网页任务，它必须先自行生成设计图像、深入分析，再尽可能贴近地实现网站。在 Codex 中，它应优先使用大尺寸、可读、针对具体区块的图像，而非微小压缩的拼板；为各区块或细节视图生成全新的独立图像，而非裁剪旧图；避免偷懒式生成不足；避免卡片套卡片套卡片的 UI；并保持 hero 区简洁、宽敞、可读，且在小型笔记本上可见。"
 tags: [workflow, design, image-to-code]
 source: taste-skill/image-to-code-skill
 ---

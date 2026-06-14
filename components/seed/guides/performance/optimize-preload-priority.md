@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/optimize-preload-priority
 type: spec
 title: "Optimize preload priority"
 description: "Preloading resources with <link rel='preload'> signals to the browser that a resource will be needed soon."
+title_zh: "优化 preload 优先级"
+description_zh: "使用 <link rel='preload'> 预加载资源会向浏览器表明某资源很快将被用到。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

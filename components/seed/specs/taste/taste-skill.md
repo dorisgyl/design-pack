@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "tasteskill: Anti-Slop Frontend Skill"
 description: "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check."
+title_zh: "tasteskill：反平庸前端技能"
+description_zh: "面向落地页、作品集和重设计的反平庸前端技能。agent 阅读需求简报、推断正确的设计方向，并交付不显模板化的界面。适用时采用真实设计系统、重设计时审查优先、严格的预检流程。"
 tags: [taste, design, design-taste-frontend]
 source: taste-skill/taste-skill
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/soft-edge-content-fade
 type: spec
 title: "soft edge content fade"
 description: "To apply a transparency gradient to the edges of a container (e.g., to indicate more content is available to scroll or to fade out text), use CSS Masking with a linear gradient."
+title_zh: "柔和边缘内容渐隐"
+description_zh: "要为容器边缘应用透明度渐变（例如提示还有更多可滚动内容或让文本淡出），可使用配合线性渐变的 CSS Masking。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

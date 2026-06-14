@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/passkeys/passkey-reauthentication
 type: spec
 title: "Passkey Reauthentication Guide"
 description: "This delta-focused guide details how to implement step-up authentication or re-verification for a signed-in user before they perform sensitive account changes (e.g."
+title_zh: "Passkey 重新身份验证指南"
+description_zh: "这份聚焦增量的指南详细介绍如何在已登录用户执行敏感账户更改（例如更新密码、资金转账）之前，为其实现 step-up 身份验证或重新验证。"
 tags: [passkeys, guide, modern-web]
 category: passkeys
 ---

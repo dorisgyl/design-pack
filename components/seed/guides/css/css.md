@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/css/css
 type: spec
 title: "CSS: Modern Architecture and Performance"
 description: "These guidelines provide a high-density reference for writing maintainable, performant, and standard-compliant CSS."
+title_zh: "CSS：现代架构与性能"
+description_zh: "这些准则为编写可维护、高性能且符合标准的 CSS 提供了高密度的参考。"
 tags: [css, guide, modern-web]
 category: css
 ---

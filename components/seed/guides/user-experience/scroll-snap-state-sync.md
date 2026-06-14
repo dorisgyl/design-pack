@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-snap-state-sync
 type: spec
 title: "scroll snap state sync"
 description: "Synchronizing UI state with a scrollable container's snap position traditionally required complex scroll event listeners, manual calculations of scroll offsets, and intersection…"
+title_zh: "滚动捕捉状态同步"
+description_zh: "将 UI 状态与可滚动容器的捕捉位置同步，传统上需要复杂的 scroll 事件监听器、手动计算滚动偏移量以及 intersection observer……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

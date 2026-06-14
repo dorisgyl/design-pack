@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/flicker-free-client-side-ab-testi
 type: spec
 title: "Flicker-Free Client-Side A/B Testing"
 description: "Client-side A/B testing tools work by loading a script that modifies the DOM after the browser has already begun constructing the page."
+title_zh: "无闪烁的客户端 A/B 测试"
+description_zh: "客户端 A/B 测试工具的工作方式是加载一个脚本，在浏览器已经开始构建页面之后修改 DOM。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

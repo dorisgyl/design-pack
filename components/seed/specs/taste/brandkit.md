@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "Brandkit Image Generation Skill"
 description: "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts."
+title_zh: "Brandkit 图像生成技能"
+description_zh: "高端品牌套件图像生成技能,用于创建顶级品牌规范板、logo 系统、品牌识别提案和视觉世界演示。针对极简、电影感、编辑风、暗黑科技、奢侈品、文化、安全、游戏、开发者工具和消费类应用品牌系统进行训练。专为有意图的 logo 概念设计、精炼的构图、克制的排版、强烈的符号意义、高端模型样机、艺术指导的图像和灵活的网格布局而优化。"
 tags: [taste, design, brandkit]
 source: taste-skill/brandkit
 ---

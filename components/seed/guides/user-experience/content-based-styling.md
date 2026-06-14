@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/content-based-styling
 type: spec
 title: "content based styling"
 description: "Historically, applying different layouts to a component based on its content required either JavaScript or conditional logic in your HTML templating language to inject modifier…"
+title_zh: "基于内容的样式设置"
+description_zh: "过去，要根据组件的内容为其应用不同的布局，需要借助 JavaScript，或在 HTML 模板语言中编写条件逻辑来注入修饰符……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

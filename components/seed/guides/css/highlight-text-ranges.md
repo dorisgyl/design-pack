@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/css/highlight-text-ranges
 type: spec
 title: "highlight text ranges"
 description: "The CSS Custom Highlight API lets you style arbitrary text ranges on a page without modifying the DOM structure."
+title_zh: "高亮文本范围"
+description_zh: "CSS Custom Highlight API 让你无需修改 DOM 结构即可为页面上任意文本范围设置样式。"
 tags: [css, guide, modern-web]
 category: css
 ---

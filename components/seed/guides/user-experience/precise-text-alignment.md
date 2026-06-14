@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/precise-text-alignment
 type: spec
 title: "Precise Text Alignment"
 description: "Browsers automatically add extra whitespace above and below text characters to accommodate line-height and font-specific metrics like ascenders and descenders."
+title_zh: "精确的文本对齐"
+description_zh: "浏览器会在文本字符的上下自动添加额外的空白，以容纳 line-height 以及字体特有的度量值（如上伸部和下伸部）。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "Core Directive: Awwwards-Level Design Engineering"
 description: "Elite UX/UI & Advanced GSAP Motion Engineer. Enforces Python-driven true randomization for layout variance, strict AIDA page structure, wide editorial typography (bans 6-line wraps), gapless bento grids, strict GSAP ScrollTriggers (pinning, stacking, scrubbing), inline micro-images, and massive section spacing."
+title_zh: "核心指令：Awwwards 级别的设计工程"
+description_zh: "顶尖 UX/UI 与高级 GSAP 动效工程师。强制使用 Python 驱动的真随机化实现布局多样性、严格的 AIDA 页面结构、宽幅编辑式排版（禁止 6 行折行）、无间隙 bento 网格、严格的 GSAP ScrollTriggers（pinning、stacking、scrubbing）、内联微缩图像以及超大区块间距。"
 tags: [taste, design, gpt-taste]
 source: taste-skill/gpt-tasteskill
 ---

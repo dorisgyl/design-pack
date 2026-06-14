@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/validate-input-after-interaction
 type: spec
 title: "Validate Input After Interaction"
 description: "Displaying validation errors the moment a user focuses on a field and starts typing is premature and distracting."
+title_zh: "在用户交互后再验证输入"
+description_zh: "在用户聚焦字段并开始输入的那一刻就显示验证错误为时过早，且会分散注意力。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

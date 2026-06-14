@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/search-hidden-content
 type: spec
 title: "Search hidden content"
 description: "Web interfaces often hide content from view to improve the user experience, save screen space, or increase page performance."
+title_zh: "搜索隐藏内容"
+description_zh: "Web 界面常常将内容隐藏起来，以改善用户体验、节省屏幕空间或提升页面性能。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

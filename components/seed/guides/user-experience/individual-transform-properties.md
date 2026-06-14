@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/individual-transform-properties
 type: spec
 title: "individual transform properties"
 description: "The transform property allows you to apply multiple transformations in a specified order, but any changes to a single transformation require re-specifying the entire…"
+title_zh: "独立的 transform 属性"
+description_zh: "transform 属性允许你按指定顺序应用多个变换，但对单个变换的任何改动都需要重新指定整个…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

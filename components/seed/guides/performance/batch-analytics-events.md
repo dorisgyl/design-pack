@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/batch-analytics-events
 type: spec
 title: "Debounce and batch multiple analytics events"
 description: "Most analytics and telemetry data is low priority and you can safely defer sending it until the user leaves the page."
+title_zh: "对多个 analytics 事件进行防抖与批处理"
+description_zh: "大多数 analytics 与遥测数据优先级较低，你可以安全地将其延迟发送，直到用户离开页面。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/webmcp/webmcp
 type: spec
 title: "WebMCP (Web Model Context Protocol)"
 description: "WebMCP is a browser-native JavaScript API that allows web pages to expose their client-side functionality as structured 'tools' to AI agents, browser assistants, and assistive…"
+title_zh: "WebMCP（Web Model Context Protocol）"
+description_zh: "WebMCP 是一个浏览器原生的 JavaScript API，允许网页将其客户端功能以结构化的'工具'形式暴露给 AI 智能体、浏览器助手和辅助…"
 tags: [webmcp, guide, modern-web]
 category: webmcp
 ---

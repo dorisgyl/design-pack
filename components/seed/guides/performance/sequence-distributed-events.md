@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/sequence-distributed-events
 type: spec
 title: "Sequencing Distributed Events"
 description: "High-frequency tracing and event logging in distributed systems require precise timestamps to ensure correct causal ordering."
+title_zh: "为分布式事件排序"
+description_zh: "分布式系统中的高频追踪和事件日志需要精确的时间戳，以确保正确的因果顺序。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

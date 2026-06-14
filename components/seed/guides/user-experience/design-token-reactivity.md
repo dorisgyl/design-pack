@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/design-token-reactivity
 type: spec
 title: "design token reactivity"
 description: "Often an author will need to make contextual changes to the design of a component."
+title_zh: "设计令牌的响应式"
+description_zh: "开发者常常需要根据上下文对组件的设计进行调整。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

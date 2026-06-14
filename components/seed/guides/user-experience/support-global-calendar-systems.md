@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/support-global-calendar-systems
 type: spec
 title: "Supporting Global Calendar Systems with Temporal"
 description: "The traditional JavaScript Date object is based on a proleptic Gregorian calendar, making it challenging to build applications for users who rely on other calendar systems, such…"
+title_zh: "使用 Temporal 支持全球日历系统"
+description_zh: "传统的 JavaScript Date 对象基于外推格里高利历，这使得为依赖其他日历系统的用户构建应用变得困难，例如…"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/required-field-feedback
 type: spec
 title: "Required Field Feedback"
 description: "Marking required fields with an error state immediately upon page load can be confusing."
+title_zh: "必填字段反馈"
+description_zh: "在页面加载时立即将必填字段标记为错误状态可能会让用户感到困惑。"
 tags: [forms, guide, modern-web]
 category: forms
 ---

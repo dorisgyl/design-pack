@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/component-specific-light-dark-the
 type: spec
 title: "Component-specific light/dark themes"
 description: "While more commonly set on the root, the color-scheme property can be set on individual elements to force them into a different color scheme from the rest of the page."
+title_zh: "组件级别的明暗主题"
+description_zh: "虽然 color-scheme 属性更常设置在根元素上，但它也可以设置在单个元素上，强制这些元素采用与页面其余部分不同的配色方案。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

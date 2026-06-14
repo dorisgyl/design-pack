@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/accessibility/accessibility
 type: spec
 title: "Accessibility Coding Guidelines"
 description: "This guide provides actionable DOs and DON'Ts for AI coding agents to ensure web applications are accessible to all users, including those using assistive technologies."
+title_zh: "无障碍编码指南"
+description_zh: "本指南为 AI 编码 agent 提供可操作的应做与不应做事项，确保 Web 应用对所有用户（包括使用辅助技术的用户）都具备无障碍访问能力。"
 tags: [accessibility, guide, modern-web]
 category: accessibility
 ---

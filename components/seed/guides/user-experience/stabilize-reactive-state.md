@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/stabilize-reactive-state
 type: spec
 title: "Stabilize Reactive State with Temporal"
 description: "While some reactive systems (like React) rely strictly on reference equality to detect state changes, others (like Vue and Svelte) can track mutations to plain objects."
+title_zh: "使用 Temporal 稳定响应式状态"
+description_zh: "有些响应式系统（如 React）严格依赖引用相等来检测状态变化，而另一些（如 Vue 和 Svelte）则能追踪对普通对象的修改。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

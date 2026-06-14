@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scrollytelling
 type: spec
 title: "Scrollytelling"
 description: "Scrollytelling is a popular technique used to create engaging and immersive web experiences."
+title_zh: "Scrollytelling 滚动叙事"
+description_zh: "Scrollytelling 是一种广受欢迎的技术，用于打造引人入胜且沉浸式的网页体验。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

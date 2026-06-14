@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier)"
 description: "Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic."
+title_zh: "Agent 技能：首席 UI/UX 架构师与动效编排师（Awwwards 级别）"
+description_zh: "教会 AI 像高端设计机构那样设计。精确定义让网站显得昂贵的字体、间距、阴影、卡片结构和动画。屏蔽所有让 AI 设计显得廉价或通用的常见默认做法。"
 tags: [taste, design, high-end-visual-design]
 source: taste-skill/soft-skill
 ---

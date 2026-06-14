@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/physics-based-easing
 type: spec
 title: "physics based easing"
 description: "Traditional CSS easing functions like ease-in or cubic-bezier() are limited to simple curves, making it impossible to create complex physics-based effects like bounces or springs."
+title_zh: "基于物理的缓动效果"
+description_zh: "传统的 CSS 缓动函数（如 ease-in 或 cubic-bezier()）仅限于简单曲线，无法创建弹跳或弹簧等复杂的物理效果。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/carousel-slide-effects
 type: spec
 title: "Build Carousel Slide Effects"
 description: "Carousel slide effects are a great way to add visual interest to a carousel."
+title_zh: "构建轮播滑动效果"
+description_zh: "轮播滑动效果是为轮播组件增添视觉吸引力的绝佳方式。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

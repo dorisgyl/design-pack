@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/calculate-total-foreground-time
 type: spec
 title: "Calculate total foreground time"
 description: "This guide details how to accurately calculate the total time a user spends actively viewing a page."
+title_zh: "计算总前台时间"
+description_zh: "本指南详细介绍如何准确计算用户主动浏览页面的总时长。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

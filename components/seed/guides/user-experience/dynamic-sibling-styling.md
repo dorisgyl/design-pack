@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/dynamic-sibling-styling
 type: spec
 title: "Styling siblings based on count and index"
 description: "Historically, applying unique styles to each sibling in a list required complex :nth-child loops or JavaScript to inject inline styles."
+title_zh: "根据数量和索引为同级元素设置样式"
+description_zh: "以往，为列表中的每个同级元素设置独特样式需要复杂的 :nth-child 循环或使用 JavaScript 注入内联样式。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

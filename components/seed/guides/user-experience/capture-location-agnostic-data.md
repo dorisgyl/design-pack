@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/capture-location-agnostic-data
 type: spec
 title: "Capturing Location-Agnostic Data with Temporal"
 description: "Recording chronological data that should remain identical regardless of the viewer's location (such as birthdates, recurring alarms, or national holidays) has historically been…"
+title_zh: "使用 Temporal 捕获与地理位置无关的数据"
+description_zh: "记录无论查看者身处何地都应保持一致的时间数据（例如出生日期、重复闹钟或法定节假日），一直以来都很容易出错……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

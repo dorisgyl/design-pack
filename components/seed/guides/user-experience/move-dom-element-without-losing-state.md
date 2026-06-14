@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/move-dom-element-without-losing-s
 type: spec
 title: "move dom element without losing state"
 description: "When reparenting DOM elements using traditional methods like appendChild() or insertBefore(), the browser implicitly removes the element from the DOM and then inserts it into its…"
+title_zh: "移动 DOM 元素而不丢失状态"
+description_zh: "使用 appendChild() 或 insertBefore() 等传统方法重新指定 DOM 元素的父节点时，浏览器会隐式地将元素从 DOM 中移除，然后再插入到其新位置……"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/accessibility/accessible-error-announcement
 type: spec
 title: "Accessible Error Announcement"
 description: "Standard HTML5 validation provides visual feedback (via :invalid or :user-invalid), but it doesn't automatically synchronize with accessibility attributes like aria-invalid."
+title_zh: "无障碍错误通报"
+description_zh: "标准 HTML5 验证提供视觉反馈（通过 :invalid 或 :user-invalid），但它不会自动与 aria-invalid 等无障碍属性同步。"
 tags: [accessibility, guide, modern-web]
 category: accessibility
 ---

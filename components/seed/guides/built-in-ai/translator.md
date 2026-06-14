@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/built-in-ai/translator
 type: spec
 title: "translator"
 description: "The Translator API allows developers to perform client-side text translation using built-in AI models in Chrome and Edge."
+title_zh: "翻译器"
+description_zh: "Translator API 允许开发者在 Chrome 和 Edge 中使用内置 AI 模型执行客户端文本翻译。"
 tags: [built-in-ai, guide, modern-web]
 category: built-in-ai
 ---

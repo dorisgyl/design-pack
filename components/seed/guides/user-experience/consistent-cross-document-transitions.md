@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/consistent-cross-document-transit
 type: spec
 title: "Consistent Cross-Document Transitions"
 description: "Cross-document view transitions animate elements between two pages during a same-origin navigation."
+title_zh: "一致的跨文档过渡"
+description_zh: "跨文档 View Transitions 在同源导航过程中，为两个页面之间的元素添加动画过渡效果。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

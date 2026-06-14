@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/improve-next-page-load-performance
 type: spec
 title: "Improve next page load performance"
 description: "One of the most effective ways to improve page load performance for users navigating a site is to initiate loading the next page they're about to visit before they visit it."
+title_zh: "提升下一个页面的加载性能"
+description_zh: "为浏览站点的用户提升页面加载性能最有效的方法之一，就是在用户访问下一个页面之前提前开始加载它。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

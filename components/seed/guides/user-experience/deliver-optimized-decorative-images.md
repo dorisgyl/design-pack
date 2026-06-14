@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/deliver-optimized-decorative-imag
 type: spec
 title: "deliver optimized decorative images"
 description: "Delivering optimized decorative images via CSS improves perceived performance without sacrificing visual quality."
+title_zh: "交付经过优化的装饰性图片"
+description_zh: "通过 CSS 交付经过优化的装饰性图片，能在不牺牲视觉质量的前提下提升感知性能。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

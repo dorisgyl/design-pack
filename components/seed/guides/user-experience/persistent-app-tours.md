@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/persistent-app-tours
 type: spec
 title: "Creating Persistent App Tours"
 description: "Onboarding tours require overlays that persist while users interact with the highlighted features."
+title_zh: "创建持久化应用引导"
+description_zh: "新手引导需要在用户与高亮功能交互时保持可见的覆盖层。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

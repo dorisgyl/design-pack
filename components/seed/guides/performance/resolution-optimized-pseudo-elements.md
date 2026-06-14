@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/resolution-optimized-pseudo-elements
 type: spec
 title: "resolution optimized pseudo elements"
 description: "Using resolution-optimized images in CSS pseudo-elements (like ::before or ::after) allows you to add decorative icons or structural graphics without cluttering your HTML with…"
+title_zh: "分辨率优化的伪元素"
+description_zh: "在 CSS 伪元素（如 ::before 或 ::after）中使用分辨率优化的图像，让你无需向 HTML 添加多余的 DOM 节点即可加入装饰图标或结构性图形…"
 tags: [performance, guide, modern-web]
 category: performance
 ---

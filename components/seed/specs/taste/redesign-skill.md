@@ -4,6 +4,8 @@ type: spec
 collection: taste
 title: "Redesign Skill"
 description: "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS."
+title_zh: "重设计技能"
+description_zh: "将现有网站和应用升级至高端品质。审查当前设计、识别通用化的 AI 模式，并在不破坏功能的前提下应用高端设计标准。兼容任意 CSS 框架或原生 CSS。"
 tags: [taste, design, redesign-existing-projects]
 source: taste-skill/redesign-skill
 ---

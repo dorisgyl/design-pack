@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/scroll-position-aware-elements
 type: spec
 title: "scroll position aware elements"
 description: "Improve the user experience of floating buttons, like a 'Back to Top' link, by showing them only when they are useful."
+title_zh: "感知滚动位置的元素"
+description_zh: "仅在浮动按钮（如“返回顶部”链接）真正有用时才显示它们，从而改善用户体验。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

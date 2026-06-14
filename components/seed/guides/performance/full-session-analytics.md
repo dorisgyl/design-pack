@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/full-session-analytics
 type: spec
 title: "Reliably measure full-session analytics and telemetry"
 description: "To reliably analytics and telemetry data that covers the entirety of a user's visit to a web page (not just until page load) use the fetchLater() API."
+title_zh: "可靠地测量整个会话的分析与遥测数据"
+description_zh: "若要可靠地采集覆盖用户访问网页全程（而不仅是到页面加载为止）的分析与遥测数据，请使用 fetchLater() API。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

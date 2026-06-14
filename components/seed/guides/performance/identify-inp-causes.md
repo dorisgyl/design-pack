@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/performance/identify-inp-causes
 type: spec
 title: "Identify causes of poor INP"
 description: "Poor responsiveness to interactions leads to a poor impression of a page being slow or even completely broken."
+title_zh: "识别 INP 不佳的原因"
+description_zh: "交互响应迟缓会让用户觉得页面卡顿，甚至完全无法使用。"
 tags: [performance, guide, modern-web]
 category: performance
 ---

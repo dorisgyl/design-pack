@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/user-experience/expose-canvas-content-to-browser-
 type: spec
 title: "Expose canvas content to browser features"
 description: "Regular <canvas> content is not exposed to browser features such as screen readers, indexing, translation tools, accessibility assistive tools, find-in-page, print, etc."
+title_zh: "将 canvas 内容暴露给浏览器功能"
+description_zh: "常规的 <canvas> 内容不会暴露给屏幕阅读器、索引、翻译工具、accessibility 辅助工具、find-in-page、打印等浏览器功能。"
 tags: [user-experience, guide, modern-web]
 category: user-experience
 ---

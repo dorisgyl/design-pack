@@ -3,6 +3,8 @@ slug: packs/design-pack/guides/forms/rich-media-picker
 type: spec
 title: "Rich Media Picker (Customizable Select)"
 description: "The native <select> element was historically difficult to style and could only contain plain text options."
+title_zh: "富媒体选择器（可定制的 Select）"
+description_zh: "原生 <select> 元素历来难以设置样式，且只能包含纯文本选项。"
 tags: [forms, guide, modern-web]
 category: forms
 ---
