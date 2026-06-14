@@ -2,110 +2,75 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-一个 **NevoFlux 浏览器** 的 pack:一组存放在 GBrain 里的现代设计 **要求 / 规范 / 模板**,加上一个
-选择**看板**和两个 skill——从这些设计依据检索,并据此生成成品 UI(HTML)。
+**面向 [NevoFlux 浏览器](https://github.com/dorisgyl/nevoflux) 的设计知识库与 UI 生成器。**
+它把一大套精选的现代设计要求、规范、模板和 Web 平台指南装进浏览器的 GBrain 知识库,
+然后让你挑选所需内容、由 agent 据此生成成品、贴合品牌的界面——既可以在可视化看板里操作,
+也可以直接在侧边栏对话里用。
 
-灵感来自 [GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)
-的「语义检索 + Guide Fetch」思路——但检索用 GBrain 自带的 `query`(向量 + 关键词混合),不自带本地索引。
+## 你能得到什么
 
-## 工作原理
+- **浏览器里一个可检索的设计库**,全部存于 GBrain,中英文都能搜:
+  - **~80 个开箱即用的模板**——落地页、定价、Hero 与特性区块、演示/幻灯、社交卡片、仪表盘、
+    海报、简历、文档、移动端界面、视频帧…… 每个都带真实预览图。
+  - **137 篇现代 Web 平台指南**——无障碍、CSS、表单、性能、用户体验、View Transitions、
+    锚点定位、通行密钥…… 给出具体模式、坑点与回退方案。
+  - **13 套设计品味系统**——野兽派、极简、柔和/高端、品牌套件、反平庸的 "tasteskill",
+    以及「图像转代码」「图像生成」等工作流。
+  - **基线要求与规范**——无障碍(WCAG 2.2 AA)、响应式,以及一套配色 / 字阶 / 间距设计系统。
+- **一个选择看板**(在 *My Canvas* 中打开):按类型与分类浏览全部内容,用粘性侧栏导航一键跳到任意分组,
+  用类型 chips 或文字搜索过滤,切换 **EN / 中文**,并预览每个模板的真实缩略图。
+- **一键生成**:勾选想用的要求 / 规范 / 模板 / 指南,写明要做什么,agent 就从 GBrain 取回完整设计依据,
+  **生成一个新的 Canvas 应用(HTML)**,并遵循这些依据。
+- **侧边栏里也能用**——直接对话即可(「用 design-pack 的配色规范做个 SaaS Hero」),同一个 skill 负责检索与生成。
+- **完全可扩展**——把你自己的要求、规范或模板导入 GBrain,看板会自行重建。
 
-```
-看板(预生成,纯展示)                      agent 侧
-┌─────────────────────────────┐          ┌──────────────────────────────────────┐
-│ 勾选 要求/规范/模板 + 写 prompt │  agent.  │ design-build:                          │
-│  → [design-pack:build] 消息   │  chat()  │  get_page(选中 slug) + query(语义扩展) │
-└─────────────────────────────┘ ───────▶ │  → create_artifact() 新画布            │
-                                          └──────────────────────────────────────┘
-```
+## 你能实现什么目标
 
-- **Canvas 不能直接调 GBrain**(MCP 工具不可直连)→ 检索与生成都在 agent 侧。
-- **iframe 屏蔽外链** → 看板完全自包含,样例图 base64 内联。
-- 内容存于 GBrain `packs/design-pack/...`,可通过 `design-curate` 持续扩展。
+更快地交付**现代、无障碍、响应式、不显模板化**的界面:
 
-## 目录结构
+- 把一句话的需求,变成已经遵循设计系统的真实落地页、定价页、演示、社交卡片或仪表盘。
+- 生成的 UI 使用**当下的 Web 平台技术**(来自指南)而非过时写法,无障碍与响应式开箱即有。
+- 一致地套用某个**美学方向**(极简、野兽派、高端……)。
+- 维护一份不断增长、**中英双语、可团队共享**的设计记忆,agent 随时可取。
 
-```
-pack.toml                                  # 清单(namespace=packs/design-pack)
-components/
-  skills/
-    design-build/SKILL.md                  # 检索 + 生成(看板 & 侧边栏共用)
-    design-curate/SKILL.md                 # 导入/扩展 + 重建看板
-  seed/{requirements,specs,templates}/*.md # 原创设计内容(only-if-absent 种入 GBrain)
-  seed/templates/<id>.md + <id>-zh.md      # 从 html-anything 导入(中英双版),内容改写为 NevoFlux
-  seed/specs/{taste,workflow}/*.md         # 从 taste-skill 导入:9 个品味 + 4 个工作流 skill
-  seed/guides/<category>/*.md              # 从 modern-web-guidance 导入的 137 篇指南
-  canvas-app/dist/index.html               # 预构建看板(由 build 脚本生成)
-scripts/
-  frontmatter.mjs                          # 极简 frontmatter 解析(无依赖)
-  import-guides.mjs                        # 一次性:modern-web-guidance/guides → seed/guides/**
-  import-taste.mjs                         # 一次性:taste-skill/skills → seed/specs/**
-  sync-pack-seeds.mjs                      # 由 seed/** 重生成 pack.toml 的 [[components.seed]] 列表
-  build-dashboard.mjs                      # seeds → dist/index.html(curate 重建步骤的参考实现)
-  validate-pack.mjs                        # 不变量校验(本地校验门)
-```
+## 两个 skill
 
-## 内容来源
+- **`design-build`**——检索 + 生成。取回选中页面(`get_page`)并语义扩展(`query`),再生成一个新的
+  Canvas artifact。看板与侧边栏共用。
+- **`design-curate`**——导入 / 扩展。把新的要求 / 规范 / 模板写入 `packs/design-pack/…`(并上传样例图),
+  然后重建看板。
 
-- **原创设计内容(8 篇)**:无障碍/响应式基线、配色/字阶/间距规范、3 个 UI 模板。
-- **导入指南(137 篇)**:从 [modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)
-  的 `guides/` 导入,归为 `type: spec`,按分类(accessibility / css / forms / performance /
-  user-experience / …)放在 `packs/design-pack/guides/<分类>/`。看板里按「指南 · <分类>」分组,支持筛选。
-  重新导入:`node scripts/import-guides.mjs [guides 目录]`。
-- **导入 taste-skill(13 个)**:从 `taste-skill/skills` 导入,均 `type: spec`,分两类:
-  - `collection: taste`(9 个 → `specs/taste/`):brandkit、brutalist、minimalist、soft、taste(+v1)、
-    redesign、stitch、gpt-taste —— 美学/品味系统。看板组「设计品味 (taste)」。
-  - `collection: workflow`(4 个 → `specs/workflow/`):output(防截断)、image-to-code、
-    imagegen-web、imagegen-mobile —— 产出/资产生成流程。看板组「工作流 / 产出 (workflow)」。
-  - 重新导入:`node scripts/import-taste.mjs [skills 目录]`(分类映射在脚本的 `WORKFLOW` 集合里)。
-- **导入模板(来自 html-anything)**:每个 `SKILL.md` + `example.html` 转成 `type: template` 页,放在
-  `packs/design-pack/templates/`,**中英两版**(`<id>` 英 + `<id>-zh` 中)便于 GBrain 双语检索。
-  example.html **格式样式保持不变**,只把可见内容改写为 NevoFlux 相关;`example.md`(样例领域数据)跳过。
-  看板按「模板 · <分类>」分组,zh 页仅供检索(每模板一张卡)。通过多 agent workflow 改写。
+## 安装
 
-## 内容模型
-
-每个要求/规范/模板 = 一个 GBrain 页(markdown + frontmatter):
-`slug` · `type`(requirement|spec|template) · `title` · `description` · `tags` ·
-`sample_image`(仅模板)。看板只用轻量目录(标题/描述/缩略图);正文留在 GBrain,由 agent 检索。
-
-## 开发
+在运行 NevoFlux 守护进程的机器上:
 
 ```bash
-node scripts/import-guides.mjs      # (可选)重新导入 modern-web-guidance 指南
-node scripts/import-taste.mjs       # (可选)重新导入 taste-skill 品味 skill
-node scripts/sync-pack-seeds.mjs    # 增删 seed 后,同步 pack.toml 的 seed 列表
-node scripts/build-dashboard.mjs    # 改了 seed 后重建看板
-node scripts/validate-pack.mjs      # 校验不变量(Seed⊆Protected、frontmatter、看板自包含…)
-```
-
-## 安装(在装有 NevoFlux 守护进程的机器上)
-
-```bash
-nevoflux pack validate pack.toml    # 平台级校验(本仓库环境未装 CLI)
+nevoflux pack validate pack.toml
 nevoflux pack install pack.toml
 ```
 
-沙箱试跑:指定 `XDG_CONFIG_HOME` 与 `NEVOFLUX_DATA_DIR` 到临时目录,做 validate → install → uninstall。
+## 开发 / 扩展
 
-## 工具名核实(已对照源码)
+```bash
+node scripts/import-guides.mjs      # (重新)导入 modern-web-guidance 指南
+node scripts/import-taste.mjs       # (重新)导入 taste-skill 技能
+node scripts/render-thumbs.mjs      # 渲染模板预览缩略图
+node scripts/sync-pack-seeds.mjs    # 由 seed/** 同步 pack.toml 的 seed 列表
+node scripts/build-dashboard.mjs    # 重建看板(dist/index.html)
+node scripts/validate-pack.mjs      # 不变量校验
+```
 
-对照 `nevoflux-agent/crates/daemon/src/resources/gbrain-tools.json` 与 `nevoflux` 自带 skill
-(`brain-recall` / `brain-capture` / `app`)确认:
+内部细节(内容模型、agent 侧检索流程、平台说明)见
+`docs/superpowers/specs/2026-06-13-design-pack-design.md`。
 
-- **GBrain 工具名正确**:`get_page` / `put_page` / `query` / `search` / `list_pages` /
-  `file_upload`(参数 `path`、`page_slug`)/ `file_url`(参数 `storage_path`)。
-- **访问方式**:skill 不直接在 `allowed_tools` 里列这些工具名,而是声明 `tool_search` +
-  `tool_call_dynamic`(动态发现并调用)——本 pack 两个 skill 已照此写。
-- **frontmatter 键是 `allowed_tools`(下划线)**,不是 pack 文档示例里的 `allowed-tools`。
-- **Canvas 工具**:`create_artifact`(新建,ambient,`app` skill 的 `allowed_tools: []` 即用它)、
-  `browser_read_artifact` / `browser_edit_artifact`(原地读改已存在的 artifact)。
+## 致谢
 
-## 待验证(随平台落地确认)
+design-pack 站在三个优秀工程的肩膀上,主要是把它们的成果做成了 NevoFlux 原生的适配与再托管:
 
-1. `namespace` 是否允许带斜杠(`packs/design-pack`)—— 以 `nevoflux pack validate` 为准。
-2. **重建看板原地替换** `design-pack-board`:用 `browser_read_artifact` + `browser_edit_artifact`
-   就地改,或 `create_artifact` 重建(保持 `artifact_id`)。落地时确认哪种最稳。见 `design-curate/SKILL.md`。
+- **[GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)**——
+  「语义检索 + Guide Fetch」的思路,以及构成本 pack 技术骨干的 **137 篇 Web 平台指南**。
+- **taste-skill**——设计品味 / 反平庸的前端技能(野兽派、极简、柔和、tasteskill、品牌套件、图像生成……),
+  为本 pack 注入了**美学方向**。
+- **html-anything**——成为本 pack 双语模板库的 **~80 个模板技能**(`SKILL.md` + `example.html`)。
 
-参考:`docs/superpowers/specs/2026-06-13-design-pack-design.md`(设计)、
-`docs/superpowers/plans/2026-06-13-design-pack.md`(实现计划)。
+衷心感谢这些工程的作者。design-pack 通过 GBrain 检索并为 NevoFlux 本地化它们的内容,所有原创归功于这些项目。
