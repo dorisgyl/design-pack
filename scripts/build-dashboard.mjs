@@ -1,19 +1,19 @@
 // build-dashboard.mjs — generate the pre-built design-pack selection dashboard.
 //
-// Recursively reads the seed pages, extracts a lightweight catalog from their
-// frontmatter, generates an SVG thumbnail per template, and emits a single
-// self-contained components/canvas-app/dist/index.html (no external URLs).
-// Guides (type=spec with a category) are grouped under "指南 · <category>".
+// Recursively reads the seed pages, extracts a lightweight bilingual catalog,
+// inlines a per-template PNG thumbnail (rendered by render-thumbs.mjs; falls back
+// to a generated SVG placeholder), and emits a single self-contained
+// components/canvas-app/dist/index.html. The dashboard has an EN / 中文 toggle.
 //
-// This is also the REFERENCE IMPLEMENTATION of design-curate's rebuild step: at
-// runtime the agent does the same, but pulls real template images via file_url.
-import { readdirSync, mkdirSync, writeFileSync, existsSync, statSync } from 'node:fs';
+// Also the reference implementation of design-curate's rebuild step.
+import { readdirSync, mkdirSync, writeFileSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, resolve, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readPage } from './frontmatter.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SEED_DIR = join(ROOT, 'components', 'seed');
+const THUMBS = join(ROOT, 'components', 'canvas-app', 'thumbs');
 const OUT_DIR = join(ROOT, 'components', 'canvas-app', 'dist');
 const OUT_FILE = join(OUT_DIR, 'index.html');
 
@@ -31,7 +31,8 @@ function walk(dir) {
   return out;
 }
 
-// Deterministic SVG thumbnail: tokened gradient card with the template title.
+// Fallback SVG thumbnail (tokened gradient card with the title) for templates
+// that have no rendered PNG (e.g. the original primitives with no example.html).
 function svgThumb(title) {
   const t = xmlEscape(title);
   const svg =
@@ -42,12 +43,8 @@ function svgThumb(title) {
     '</linearGradient></defs>' +
     '<rect width="480" height="300" fill="#f7f8fa"/>' +
     '<rect width="480" height="300" fill="url(#g)"/>' +
-    '<rect x="28" y="28" width="220" height="14" rx="7" fill="#3b5bff" opacity="0.55"/>' +
     '<rect x="28" y="60" width="320" height="26" rx="8" fill="#0b0d10" opacity="0.82"/>' +
     '<rect x="28" y="100" width="300" height="12" rx="6" fill="#5b6470" opacity="0.5"/>' +
-    '<rect x="28" y="120" width="240" height="12" rx="6" fill="#5b6470" opacity="0.5"/>' +
-    '<rect x="28" y="168" width="120" height="40" rx="10" fill="#3b5bff"/>' +
-    '<rect x="160" y="168" width="110" height="40" rx="10" fill="none" stroke="#e3e6eb" stroke-width="2"/>' +
     '<text x="28" y="278" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="#0b0d10">' +
     t +
     '</text>' +
@@ -55,26 +52,92 @@ function svgThumb(title) {
   return 'data:image/svg+xml;base64,' + Buffer.from(svg, 'utf8').toString('base64');
 }
 
+function templateThumb(id, title) {
+  const png = join(THUMBS, id + '.png');
+  if (existsSync(png) && statSync(png).size > 0) {
+    return 'data:image/png;base64,' + readFileSync(png).toString('base64');
+  }
+  return svgThumb(title);
+}
+
 function buildCatalog() {
-  const items = [];
+  const pages = [];
   for (const file of walk(SEED_DIR).sort()) {
     const { data } = readPage(file);
-    if (!data.slug || !data.type) continue;
-    if (data.lang === 'zh') continue; // zh pages are retrieval-only — one dashboard card per template
+    if (data.slug && data.type) pages.push(data);
+  }
+  // Index zh siblings by their base (en) slug so we can attach the zh text.
+  const zhBySlug = {};
+  for (const d of pages) {
+    if (d.lang === 'zh') zhBySlug[d.slug.replace(/-zh$/, '')] = d;
+  }
+  const items = [];
+  for (const d of pages) {
+    if (d.lang === 'zh') continue; // zh pages are retrieval-only; merged into the en card
+    const zh = zhBySlug[d.slug];
+    const id = d.slug.split('/').pop();
     const item = {
-      slug: data.slug,
-      type: data.type,
-      title: data.title || basename(file, '.md'),
-      title_zh: data.title_zh || '',
-      description: data.description || '',
-      category: data.category || '',
-      collection: data.collection || '',
+      slug: d.slug,
+      type: d.type,
+      category: d.category || '',
+      collection: d.collection || '',
+      title: d.title || id,
+      title_zh: d.title_zh || (zh && zh.title) || '',
+      desc: d.description || '',
+      desc_zh: (zh && zh.description) || '',
     };
-    if (data.type === 'template') item.thumbnail = svgThumb(item.title);
+    if (d.type === 'template') item.thumbnail = templateThumb(id, item.title);
     items.push(item);
   }
   return items;
 }
+
+const STR = {
+  zh: {
+    h1: '设计依据选择',
+    lead: '勾选要应用的要求 / 规范 / 模板 / 指南,在下方写明要生成的内容,发送给 agent。agent 会据此检索 GBrain 并生成一个新画布。',
+    filter: '筛选(标题 / 描述 / 分类)…',
+    prompt: '例如:做一个 SaaS 数据分析产品的落地页,深色主题,强调“十分钟上手”。',
+    send: '生成 →',
+    ready: '就绪',
+    sending: '发送中…',
+    done: '完成 ✓ 生成的设计已作为新画布打开。',
+    noSel: '未选(将由 agent 语义检索)',
+    selN: ' 项已选',
+    matchN: ' 项匹配',
+    needPrompt: '请先在下方输入要生成的内容。',
+    noSDK: '当前不在 NevoFlux 环境(NevofluxSDK 不可用)——可预览界面,但无法发送。',
+    noSDKSend: '无 NevofluxSDK,无法发送(请在 NevoFlux 中打开本看板)。',
+    toggle: 'EN',
+    groups: {
+      '设计要求': '设计要求', '设计规范': '设计规范', '设计品味 (taste)': '设计品味 (taste)',
+      '工作流 / 产出 (workflow)': '工作流 / 产出 (workflow)', '模板': '模板',
+    },
+    tmplPrefix: '模板 · ', guidePrefix: '指南 · ',
+  },
+  en: {
+    h1: 'Pick design bases',
+    lead: 'Select the requirements / specs / templates / guides to apply, describe what to generate below, and send it to the agent. It retrieves from GBrain and generates a new canvas.',
+    filter: 'Filter (title / description / category)…',
+    prompt: 'e.g. a landing page for a SaaS analytics product, dark theme, emphasize “ten-minute onboarding”.',
+    send: 'Generate →',
+    ready: 'Ready',
+    sending: 'Sending…',
+    done: 'Done ✓ the generated design opened as a new canvas.',
+    noSel: 'Nothing selected (the agent will retrieve semantically)',
+    selN: ' selected',
+    matchN: ' matches',
+    needPrompt: 'Please enter what to generate below first.',
+    noSDK: 'Not running in NevoFlux (NevofluxSDK unavailable) — preview only, cannot send.',
+    noSDKSend: 'No NevofluxSDK; cannot send (open this board inside NevoFlux).',
+    toggle: '中文',
+    groups: {
+      '设计要求': 'Requirements', '设计规范': 'Specs', '设计品味 (taste)': 'Design taste',
+      '工作流 / 产出 (workflow)': 'Workflow / output', '模板': 'Templates',
+    },
+    tmplPrefix: 'Templates · ', guidePrefix: 'Guides · ',
+  },
+};
 
 const TOKENS_CSS = `
   :root{
@@ -91,9 +154,10 @@ const TOKENS_CSS = `
       --text-muted:#9aa4b2; --border:#2a2f37; --primary:#6f86ff; --primary-contrast:#0b0d10; }
   }`;
 
-// The dashboard's own runtime script. NOTE: no template literals / no `${` here,
-// so it nests cleanly inside this builder's template literal below.
+// Dashboard runtime script. NOTE: no template literals / no `${` here so it nests
+// cleanly inside the builder's template literal below.
 const APP_JS = `
+  var lang = 'zh';
   var statusEl = document.getElementById('status');
   var streamEl = document.getElementById('stream');
   var sendBtn = document.getElementById('send');
@@ -101,8 +165,11 @@ const APP_JS = `
   var errEl = document.getElementById('err');
   var filterEl = document.getElementById('filter');
   var hasSDK = typeof window.NevofluxSDK !== 'undefined' && NevofluxSDK.agent;
+  var statusIsReady = true;
 
-  function groupLabelOf(it){
+  function s(){ return STR[lang]; }
+
+  function groupKeyOf(it){
     if (it.type === 'requirement') return '设计要求';
     if (it.type === 'template') return it.category ? '模板 · ' + it.category : '模板';
     if (it.collection === 'taste') return '设计品味 (taste)';
@@ -110,39 +177,49 @@ const APP_JS = `
     if (it.type === 'spec' && it.category) return '指南 · ' + it.category;
     return '设计规范';
   }
+  function localizeGroup(key){
+    var t = s();
+    if (t.groups[key]) return t.groups[key];
+    if (key.indexOf('模板 · ') === 0) return t.tmplPrefix + key.slice('模板 · '.length);
+    if (key.indexOf('指南 · ') === 0) return t.guidePrefix + key.slice('指南 · '.length);
+    return key;
+  }
+  function titleOf(it){ return lang === 'en' ? it.title : (it.title_zh || it.title); }
+  function subtitleOf(it){ var o = lang === 'en' ? (it.title_zh || '') : it.title; return o && o !== titleOf(it) ? o : ''; }
+  function descOf(it){ return lang === 'en' ? it.desc : (it.desc_zh || it.desc); }
 
   function renderCatalog(){
     var app = document.getElementById('app');
+    app.textContent = '';
     var byGroup = {};
-    CATALOG.forEach(function(it){
-      var g = groupLabelOf(it);
-      (byGroup[g] = byGroup[g] || []).push(it);
-    });
+    CATALOG.forEach(function(it){ var k = groupKeyOf(it); (byGroup[k] = byGroup[k] || []).push(it); });
     var tmplCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('模板 · ') === 0; }).sort();
     var guideCats = Object.keys(byGroup).filter(function(g){ return g.indexOf('指南 · ') === 0; }).sort();
     var order = ['设计要求', '设计规范', '设计品味 (taste)', '工作流 / 产出 (workflow)', '模板'].concat(tmplCats, guideCats);
-    order.forEach(function(g){
-      var items = byGroup[g];
+    order.forEach(function(key){
+      var items = byGroup[key];
       if (!items || !items.length) return;
       var sec = document.createElement('section'); sec.className = 'group-sec';
       var h = document.createElement('div'); h.className = 'group';
-      h.textContent = g + ' (' + items.length + ')';
+      h.textContent = localizeGroup(key) + ' (' + items.length + ')';
       sec.appendChild(h);
       var grid = document.createElement('div'); grid.className = 'cards';
       items.forEach(function(it){
         var card = document.createElement('label'); card.className = 'card';
-        card.setAttribute('data-search', (it.title + ' ' + (it.title_zh || '') + ' ' + it.description + ' ' + (it.category || '')).toLowerCase());
+        card.setAttribute('data-search', (it.title + ' ' + (it.title_zh || '') + ' ' + it.desc + ' ' + (it.desc_zh || '') + ' ' + (it.category || '')).toLowerCase());
         if (it.thumbnail){
           var img = document.createElement('img'); img.className = 'thumb'; img.src = it.thumbnail;
-          img.alt = it.title + ' 样例'; img.loading = 'lazy'; card.appendChild(img);
+          img.alt = titleOf(it); img.loading = 'lazy'; card.appendChild(img);
         }
         var row = document.createElement('div'); row.className = 'card__row';
         var cb = document.createElement('input'); cb.type = 'checkbox'; cb.setAttribute('data-slug', it.slug);
+        if (window._dpSel && window._dpSel[it.slug]) cb.checked = true;
         var box = document.createElement('div');
-        var t = document.createElement('div'); t.className = 'card__title'; t.textContent = it.title;
+        var t = document.createElement('div'); t.className = 'card__title'; t.textContent = titleOf(it);
         box.appendChild(t);
-        if (it.title_zh) { var tz = document.createElement('div'); tz.className = 'card__title-zh'; tz.textContent = it.title_zh; box.appendChild(tz); }
-        var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = it.description || ''; d.title = it.description || '';
+        var sub = subtitleOf(it);
+        if (sub){ var tz = document.createElement('div'); tz.className = 'card__title-zh'; tz.textContent = sub; box.appendChild(tz); }
+        var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = descOf(it) || ''; d.title = descOf(it) || '';
         box.appendChild(d);
         row.appendChild(cb); row.appendChild(box);
         card.appendChild(row);
@@ -151,6 +228,7 @@ const APP_JS = `
       sec.appendChild(grid);
       app.appendChild(sec);
     });
+    applyFilter();
   }
 
   function selectedSlugs(){
@@ -161,24 +239,15 @@ const APP_JS = `
   }
   function setSelectedCount(){
     var n = selectedSlugs().length;
-    document.getElementById('selcount').textContent = n ? (n + ' 项已选') : '未选(将由 agent 语义检索)';
+    document.getElementById('selcount').textContent = n ? (n + s().selN) : s().noSel;
   }
   function buildMessage(slugs, prompt){
     var lines = ['[design-pack:build]', 'selected:'];
     for (var i=0;i<slugs.length;i++) lines.push('- ' + slugs[i]);
-    lines.push('prompt:');
-    lines.push(prompt);
+    lines.push('prompt:'); lines.push(prompt);
     return lines.join('\\n');
   }
-
-  renderCatalog();
-
-  document.addEventListener('change', function(e){
-    if (e.target && e.target.matches('input[type=checkbox][data-slug]')) setSelectedCount();
-  });
-  setSelectedCount();
-
-  filterEl.addEventListener('input', function(){
+  function applyFilter(){
     var q = filterEl.value.trim().toLowerCase();
     var secs = document.querySelectorAll('.group-sec');
     var total = 0;
@@ -192,38 +261,64 @@ const APP_JS = `
       sec.style.display = vis ? '' : 'none';
       total += vis;
     });
-    document.getElementById('viscount').textContent = q ? (total + ' 项匹配') : '';
+    document.getElementById('viscount').textContent = q ? (total + s().matchN) : '';
+  }
+
+  function applyChrome(){
+    var t = s();
+    document.getElementById('t-h1').textContent = t.h1;
+    document.getElementById('t-lead').textContent = t.lead;
+    filterEl.placeholder = t.filter;
+    promptEl.placeholder = t.prompt;
+    sendBtn.textContent = t.send;
+    document.getElementById('lang-toggle').textContent = t.toggle;
+    document.documentElement.lang = lang;
+    if (statusIsReady){ statusEl.textContent = hasSDK ? t.ready : t.noSDK; }
+    setSelectedCount();
+  }
+
+  // Preserve checkbox selection across language re-render.
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.matches('input[type=checkbox][data-slug]')){
+      window._dpSel = window._dpSel || {};
+      window._dpSel[e.target.getAttribute('data-slug')] = e.target.checked;
+      setSelectedCount();
+    }
   });
 
-  if (!hasSDK){
-    statusEl.textContent = '当前不在 NevoFlux 环境(NevofluxSDK 不可用)——可预览界面,但无法发送。';
-    statusEl.classList.add('warn');
-  }
+  function setLang(l){ lang = l; applyChrome(); renderCatalog(); }
+
+  document.getElementById('lang-toggle').addEventListener('click', function(){ setLang(lang === 'zh' ? 'en' : 'zh'); });
+  filterEl.addEventListener('input', applyFilter);
+
+  if (!hasSDK){ statusEl.classList.add('warn'); }
 
   sendBtn.addEventListener('click', async function(){
     errEl.textContent = '';
     var prompt = promptEl.value.trim();
-    if (!prompt){ errEl.textContent = '请先在下方输入要生成的内容。'; promptEl.focus(); return; }
-    if (!hasSDK){ errEl.textContent = '无 NevofluxSDK,无法发送(请在 NevoFlux 中打开本看板)。'; return; }
-
+    if (!prompt){ errEl.textContent = s().needPrompt; promptEl.focus(); return; }
+    if (!hasSDK){ errEl.textContent = s().noSDKSend; return; }
     var slugs = selectedSlugs();
     var msg = buildMessage(slugs, prompt);
     sendBtn.disabled = true; streamEl.textContent = ''; statusEl.classList.remove('warn');
-    statusEl.textContent = '发送中…';
+    statusIsReady = false; statusEl.textContent = s().sending;
     try{
       var result = await NevofluxSDK.agent.chat(msg, {
-        onState: function(s){ statusEl.textContent = '状态: ' + (s && s.status ? s.status : ''); },
+        onState: function(st){ statusEl.textContent = (st && st.status ? st.status : ''); },
         onStream: function(c){ if (c && c.delta){ streamEl.textContent += c.delta; streamEl.scrollTop = streamEl.scrollHeight; } }
       });
-      statusEl.textContent = '完成 ✓ 生成的设计已作为新画布打开。';
+      statusEl.textContent = s().done;
       if (result && result.text && !streamEl.textContent) streamEl.textContent = result.text;
     }catch(err){
       statusEl.classList.add('warn');
-      statusEl.textContent = '出错: ' + (err && err.message ? err.message : err);
+      statusEl.textContent = (lang === 'en' ? 'Error: ' : '出错: ') + (err && err.message ? err.message : err);
     }finally{
-      sendBtn.disabled = false;
+      sendBtn.disabled = false; statusIsReady = true;
     }
   });
+
+  applyChrome();
+  renderCatalog();
 `;
 
 function renderHtml(catalog) {
@@ -232,15 +327,20 @@ function renderHtml(catalog) {
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>design-pack · 设计依据选择</title>
+<title>design-pack</title>
 <style>
 ${TOKENS_CSS}
   *{ box-sizing:border-box; }
-  body{ margin:0; font-family:var(--font-sans); background:var(--bg); color:var(--text);
-    padding:var(--space-6); }
+  body{ margin:0; font-family:var(--font-sans); background:var(--bg); color:var(--text); padding:var(--space-6); }
   header.top{ max-width:1100px; margin:0 auto var(--space-4); }
-  h1{ font-size:1.563rem; margin:0 0 var(--space-2); }
-  .lead{ color:var(--text-muted); margin:0 0 var(--space-4); line-height:1.5; }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; gap:var(--space-4); }
+  h1{ font-size:1.563rem; margin:0; }
+  .lang{ flex:none; min-height:34px; padding:0 var(--space-4); border:1px solid var(--border);
+    border-radius:var(--radius-full); background:var(--surface); color:var(--text); font:inherit;
+    font-weight:600; cursor:pointer; }
+  .lang:hover{ border-color:var(--primary); }
+  .lang:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
+  .lead{ color:var(--text-muted); margin:var(--space-2) 0 var(--space-4); line-height:1.5; }
   .filterbar{ display:flex; gap:var(--space-3); align-items:center; }
   #filter{ flex:1; padding:var(--space-3); border:1px solid var(--border); border-radius:var(--radius-md);
     background:var(--surface); color:var(--text); font:inherit; }
@@ -260,11 +360,10 @@ ${TOKENS_CSS}
   .card__title-zh{ color:var(--text-muted); font-size:.8rem; line-height:1.3; margin-top:1px; }
   .card__desc{ color:var(--text-muted); font-size:.875rem; line-height:1.5; margin:0;
     display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
-  .thumb{ width:100%; aspect-ratio:8/5; object-fit:cover; border-radius:var(--radius-md);
+  .thumb{ width:100%; aspect-ratio:8/5; object-fit:cover; object-position:top; border-radius:var(--radius-md);
     border:1px solid var(--border); background:var(--surface-2); }
-  .composer{ position:sticky; bottom:0; margin-top:var(--space-8);
-    background:var(--bg); border-top:1px solid var(--border);
-    padding:var(--space-4) 0 var(--space-2); }
+  .composer{ position:sticky; bottom:0; margin-top:var(--space-8); background:var(--bg);
+    border-top:1px solid var(--border); padding:var(--space-4) 0 var(--space-2); }
   .composer .meta{ display:flex; justify-content:space-between; align-items:center;
     color:var(--text-muted); font-size:.8rem; margin-bottom:var(--space-2); }
   textarea{ width:100%; min-height:84px; resize:vertical; padding:var(--space-3);
@@ -285,20 +384,23 @@ ${TOKENS_CSS}
 </head>
 <body>
 <header class="top">
-  <h1>设计依据选择</h1>
-  <p class="lead">勾选要应用的要求 / 规范 / 模板 / 指南,在下方写明要生成的内容,发送给 agent。agent 会据此检索 GBrain 并生成一个新画布。</p>
+  <div class="topbar">
+    <h1 id="t-h1"></h1>
+    <button id="lang-toggle" class="lang" type="button"></button>
+  </div>
+  <p class="lead" id="t-lead"></p>
   <div class="filterbar">
-    <input id="filter" type="search" placeholder="筛选(标题/描述/分类)…" aria-label="筛选依据"/>
+    <input id="filter" type="search" aria-label="filter"/>
     <span id="viscount"></span>
   </div>
 </header>
 <main id="app"></main>
 
 <div class="composer">
-  <div class="meta"><span id="selcount"></span><span id="status">就绪</span></div>
-  <textarea id="prompt" placeholder="例如:做一个 SaaS 数据分析产品的落地页,深色主题,强调‘十分钟上手’。"></textarea>
+  <div class="meta"><span id="selcount"></span><span id="status"></span></div>
+  <textarea id="prompt"></textarea>
   <div class="bar">
-    <button id="send">生成 →</button>
+    <button id="send" type="button"></button>
     <span id="err"></span>
   </div>
   <pre id="stream"></pre>
@@ -306,6 +408,7 @@ ${TOKENS_CSS}
 
 <script>
   var CATALOG = ${JSON.stringify(catalog)};
+  var STR = ${JSON.stringify(STR)};
 ${APP_JS}
 </script>
 </body>
@@ -318,10 +421,11 @@ function main() {
   mkdirSync(OUT_DIR, { recursive: true });
   writeFileSync(OUT_FILE, renderHtml(catalog), 'utf8');
   const byType = catalog.reduce((a, c) => ((a[c.type] = (a[c.type] || 0) + 1), a), {});
+  const withThumb = catalog.filter((c) => c.thumbnail && c.thumbnail.startsWith('data:image/png')).length;
   console.log(
-    `built dashboard with ${catalog.length} catalog items (${Object.entries(byType)
+    `built dashboard: ${catalog.length} catalog items (${Object.entries(byType)
       .map(([k, v]) => `${v} ${k}`)
-      .join(', ')}) → components/canvas-app/dist/index.html`
+      .join(', ')}), ${withThumb} PNG thumbnails → components/canvas-app/dist/index.html`
   );
 }
 
