@@ -2,7 +2,11 @@
 slug: packs/design-pack/specs/typography-scale
 type: spec
 title: 字体排印 (Typography Scale)
+title_en: "Typography Scale"
+title_zh: "字体排印"
 description: 模块化字阶、行高、字重与可读性规则。
+description_en: "Modular type scale, line-height, weight, and readability rules."
+description_zh: "模块化字阶、行高、字重与可读性规则。"
 tags: [typography, type-scale, readability, spec]
 ---
 

@@ -2,7 +2,11 @@
 slug: packs/design-pack/specs/spacing-layout
 type: spec
 title: 间距与布局 (Spacing & Layout)
+title_en: "Spacing & Layout"
+title_zh: "间距与布局"
 description: 4/8pt 间距梯度、圆角、阴影与栅格系统。
+description_en: "4/8pt spacing scale, radius, shadow, and a 12-column grid."
+description_zh: "4/8pt 间距梯度、圆角、阴影与栅格系统。"
 tags: [spacing, layout, grid, elevation, spec]
 ---
 

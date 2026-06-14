@@ -2,7 +2,11 @@
 slug: packs/design-pack/specs/color-system
 type: spec
 title: 配色系统 (Color System)
+title_en: "Color System"
+title_zh: "配色系统"
 description: 语义化色彩 token、明暗双主题与对比规则。
+description_en: "Semantic color tokens, light/dark themes, and contrast rules."
+description_zh: "语义化色彩 token、明暗双主题与对比规则。"
 tags: [color, tokens, theming, dark-mode, spec]
 ---
 

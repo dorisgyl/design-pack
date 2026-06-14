@@ -53,9 +53,13 @@ function svgThumb(title) {
 }
 
 function templateThumb(id, title) {
-  const png = join(THUMBS, id + '.png');
-  if (existsSync(png) && statSync(png).size > 0) {
-    return 'data:image/png;base64,' + readFileSync(png).toString('base64');
+  // Prefer the optimized JPEG (keeps the inlined dashboard small); fall back to
+  // PNG, then to a generated SVG placeholder.
+  for (const [ext, mime] of [['jpg', 'image/jpeg'], ['png', 'image/png']]) {
+    const p = join(THUMBS, id + '.' + ext);
+    if (existsSync(p) && statSync(p).size > 0) {
+      return 'data:' + mime + ';base64,' + readFileSync(p).toString('base64');
+    }
   }
   return svgThumb(title);
 }
@@ -81,12 +85,15 @@ function buildCatalog() {
       type: d.type,
       category: d.category || '',
       collection: d.collection || '',
-      title: d.title || id,
+      // Explicit per-language fields win; otherwise fall back to the page title /
+      // the zh sibling. Single-language items (e.g. English-only guides) leave the
+      // other language empty and the dashboard falls back at display time.
+      title_en: d.title_en || d.title || id,
       title_zh: d.title_zh || (zh && zh.title) || '',
-      desc: d.description || '',
-      desc_zh: (zh && zh.description) || '',
+      desc_en: d.description_en || d.description || '',
+      desc_zh: d.description_zh || (zh && zh.description) || '',
     };
-    if (d.type === 'template') item.thumbnail = templateThumb(id, item.title);
+    if (d.type === 'template') item.thumbnail = templateThumb(id, item.title_en);
     items.push(item);
   }
   return items;
@@ -184,9 +191,9 @@ const APP_JS = `
     if (key.indexOf('指南 · ') === 0) return t.guidePrefix + key.slice('指南 · '.length);
     return key;
   }
-  function titleOf(it){ return lang === 'en' ? it.title : (it.title_zh || it.title); }
-  function subtitleOf(it){ var o = lang === 'en' ? (it.title_zh || '') : it.title; return o && o !== titleOf(it) ? o : ''; }
-  function descOf(it){ return lang === 'en' ? it.desc : (it.desc_zh || it.desc); }
+  function titleOf(it){ return lang === 'en' ? (it.title_en || it.title_zh) : (it.title_zh || it.title_en); }
+  function subtitleOf(it){ var o = lang === 'en' ? it.title_zh : it.title_en; var p = titleOf(it); return o && o !== p ? o : ''; }
+  function descOf(it){ return lang === 'en' ? (it.desc_en || it.desc_zh) : (it.desc_zh || it.desc_en); }
 
   function renderCatalog(){
     var app = document.getElementById('app');
@@ -206,7 +213,7 @@ const APP_JS = `
       var grid = document.createElement('div'); grid.className = 'cards';
       items.forEach(function(it){
         var card = document.createElement('label'); card.className = 'card';
-        card.setAttribute('data-search', (it.title + ' ' + (it.title_zh || '') + ' ' + it.desc + ' ' + (it.desc_zh || '') + ' ' + (it.category || '')).toLowerCase());
+        card.setAttribute('data-search', (it.title_en + ' ' + (it.title_zh || '') + ' ' + (it.desc_en || '') + ' ' + (it.desc_zh || '') + ' ' + (it.category || '')).toLowerCase());
         if (it.thumbnail){
           var img = document.createElement('img'); img.className = 'thumb'; img.src = it.thumbnail;
           img.alt = titleOf(it); img.loading = 'lazy'; card.appendChild(img);

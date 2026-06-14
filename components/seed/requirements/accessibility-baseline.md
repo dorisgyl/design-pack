@@ -2,7 +2,11 @@
 slug: packs/design-pack/requirements/accessibility-baseline
 type: requirement
 title: 无障碍基线 (Accessibility Baseline)
+title_en: "Accessibility Baseline"
+title_zh: "无障碍基线"
 description: 任何界面默认必须满足的 WCAG 2.2 AA 无障碍底线。
+description_en: "The default WCAG 2.2 AA accessibility floor every interface must meet."
+description_zh: "任何界面默认必须满足的 WCAG 2.2 AA 无障碍底线。"
 tags: [accessibility, a11y, wcag, requirement]
 ---
 

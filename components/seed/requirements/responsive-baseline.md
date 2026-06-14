@@ -2,7 +2,11 @@
 slug: packs/design-pack/requirements/responsive-baseline
 type: requirement
 title: 响应式基线 (Responsive Baseline)
+title_en: "Responsive Baseline"
+title_zh: "响应式基线"
 description: 移动优先、流式排版、跨断点可用的响应式底线。
+description_en: "Mobile-first, fluid, cross-breakpoint responsive baseline."
+description_zh: "移动优先、流式排版、跨断点可用的响应式底线。"
 tags: [responsive, mobile-first, layout, requirement]
 ---
 
