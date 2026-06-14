@@ -224,8 +224,8 @@ const APP_JS = `
         var box = document.createElement('div');
         var t = document.createElement('div'); t.className = 'card__title'; t.textContent = titleOf(it);
         box.appendChild(t);
-        var sub = subtitleOf(it);
-        if (sub){ var tz = document.createElement('div'); tz.className = 'card__title-zh'; tz.textContent = sub; box.appendChild(tz); }
+        // Monolingual per mode: no cross-language subtitle. EN shows English only,
+        // 中文 shows Chinese only (the other language stays searchable via data-search).
         var d = document.createElement('p'); d.className = 'card__desc'; d.textContent = descOf(it) || ''; d.title = descOf(it) || '';
         box.appendChild(d);
         row.appendChild(cb); row.appendChild(box);
