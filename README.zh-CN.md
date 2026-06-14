@@ -2,6 +2,8 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+![design-pack — a design library inside your browser: pick, prompt, ship the UI](assets/poster.png)
+
 **面向 [NevoFlux 浏览器](https://github.com/dorisgyl/nevoflux) 的设计知识库与 UI 生成器。**
 它把一大套精选的现代设计要求、规范、模板和 Web 平台指南装进浏览器的 GBrain 知识库,
 然后让你挑选所需内容、由 agent 据此生成成品、贴合品牌的界面——既可以在可视化看板里操作,

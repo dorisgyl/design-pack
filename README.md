@@ -2,6 +2,8 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+![design-pack — a design library inside your browser: pick, prompt, ship the UI](assets/poster.png)
+
 **A design knowledge base and UI generator for the [NevoFlux browser](https://github.com/dorisgyl/nevoflux).**
 It loads a large, curated library of modern design requirements, specs, templates, and web-platform
 guides into the browser's GBrain knowledge base — then lets you pick what you need and have the agent
