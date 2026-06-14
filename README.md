@@ -78,10 +78,11 @@ adaptation and re-hosting of their work:
 - **[GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance)** — the
   "semantic search + Guide Fetch" idea and the **137 web-platform guides** that form the technical
   backbone of this pack.
-- **taste-skill** — the design-taste / anti-slop frontend skills (brutalist, minimalist, soft, tasteskill,
-  brand-kit, image-gen…) that give the pack its **aesthetic direction**.
-- **html-anything** — the **~80 template skills** (`SKILL.md` + `example.html`) that became this pack's
-  bilingual template library.
+- **[taste-skill](https://github.com/Leonxlnx/taste-skill)** — the design-taste / anti-slop frontend
+  skills (brutalist, minimalist, soft, tasteskill, brand-kit, image-gen…) that give the pack its
+  **aesthetic direction**.
+- **[html-anything](https://github.com/nexu-io/html-anything)** — the **~80 template skills**
+  (`SKILL.md` + `example.html`) that became this pack's bilingual template library.
 
 Heartfelt thanks to their authors. design-pack retrieves their content through GBrain and localizes it
 for NevoFlux; all original credit belongs to these projects.
