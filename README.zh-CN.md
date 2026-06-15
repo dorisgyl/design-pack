@@ -76,12 +76,28 @@ agent 会从 GBrain 取回完整页面(你点名的 + 语义相关的指南),然
 
 ## 安装
 
+### 1. 先安装 NevoFlux 浏览器
+
+- 下载:**https://nevoflux.app**
+- 或取发布版:https://github.com/dorisgyl/nevoflux/releases
+
+### 2. 在浏览器里安装本 pack
+
+打开 **`nevoflux://settings` → Packs**,按仓库 URL
+(`https://github.com/dorisgyl/design-pack`)或本地 `pack.toml` 安装。平台会**从 manifest 事务化处理
+安装 / 更新 / 回滚**——无需手动跑脚本。
+
+<details>
+<summary>CLI 备选</summary>
+
 在运行 NevoFlux 守护进程的机器上:
 
 ```bash
 nevoflux pack validate pack.toml
 nevoflux pack install pack.toml
 ```
+
+</details>
 
 ## 开发 / 扩展
 

@@ -87,12 +87,28 @@ appear alongside the built-in ones — ready for `design-build` to use.
 
 ## Install
 
+### 1. Install the NevoFlux browser
+
+- Download: **https://nevoflux.app**
+- Or grab a release: https://github.com/dorisgyl/nevoflux/releases
+
+### 2. Install this pack in the browser
+
+Open **`nevoflux://settings` → Packs** and install by repo URL
+(`https://github.com/dorisgyl/design-pack`) or a local `pack.toml`. The platform installs, updates,
+and rolls back **transactionally from the manifest** — no scripts to run.
+
+<details>
+<summary>CLI alternative</summary>
+
 On a machine running the NevoFlux daemon:
 
 ```bash
 nevoflux pack validate pack.toml
 nevoflux pack install pack.toml
 ```
+
+</details>
 
 ## Develop / extend
 
