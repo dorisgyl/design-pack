@@ -1283,6 +1283,14 @@ from = "components/seed/templates/wireframe-sketch.md"
 [[components.seed]]
 slug = "packs/design-pack/templates/wireframe-sketch-zh"
 from = "components/seed/templates/wireframe-sketch-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/workflow-diagram"
+from = "components/seed/templates/workflow-diagram.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/workflow-diagram-zh"
+from = "components/seed/templates/workflow-diagram-zh.md"
 # <<< seeds (generated) <<<
 
 [components.dashboard]
