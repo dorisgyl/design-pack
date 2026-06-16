@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Method pipeline — block pipeline</title>
+<style>
+  :root{
+    --bg-color:#fafbff; --ink:#1f2937; --muted:#6b7280; --spoke:#64748b;
+    --slate:#5b6876; --blue:#2f6fdb; --amber:#d7973d; --navy:#23357a;
+    --shadow:0 3px 8px -2px rgba(31,41,55,.10),0 1px 3px -1px rgba(31,41,55,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;}
+  .diagram-wrapper{width:100%;max-width:1000px;overflow-x:auto;background:var(--bg-color);border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.05);border:1px solid #eef1f7;}
+  .diagram-canvas{position:relative;width:1000px;height:520px;margin:0 auto;}
+  .title-pill{position:absolute;top:30px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:13.5px;font-weight:600;padding:7px 20px;border-radius:999px;box-shadow:var(--shadow);z-index:30;}
+  .svg-layer{position:absolute;inset:0;width:100%;height:100%;z-index:6;pointer-events:none;}
+  .node{position:absolute;width:124px;height:92px;background:#fff;border:1.6px solid;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:var(--shadow);z-index:20;}
+  .node .ic{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .node .nm{font-size:13.5px;font-weight:600;color:var(--ink);}
+  .node .sb{font-size:10px;color:var(--muted);}
+  .n-slate{border-color:var(--slate);color:var(--slate);} .n-amber{border-color:var(--amber);color:var(--amber);}
+  .n-blue{border-color:var(--blue);color:var(--blue);background:#f5f8fd;}
+  .badge{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--slate);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:26;box-shadow:var(--shadow);}
+  .line-label{position:absolute;font-size:12px;color:#475569;font-weight:500;text-align:center;z-index:16;}
+  .mvar{font-family:Georgia,serif;font-style:italic;}
+  .tag{position:absolute;z-index:20;background:#fff;border:1.5px solid var(--amber);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--amber);box-shadow:var(--shadow);}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-data" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0"/><path d="M4 6v6a8 3 0 0 0 16 0v-6"/><path d="M4 12v6a8 3 0 0 0 16 0v-6"/></symbol>
+<symbol id="ic-prep" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 20l-3 1v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v1.5"/><path d="M17.001 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M19.001 15.5v1.5"/><path d="M19.001 21v1.5"/><path d="M22.032 17.25l-1.299 .75"/><path d="M17.27 20l-1.3 .75"/><path d="M15.97 17.25l1.3 .75"/><path d="M20.733 20l1.3 .75"/></symbol>
+<symbol id="ic-feat" viewBox="2 2 20 20"><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="18.5" cy="5.5" r=".5" fill="currentColor"/><circle cx="11.5" cy="11.5" r=".5" fill="currentColor"/><circle cx="7.5" cy="16.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="14.5" r=".5" fill="currentColor"/><path d="M3 3v16a2 2 0 0 0 2 2h16"/></symbol>
+<symbol id="ic-model" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8"/><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8"/><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5"/><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0"/><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5"/><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10"/></symbol>
+<symbol id="ic-eval" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M13.41 10.59l2.59 -2.59"/><path d="M7 12a5 5 0 0 1 5 -5"/></symbol>
+<symbol id="ic-report" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2"/><path d="M9 17l0 -5"/><path d="M12 17l0 -1"/><path d="M15 17l0 -3"/></symbol>
+</defs></svg>
+
+<div class="diagram-wrapper">
+  <div class="diagram-canvas">
+    <div class="title-pill">Method pipeline — raw data to evaluation</div>
+
+    <svg class="svg-layer" viewBox="0 0 1000 520">
+      <defs>
+        <g id="ah"><polygon points="-5,-4 5,0 -5,4" fill="var(--bg-color)" stroke="var(--spoke)" stroke-width="1.6" stroke-linejoin="round"/></g>
+        <g id="ah-a"><polygon points="-5,-4 5,0 -5,4" fill="var(--bg-color)" stroke="var(--amber)" stroke-width="1.6" stroke-linejoin="round"/></g>
+      </defs>
+      <g stroke="var(--spoke)" stroke-width="1.6" fill="none">
+        <path d="M177 246 L205 246"/><path d="M331 246 L359 246"/>
+        <path d="M485 246 L513 246"/><path d="M639 246 L667 246"/>
+      </g>
+      <path d="M793 246 L821 246" stroke="var(--amber)" stroke-width="1.6" fill="none"/>
+      <use href="#ah" transform="translate(207,246)"/><use href="#ah" transform="translate(361,246)"/>
+      <use href="#ah" transform="translate(515,246)"/><use href="#ah" transform="translate(669,246)"/>
+      <use href="#ah-a" transform="translate(823,246)"/>
+      <!-- feedback loop Evaluate -> Model -->
+      <path d="M731 292 L731 350 L577 350 L577 294" stroke="var(--amber)" stroke-width="1.6" fill="none" stroke-dasharray="5 5"/>
+      <use href="#ah-a" transform="translate(577,294) rotate(-90)"/>
+    </svg>
+
+    <!-- edge labels -->
+    <div class="line-label" style="left:168px;top:224px;width:48px;">raw</div>
+    <div class="line-label" style="left:322px;top:224px;width:48px;">clean</div>
+    <div class="line-label" style="left:476px;top:224px;width:48px;"><span class="mvar">X</span></div>
+    <div class="line-label" style="left:630px;top:224px;width:48px;"><span class="mvar">ŷ</span></div>
+    <div class="line-label" style="left:585px;top:356px;width:140px;color:var(--amber);">tune / update</div>
+
+    <!-- stage cards + numbered badges -->
+    <div class="node n-slate" style="left:53px;top:200px;"><svg class="ic"><use href="#ic-data"/></svg><span class="nm">Data</span><span class="sb">corpus</span></div>
+    <div class="badge" style="left:46px;top:190px;">1</div>
+    <div class="node n-slate" style="left:207px;top:200px;"><svg class="ic"><use href="#ic-prep"/></svg><span class="nm">Preprocess</span><span class="sb">clean · split</span></div>
+    <div class="badge" style="left:200px;top:190px;">2</div>
+    <div class="node n-slate" style="left:361px;top:200px;"><svg class="ic"><use href="#ic-feat"/></svg><span class="nm">Features</span><span class="sb">encode</span></div>
+    <div class="badge" style="left:354px;top:190px;">3</div>
+    <div class="node n-blue" style="left:515px;top:200px;"><svg class="ic"><use href="#ic-model"/></svg><span class="nm">Model</span><span class="sb">train · fit</span></div>
+    <div class="badge" style="left:508px;top:190px;background:var(--blue);">4</div>
+    <div class="node n-amber" style="left:669px;top:200px;"><svg class="ic"><use href="#ic-eval"/></svg><span class="nm">Evaluate</span><span class="sb">validate</span></div>
+    <div class="badge" style="left:662px;top:190px;background:var(--amber);">5</div>
+    <div class="node n-slate" style="left:823px;top:200px;"><svg class="ic"><use href="#ic-report"/></svg><span class="nm">Report</span><span class="sb">results</span></div>
+    <div class="badge" style="left:816px;top:190px;">6</div>
+
+    <!-- metric tag under Report -->
+    <div class="tag" style="left:823px;top:320px;">Acc · F1 · AUC</div>
+  </div>
+</div>
+</body>
+</html>

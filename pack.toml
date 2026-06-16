@@ -565,6 +565,30 @@ slug = "packs/design-pack/guides/webmcp/webmcp"
 from = "components/seed/guides/webmcp/webmcp.md"
 
 [[components.seed]]
+slug = "packs/design-pack/icons/agent-retrieval"
+from = "components/seed/icons/agent-retrieval.md"
+
+[[components.seed]]
+slug = "packs/design-pack/icons/data-input"
+from = "components/seed/icons/data-input.md"
+
+[[components.seed]]
+slug = "packs/design-pack/icons/eval-output"
+from = "components/seed/icons/eval-output.md"
+
+[[components.seed]]
+slug = "packs/design-pack/icons/graph-vision"
+from = "components/seed/icons/graph-vision.md"
+
+[[components.seed]]
+slug = "packs/design-pack/icons/model-blocks"
+from = "components/seed/icons/model-blocks.md"
+
+[[components.seed]]
+slug = "packs/design-pack/icons/system-flow"
+from = "components/seed/icons/system-flow.md"
+
+[[components.seed]]
 slug = "packs/design-pack/requirements/accessibility-baseline"
 from = "components/seed/requirements/accessibility-baseline.md"
 
@@ -575,6 +599,10 @@ from = "components/seed/requirements/responsive-baseline.md"
 [[components.seed]]
 slug = "packs/design-pack/specs/color-system"
 from = "components/seed/specs/color-system.md"
+
+[[components.seed]]
+slug = "packs/design-pack/specs/cs-paper-figure-method"
+from = "components/seed/specs/cs-paper-figure-method.md"
 
 [[components.seed]]
 slug = "packs/design-pack/specs/spacing-layout"
@@ -1091,6 +1119,70 @@ from = "components/seed/templates/motion-frames.md"
 [[components.seed]]
 slug = "packs/design-pack/templates/motion-frames-zh"
 from = "components/seed/templates/motion-frames-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-agent-workflow"
+from = "components/seed/templates/paper-agent-workflow.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-agent-workflow-zh"
+from = "components/seed/templates/paper-agent-workflow-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-architecture"
+from = "components/seed/templates/paper-architecture.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-architecture-zh"
+from = "components/seed/templates/paper-architecture-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-case-walkthrough"
+from = "components/seed/templates/paper-case-walkthrough.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-case-walkthrough-zh"
+from = "components/seed/templates/paper-case-walkthrough-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-evidence-board"
+from = "components/seed/templates/paper-evidence-board.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-evidence-board-zh"
+from = "components/seed/templates/paper-evidence-board-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-mechanism"
+from = "components/seed/templates/paper-mechanism.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-mechanism-zh"
+from = "components/seed/templates/paper-mechanism-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-method-framework"
+from = "components/seed/templates/paper-method-framework.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-method-framework-zh"
+from = "components/seed/templates/paper-method-framework-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-pipeline"
+from = "components/seed/templates/paper-pipeline.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-pipeline-zh"
+from = "components/seed/templates/paper-pipeline-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-system-dataflow"
+from = "components/seed/templates/paper-system-dataflow.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/paper-system-dataflow-zh"
+from = "components/seed/templates/paper-system-dataflow-zh.md"
 
 [[components.seed]]
 slug = "packs/design-pack/templates/pm-spec"

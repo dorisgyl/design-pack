@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent workflow — swimlanes</title>
+<style>
+  :root{
+    --bg-color:#fafbff; --ink:#1f2937; --muted:#6b7280; --spoke:#64748b;
+    --slate:#5b6876; --slate-t:#eef1f5;
+    --blue:#2f6fdb; --blue-t:#eef3fe;
+    --amber:#d7973d; --amber-t:#fbf3e6; --navy:#23357a;
+    --shadow:0 3px 8px -2px rgba(31,41,55,.10),0 1px 3px -1px rgba(31,41,55,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;}
+  .diagram-wrapper{width:100%;max-width:1000px;overflow-x:auto;background:var(--bg-color);border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.05);border:1px solid #eef1f7;}
+  .diagram-canvas{position:relative;width:1000px;height:520px;margin:0 auto;}
+  .title-pill{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:13.5px;font-weight:600;padding:7px 20px;border-radius:999px;box-shadow:var(--shadow);z-index:30;}
+  .svg-layer{position:absolute;inset:0;width:100%;height:100%;z-index:6;pointer-events:none;}
+  .lane{position:absolute;left:150px;width:820px;height:120px;border-radius:12px;z-index:2;}
+  .tab{position:absolute;left:30px;width:110px;height:120px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;z-index:4;box-shadow:var(--shadow);}
+  .tab b{font-size:15px;font-weight:700;} .tab span{font-size:10px;opacity:.85;}
+  .node{position:absolute;height:56px;background:#fff;border:1.6px solid;border-radius:10px;display:flex;align-items:center;gap:10px;padding:0 13px;box-shadow:var(--shadow);z-index:20;}
+  .ic{flex:0 0 24px;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .tx{display:flex;flex-direction:column;line-height:1.25;}
+  .ml{font-size:13px;font-weight:600;color:var(--ink);} .ms{font-size:10px;color:var(--muted);}
+  .b-slate{border-color:var(--slate);} .b-blue{border-color:var(--blue);} .b-amber{border-color:var(--amber);}
+  .line-label{position:absolute;font-size:11.5px;color:#475569;font-weight:500;z-index:18;background:var(--bg-color);padding:0 3px;}
+  .mvar{font-family:Georgia,serif;font-style:italic;}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-user" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 7l5 5l-5 5"/><path d="M13 17l6 0"/></symbol>
+<symbol id="ic-planner" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3.5 5.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 11.5l1.5 1.5l2.5 -2.5"/><path d="M3.5 17.5l1.5 1.5l2.5 -2.5"/><path d="M11 6l9 0"/><path d="M11 12l9 0"/><path d="M11 18l9 0"/></symbol>
+<symbol id="ic-tool" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5"/></symbol>
+<symbol id="ic-agent" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4"/><path d="M12 2v2"/><path d="M9 12v9"/><path d="M15 12v9"/><path d="M5 16l4 -2"/><path d="M15 14l4 2"/><path d="M9 18h6"/><path d="M10 8v.01"/><path d="M14 8v.01"/></symbol>
+<symbol id="ic-out" viewBox="-1 -1 26 26"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 9h8"/><path d="M8 13h6"/><path d="M10.99 19.206l-2.99 1.794v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v6"/><path d="M15 19l2 2l4 -4"/></symbol>
+</defs></svg>
+
+<div class="diagram-wrapper">
+  <div class="diagram-canvas">
+    <div class="title-pill">Agent workflow — swimlanes (ReAct loop)</div>
+
+    <svg class="svg-layer" viewBox="0 0 1000 520">
+      <defs>
+        <g id="ah"><polygon points="-5,-4 5,0 -5,4" fill="var(--bg-color)" stroke="var(--spoke)" stroke-width="1.6" stroke-linejoin="round"/></g>
+        <g id="ah-a"><polygon points="-5,-4 5,0 -5,4" fill="var(--bg-color)" stroke="var(--amber)" stroke-width="1.6" stroke-linejoin="round"/></g>
+      </defs>
+      <g stroke="var(--spoke)" stroke-width="1.6" fill="none">
+        <path d="M240 154 L240 258 L278 258"/>
+        <path d="M355 286 L355 390 L463 390"/>
+        <path d="M540 362 L540 258 L648 258"/>
+        <path d="M725 230 L725 126 L808 126"/>
+      </g>
+      <use href="#ah" transform="translate(280,258)"/>
+      <use href="#ah" transform="translate(465,390)"/>
+      <use href="#ah" transform="translate(650,258)"/>
+      <use href="#ah" transform="translate(808,126)"/>
+      <!-- re-plan loop (dashed, under the lanes) -->
+      <path d="M725 286 L725 472 L355 472 L355 288" stroke="var(--amber)" stroke-width="1.6" fill="none" stroke-dasharray="5 5"/>
+      <use href="#ah-a" transform="translate(355,288) rotate(-90)"/>
+    </svg>
+
+    <!-- lanes -->
+    <div class="lane" style="top:66px;background:var(--slate-t);"></div>
+    <div class="tab" style="top:66px;background:var(--slate);"><b>User</b><span>human</span></div>
+    <div class="lane" style="top:198px;background:var(--blue-t);"></div>
+    <div class="tab" style="top:198px;background:var(--blue);"><b>Agent</b><span>policy</span></div>
+    <div class="lane" style="top:330px;background:var(--amber-t);"></div>
+    <div class="tab" style="top:330px;background:var(--amber);"><b>Tool · Env</b><span>actions</span></div>
+
+    <!-- edge labels -->
+    <div class="line-label" style="left:250px;top:200px;">task</div>
+    <div class="line-label" style="left:366px;top:332px;">action <span class="mvar">a&#8202;<sub>t</sub></span></div>
+    <div class="line-label" style="left:552px;top:200px;">obs <span class="mvar">o&#8202;<sub>t</sub></span></div>
+    <div class="line-label" style="left:736px;top:104px;">answer <span class="mvar">ŷ</span></div>
+    <div class="line-label" style="left:505px;top:462px;color:var(--amber);font-weight:600;">re-plan (think)</div>
+
+    <!-- nodes -->
+    <div class="node b-slate" style="left:165px;top:98px;width:150px;color:var(--slate);"><svg class="ic"><use href="#ic-user"/></svg><div class="tx"><span class="ml">Query</span><span class="ms">request</span></div></div>
+    <div class="node b-blue"  style="left:280px;top:230px;width:150px;color:var(--blue);"><svg class="ic"><use href="#ic-planner"/></svg><div class="tx"><span class="ml">Plan</span><span class="ms">decompose</span></div></div>
+    <div class="node b-amber" style="left:465px;top:362px;width:150px;color:var(--amber);"><svg class="ic"><use href="#ic-tool"/></svg><div class="tx"><span class="ml">Tool call</span><span class="ms">retrieve · run</span></div></div>
+    <div class="node b-blue"  style="left:650px;top:230px;width:150px;color:var(--blue);"><svg class="ic"><use href="#ic-agent"/></svg><div class="tx"><span class="ml">Observe</span><span class="ms">reason</span></div></div>
+    <div class="node b-slate" style="left:810px;top:98px;width:150px;color:var(--slate);"><svg class="ic"><use href="#ic-out"/></svg><div class="tx"><span class="ml">Answer</span><span class="ms">deliver</span></div></div>
+  </div>
+</div>
+</body>
+</html>
