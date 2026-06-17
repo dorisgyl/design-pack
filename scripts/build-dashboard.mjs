@@ -53,6 +53,10 @@ function svgThumb(title) {
 }
 
 function templateThumb(id, title) {
+  // SLIM=1: skip inlining the raster thumbnails entirely (use the tiny SVG placeholder)
+  // so the whole dashboard stays small — the canvas artifact store appears to drop
+  // ~1MB content, leaving the board empty ("Artifact not found").
+  if (process.env.SLIM) return svgThumb(title);
   // Prefer the optimized JPEG (keeps the inlined dashboard small); fall back to
   // PNG, then to a generated SVG placeholder.
   for (const [ext, mime] of [['jpg', 'image/jpeg'], ['png', 'image/png']]) {

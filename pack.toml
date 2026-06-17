@@ -1,7 +1,7 @@
 [pack]
 name = "design-pack"
 namespace = "packs/design-pack"
-version = "0.2.1"
+version = "0.2.2"
 protocol = "pack-protocol/0.1"
 min_nevoflux = "0.3.0"
 description = "Modern design requirements, specs, and templates — retrieved from GBrain and used to generate designs."
