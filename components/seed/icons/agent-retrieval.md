@@ -10,12 +10,12 @@ description: "Agent loops, planners, tools, memory, multi-agent, RAG, rerankers,
 description_en: "Agent loops, planners, tools, memory, multi-agent, RAG, rerankers, and context."
 description_zh: "智能体循环、规划器、工具、记忆、多智能体、RAG、重排与上下文。"
 tags: [paper-figure, icon, svg, primitive, agent-retrieval, 论文图, 图标]
-license: "MIT-0 (paper-framework-figure-studio-pro); Tabler MIT / Lucide ISC where noted"
+license: "MIT-0 primitives; Tabler MIT / Lucide ISC where noted"
 ---
 
 # Paper-figure icons — Agents & retrieval / 论文图图标 — 智能体与检索
 
-Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: paper-framework-figure-studio-pro vector library (MIT-0).
+Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: curated MIT-0 vector primitives.
 
 > 可重新着色的、零依赖 SVG 基元。复制 `<svg>`,`currentColor` 图标可用 `color:` 改成角色色;`ports` 为连线锚点 (归一化坐标)。
 

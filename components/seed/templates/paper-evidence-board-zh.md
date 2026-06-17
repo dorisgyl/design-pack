@@ -8,7 +8,7 @@ title_zh: "论文图 · 证据板（矩阵表）"
 description: "以矩阵呈现的证据板图：方法（行）× 基准（列）的分数表，逐列最优加星标，所提方法行高亮。"
 tags: [paper-figure, diagram, matrix-map, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-evidence-board.png
-source: paper-framework-figure-studio-pro/paper-evidence-board
+source: design-pack/paper-evidence-board
 ---
 ## 设计说明
 

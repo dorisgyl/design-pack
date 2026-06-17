@@ -10,12 +10,12 @@ description: "Datasets, tokens, sequences, tables, modalities, and input/query p
 description_en: "Datasets, tokens, sequences, tables, modalities, and input/query primitives."
 description_zh: "数据集、词元、序列、表格、模态以及输入/查询等基元。"
 tags: [paper-figure, icon, svg, primitive, data-input, 论文图, 图标]
-license: "MIT-0 (paper-framework-figure-studio-pro); Tabler MIT / Lucide ISC where noted"
+license: "MIT-0 primitives; Tabler MIT / Lucide ISC where noted"
 ---
 
 # Paper-figure icons — Data & input / 论文图图标 — 数据与输入
 
-Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: paper-framework-figure-studio-pro vector library (MIT-0).
+Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: curated MIT-0 vector primitives.
 
 > 可重新着色的、零依赖 SVG 基元。复制 `<svg>`,`currentColor` 图标可用 `color:` 改成角色色;`ports` 为连线锚点 (归一化坐标)。
 

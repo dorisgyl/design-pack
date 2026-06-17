@@ -8,7 +8,7 @@ title_zh: "论文图 · 流水线（分块管线）"
 description: "线性方法流水线：从左到右带编号的阶段卡（数据 → 预处理 → 特征 → 模型 → 评测 → 报告），数据产物标在连线上，并带反馈回路。"
 tags: [paper-figure, diagram, block-pipeline, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-pipeline.png
-source: paper-framework-figure-studio-pro/paper-pipeline
+source: design-pack/paper-pipeline
 ---
 ## 设计说明
 

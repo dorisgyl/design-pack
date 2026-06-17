@@ -9,7 +9,7 @@ description: "A mechanism-intuition figure: an overview strip of the whole model
 description_zh: "机制直觉图：上方一条整体模型的总览带，其中一个模块被高亮并放大为细节插图，展示其内部机制。"
 tags: [paper-figure, diagram, zoom-callouts, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-mechanism.png
-source: paper-framework-figure-studio-pro/paper-mechanism
+source: design-pack/paper-mechanism
 ---
 ## Design guidance
 

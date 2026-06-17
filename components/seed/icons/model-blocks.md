@@ -10,12 +10,12 @@ description: "Encoders, decoders, attention, MoE, adapters, latent spaces, and c
 description_en: "Encoders, decoders, attention, MoE, adapters, latent spaces, and core NN blocks."
 description_zh: "编码器、解码器、注意力、MoE、适配器、隐空间等核心神经网络模块。"
 tags: [paper-figure, icon, svg, primitive, model-blocks, 论文图, 图标]
-license: "MIT-0 (paper-framework-figure-studio-pro); Tabler MIT / Lucide ISC where noted"
+license: "MIT-0 primitives; Tabler MIT / Lucide ISC where noted"
 ---
 
 # Paper-figure icons — Model blocks / 论文图图标 — 模型模块
 
-Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: paper-framework-figure-studio-pro vector library (MIT-0).
+Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: curated MIT-0 vector primitives.
 
 > 可重新着色的、零依赖 SVG 基元。复制 `<svg>`,`currentColor` 图标可用 `color:` 改成角色色;`ports` 为连线锚点 (归一化坐标)。
 

@@ -14,6 +14,10 @@
 - **浏览器里一个可检索的设计库**,全部存于 GBrain,中英文都能搜:
   - **~80 个开箱即用的模板**——落地页、定价、Hero 与特性区块、演示/幻灯、社交卡片、仪表盘、
     海报、简历、文档、移动端界面、视频帧…… 每个都带真实预览图。
+  - **一套论文图 / CS Paper Figure**——8 张可编辑的 **HTML/SVG** 图(矢量,非位图):分层的**架构图**、
+    **方法流水线**、**方法框架**、**Agent 工作流**、**系统数据流**图、**机制**特写、**案例走查**,
+    以及一张结果**证据板**——每张采用一种独立的版式语法,内置真实**可改色图标**,完全可手工编辑、中英双语。
+    并配有一份 CS「框架图绘制方法」规范与可检索的图标库。
   - **137 篇现代 Web 平台指南**——无障碍、CSS、表单、性能、用户体验、View Transitions、
     锚点定位、通行密钥…… 给出具体模式、坑点与回退方案。
   - **13 套设计品味系统**——野兽派、极简、柔和/高端、品牌套件、反平庸的 "tasteskill",
@@ -33,6 +37,8 @@
 - 把一句话的需求,变成已经遵循设计系统的真实落地页、定价页、演示、社交卡片或仪表盘。
 - 生成的 UI 使用**当下的 Web 平台技术**(来自指南)而非过时写法,无障碍与响应式开箱即有。
 - 一致地套用某个**美学方向**(极简、野兽派、高端……)。
+- 为 CS 论文画一张**论文图**——架构、方法流水线、Agent 工作流、机制……——以**可编辑的矢量 HTML/SVG**
+  呈现,可改色、可微调,而不是一张拍平的截图。
 - 维护一份不断增长、**中英双语、可团队共享**的设计记忆,agent 随时可取。
 
 ## 两个 skill
@@ -105,6 +111,7 @@ nevoflux pack install pack.toml
 node scripts/import-guides.mjs      # (重新)导入 modern-web-guidance 指南
 node scripts/import-taste.mjs       # (重新)导入 taste-skill 技能
 node scripts/render-thumbs.mjs      # 渲染模板预览缩略图
+node scripts/build-paper-templates.mjs  # 重建论文图 / CS Paper Figure 种子(中英双语)
 node scripts/sync-pack-seeds.mjs    # 由 seed/** 同步 pack.toml 的 seed 列表
 node scripts/build-dashboard.mjs    # 重建看板(dist/index.html)
 node scripts/validate-pack.mjs      # 不变量校验

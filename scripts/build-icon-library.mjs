@@ -1,16 +1,16 @@
 // build-icon-library.mjs — import a curated, recolorable SVG icon library for CS paper figures.
 //
-// One-time asset import (like import-guides.mjs). Reads the MIT-0 vector library shipped by
-// paper-framework-figure-studio-pro, selects a curated set of concept primitives, and emits
+// One-time asset import (like import-guides.mjs). Reads a curated MIT-0 vector library of
+// concept primitives, selects a set of them, and emits
 // bilingual GBrain reference pages under components/seed/icons/<domain>.md. Each page lists,
 // per concept: concept_id, EN/中文 meaning, recommended use, connector ports, and the inline
 // <svg> (verbatim, comments stripped). These pages are retrieval-only (dashboard:false) so
 // `design-build` can pull real primitives instead of regenerating glyphs.
 //
 // Source library is OUTSIDE the repo; the generated pages (with inlined SVGs) are the
-// committed, self-contained artifact. Override the source path with PFFS_LIB.
+// committed, self-contained artifact. Set ICON_LIB to the source library path.
 //
-// License: source skill is MIT No Attribution (© 2026 OpenAI); upstream Tabler (MIT) /
+// License: the primitive set is MIT-0 (no attribution required); upstream Tabler (MIT) /
 // Lucide (ISC) icons keep their notice via the per-icon `source` data attribute.
 import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'node:fs';
 import { join, dirname, resolve, basename } from 'node:path';
@@ -18,7 +18,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'components', 'seed', 'icons');
-const LIB = (process.env.PFFS_LIB || 'C:/Users/Docker/Downloads/paper-framework-figure-studio-pro-v3.2.15b-skill/assets/vector-library/iclr_reference_library').replace(/\\/g, '/');
+const LIB = (process.env.ICON_LIB || '').replace(/\\/g, '/');
+if (!LIB) {
+  console.error('Set ICON_LIB to the source vector-library path.');
+  process.exit(1);
+}
 
 const CARD_DIRS = ['icon_cards', 'neural_network_ppt_primitives/cards', 'paper_derived_icon_cards'];
 
@@ -207,7 +211,7 @@ function frontmatter(d) {
     `description_en: "${d.desc_en}"`,
     `description_zh: "${d.desc_zh}"`,
     `tags: [paper-figure, icon, svg, primitive, ${d.slug}, 论文图, 图标]`,
-    'license: "MIT-0 (paper-framework-figure-studio-pro); Tabler MIT / Lucide ISC where noted"',
+    'license: "MIT-0 primitives; Tabler MIT / Lucide ISC where noted"',
     '---',
     '',
   ].join('\n');
@@ -223,7 +227,7 @@ for (const d of DOMAINS) {
     'Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves ' +
       'these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to ' +
       'the module\'s role colour. Each lists its connector **ports** (normalised x,y) for wiring ' +
-      'edges. Provenance: paper-framework-figure-studio-pro vector library (MIT-0).\n'
+      'edges. Provenance: curated MIT-0 vector primitives.\n'
   );
   lines.push('> 可重新着色的、零依赖 SVG 基元。复制 `<svg>`,`currentColor` 图标可用 `color:` 改成角色色;`ports` 为连线锚点 (归一化坐标)。\n');
   for (const [token, zh] of d.icons) {

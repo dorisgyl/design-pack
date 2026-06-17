@@ -4,9 +4,11 @@
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const LIB = (process.env.PFFS_LIB ||
-  'C:/Users/Docker/Downloads/paper-framework-figure-studio-pro-v3.2.15b-skill/assets/vector-library/iclr_reference_library')
-  .split('\\').join('/');
+const LIB = (process.env.ICON_LIB || '').split('\\').join('/');
+if (!LIB) {
+  console.error('Set ICON_LIB to the source vector-library path.');
+  process.exit(1);
+}
 const CARD_DIRS = ['icon_cards', 'neural_network_ppt_primitives/cards', 'paper_derived_icon_cards'];
 
 const index = new Map();

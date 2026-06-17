@@ -8,7 +8,7 @@ title_zh: "论文图 · 案例走查（分镜）"
 description: "以分镜呈现的案例走查图：顺序面板跟随一个样例端到端（输入 → 编码 → 匹配 → 预测），每格含一个图标场景和一句说明。"
 tags: [paper-figure, diagram, storyboard, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-case-walkthrough.png
-source: paper-framework-figure-studio-pro/paper-case-walkthrough
+source: design-pack/paper-case-walkthrough
 ---
 ## 设计说明
 

@@ -14,6 +14,11 @@ generate finished, on-brand UI from it, either from a visual dashboard or straig
 - **A retrievable design library inside your browser**, stored in GBrain and searchable in English and 中文:
   - **~80 ready-to-use templates** — landing pages, pricing, hero & feature sections, decks/slides,
     social cards, dashboards, posters, resumes, docs, mobile screens, video frames… each with a real preview image.
+  - **A 论文图 / CS-paper figure set** — 8 editable **HTML/SVG** figures (vector, not raster): a layered
+    **architecture**, a **method pipeline**, a **method framework**, an **agent workflow**, a **system
+    data-flow** graph, a **mechanism** close-up, a **case walkthrough**, and a results **evidence board** —
+    each on a distinct layout grammar, with real **recolorable icons**, fully hand-editable and bilingual.
+    Backed by a CS "framework-figure drawing method" spec and a searchable icon library.
   - **137 modern web-platform guides** — accessibility, CSS, forms, performance, user-experience,
     view transitions, anchor positioning, passkeys… concrete patterns, gotchas, and fallbacks.
   - **13 design-taste systems** — brutalist, minimalist, soft/premium, brand-kit, the anti-slop
@@ -40,6 +45,8 @@ Ship interfaces that are **modern, accessible, responsive, and not templated** �
 - Generate UI that uses **current web-platform techniques** (from the guides) instead of dated patterns,
   with accessibility and responsiveness built in.
 - Apply a chosen **aesthetic direction** (minimalist, brutalist, premium…) consistently.
+- Draw a **CS-paper figure** — architecture, method pipeline, agent workflow, mechanism… — as **editable
+  vector HTML/SVG** you can recolor and fine-tune, not a flattened screenshot.
 - Keep a growing, **bilingual, team-shareable** design memory the agent can always pull from.
 
 ## The two skills
@@ -116,6 +123,7 @@ nevoflux pack install pack.toml
 node scripts/import-guides.mjs      # (re)import modern-web-guidance guides
 node scripts/import-taste.mjs       # (re)import taste-skill skills
 node scripts/render-thumbs.mjs      # render template preview thumbnails
+node scripts/build-paper-templates.mjs  # rebuild the 论文图 / CS-paper figure seeds (EN + 中文)
 node scripts/sync-pack-seeds.mjs    # sync pack.toml's seed list from seed/**
 node scripts/build-dashboard.mjs    # rebuild the dashboard (dist/index.html)
 node scripts/validate-pack.mjs      # invariant checks

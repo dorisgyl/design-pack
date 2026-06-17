@@ -172,7 +172,7 @@ for (const f of FIGS) {
     title: `"${f.title_en}"`, title_zh: `"${f.title_zh}"`,
     description: `"${f.desc_en}"`, description_zh: `"${f.desc_zh}"`,
     tags, sample_image: `packs/design-pack/assets/templates/${f.id}.png`,
-    source: `paper-framework-figure-studio-pro/${f.id}`,
+    source: `design-pack/${f.id}`,
   });
   const enBody = `## Design guidance\n\n${f.guide_en}\n\n## Template (HTML)\n\n\`\`\`html\n${html}\n\`\`\`\n`;
   writeFileSync(join(OUT, f.id + '.md'), enFront + enBody, 'utf8');
@@ -183,7 +183,7 @@ for (const f of FIGS) {
     title: `"${f.title_zh}"`, title_zh: `"${f.title_zh}"`,
     description: `"${f.desc_zh}"`,
     tags, sample_image: `packs/design-pack/assets/templates/${f.id}.png`,
-    source: `paper-framework-figure-studio-pro/${f.id}`,
+    source: `design-pack/${f.id}`,
   });
   const zhHtml = applyZh(html, f.zh);
   const zhBody = `## 设计说明\n\n${f.guide_zh}\n\n## 模板（HTML）\n\n\`\`\`html\n${zhHtml}\n\`\`\`\n`;

@@ -9,7 +9,7 @@ description: "A method-overview figure: a dominant central hub (the proposed mod
 description_zh: "方法总览图：一个占主导地位的中心枢纽（所提模型）+ 卫星模块——输入从左侧汇入，输出从右侧引出，变量标在辐条上。"
 tags: [paper-figure, diagram, central-core, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-method-framework.png
-source: paper-framework-figure-studio-pro/paper-method-framework
+source: design-pack/paper-method-framework
 ---
 ## Design guidance
 

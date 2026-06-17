@@ -8,7 +8,7 @@ title_zh: "论文图 · 系统数据流（图网络）"
 description: "以图网络呈现的系统/数据流图：服务与存储为节点，由带类型的边（request、route、读/写、query、event）以非线性布局连接。"
 tags: [paper-figure, diagram, graph-network, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-system-dataflow.png
-source: paper-framework-figure-studio-pro/paper-system-dataflow
+source: design-pack/paper-system-dataflow
 ---
 ## 设计说明
 

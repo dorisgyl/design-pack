@@ -10,12 +10,12 @@ description: "Graph topologies, GNNs, knowledge/causal graphs, 3D scenes, NeRF, 
 description_en: "Graph topologies, GNNs, knowledge/causal graphs, 3D scenes, NeRF, splatting, BEV."
 description_zh: "图拓扑、GNN、知识/因果图、三维场景、NeRF、高斯泼溅、BEV。"
 tags: [paper-figure, icon, svg, primitive, graph-vision, 论文图, 图标]
-license: "MIT-0 (paper-framework-figure-studio-pro); Tabler MIT / Lucide ISC where noted"
+license: "MIT-0 primitives; Tabler MIT / Lucide ISC where noted"
 ---
 
 # Paper-figure icons — Graphs & 3D / vision / 论文图图标 — 图与三维/视觉
 
-Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: paper-framework-figure-studio-pro vector library (MIT-0).
+Recolorable, library-free SVG primitives for CS paper figures. `design-build` retrieves these to compose figures: copy the `<svg>` and (for `currentColor` icons) set `color:` to the module's role colour. Each lists its connector **ports** (normalised x,y) for wiring edges. Provenance: curated MIT-0 vector primitives.
 
 > 可重新着色的、零依赖 SVG 基元。复制 `<svg>`,`currentColor` 图标可用 `color:` 改成角色色;`ports` 为连线锚点 (归一化坐标)。
 

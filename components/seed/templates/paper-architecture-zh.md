@@ -8,7 +8,7 @@ title_zh: "论文图 · 架构图（分层堆叠）"
 description: "分层系统架构图：自上而下堆叠的带标签层（数据 ▸ 编码 ▸ 核心 ▸ 输出），每层放若干带图标的模块卡，数据沿层栈向下流动。"
 tags: [paper-figure, diagram, layer-stack, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-architecture.png
-source: paper-framework-figure-studio-pro/paper-architecture
+source: design-pack/paper-architecture
 ---
 ## 设计说明
 

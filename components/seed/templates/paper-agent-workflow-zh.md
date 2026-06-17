@@ -8,7 +8,7 @@ title_zh: "论文图 · 智能体工作流（泳道）"
 description: "泳道式智能体工作流：User / Agent / Tool·Env 三条角色泳道，ReAct 式折线流程（Query → Plan → 工具调用 → Observe → Answer）+ 虚线重规划回路。"
 tags: [paper-figure, diagram, swimlanes, svg, 论文图, template]
 sample_image: packs/design-pack/assets/templates/paper-agent-workflow.png
-source: paper-framework-figure-studio-pro/paper-agent-workflow
+source: design-pack/paper-agent-workflow
 ---
 ## 设计说明
 
