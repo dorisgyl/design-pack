@@ -81,6 +81,11 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+# …but the pack's dashboard artifact IS the shipped build — it must be tracked so the
+# installer (which only takes git-tracked files) places it. Without this, the dashboard
+# installs empty → "Artifact not found".
+!components/canvas-app/dist/
+!components/canvas-app/dist/index.html
 .output
 
 # Gatsby files
