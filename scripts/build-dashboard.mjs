@@ -196,7 +196,7 @@ const APP_JS = `
     article:{zh:'文章',en:'Articles'}, mobile:{zh:'移动端',en:'Mobile'}, prototype:{zh:'原型',en:'Prototypes'},
     data:{zh:'数据',en:'Data'}, finance:{zh:'财务',en:'Finance'}, email:{zh:'邮件',en:'Email'},
     resume:{zh:'简历',en:'Resume'}, flowchart:{zh:'流程图',en:'Flowchart'},
-    'paper-figure':{zh:'论文图',en:'Paper Figure'},
+    'paper-figure':{zh:'论文图',en:'Paper Figure'}, 'xhs-card':{zh:'小红书图文',en:'XHS Carousel'},
     accessibility:{zh:'无障碍',en:'Accessibility'}, 'built-in-ai':{zh:'内置 AI',en:'Built-in AI'},
     css:{zh:'CSS',en:'CSS'}, 'css-layout':{zh:'CSS 布局',en:'CSS Layout'}, forms:{zh:'表单',en:'Forms'},
     html:{zh:'HTML',en:'HTML'}, passkeys:{zh:'通行密钥',en:'Passkeys'}, performance:{zh:'性能',en:'Performance'},

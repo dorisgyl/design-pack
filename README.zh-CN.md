@@ -18,6 +18,9 @@
     **方法流水线**、**方法框架**、**Agent 工作流**、**系统数据流**图、**机制**特写、**案例走查**,
     以及一张结果**证据板**——每张采用一种独立的版式语法,内置真实**可改色图标**,完全可手工编辑、中英双语。
     并配有一份 CS「框架图绘制方法」规范与可检索的图标库。
+  - **一套小红书图文 / XHS Carousel**——5 种可编辑的 **HTML** 卡片页型(封面、内容、金句、对比、结尾),
+    均为 1080×1440,共用一套**视觉母版**(一段 `:root` token 块),整组读起来像一条轮播。Notion 高级卡片风,
+    完全可编辑、中英双语;发帖时从 Canvas **逐页导出 PNG**。并配有一份小红书「视觉总监」方法规范。
   - **137 篇现代 Web 平台指南**——无障碍、CSS、表单、性能、用户体验、View Transitions、
     锚点定位、通行密钥…… 给出具体模式、坑点与回退方案。
   - **13 套设计品味系统**——野兽派、极简、柔和/高端、品牌套件、反平庸的 "tasteskill",
@@ -39,6 +42,8 @@
 - 一致地套用某个**美学方向**(极简、野兽派、高端……)。
 - 为 CS 论文画一张**论文图**——架构、方法流水线、Agent 工作流、机制……——以**可编辑的矢量 HTML/SVG**
   呈现,可改色、可微调,而不是一张拍平的截图。
+- 把一组**小红书图文**当作可编辑的 **HTML** 卡片来"导演"——挑封面 / 内容 / 金句 / 对比 / 结尾页型,
+  全组锁住同一套视觉母版,再逐页导出 PNG——而不是向模型求一堆拍平的图。
 - 维护一份不断增长、**中英双语、可团队共享**的设计记忆,agent 随时可取。
 
 ## 两个 skill
@@ -112,6 +117,7 @@ node scripts/import-guides.mjs      # (重新)导入 modern-web-guidance 指南
 node scripts/import-taste.mjs       # (重新)导入 taste-skill 技能
 node scripts/render-thumbs.mjs      # 渲染模板预览缩略图
 node scripts/build-paper-templates.mjs  # 重建论文图 / CS Paper Figure 种子(中英双语)
+node scripts/build-xhs-cards.mjs        # 重建小红书图文 / XHS Carousel 种子(中英双语)
 node scripts/sync-pack-seeds.mjs    # 由 seed/** 同步 pack.toml 的 seed 列表
 node scripts/build-dashboard.mjs    # 重建看板(dist/index.html)
 node scripts/validate-pack.mjs      # 不变量校验

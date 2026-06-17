@@ -665,6 +665,10 @@ slug = "packs/design-pack/specs/workflow/output-skill"
 from = "components/seed/specs/workflow/output-skill.md"
 
 [[components.seed]]
+slug = "packs/design-pack/specs/xhs-visual-card-method"
+from = "components/seed/specs/xhs-visual-card-method.md"
+
+[[components.seed]]
 slug = "packs/design-pack/templates/article-magazine"
 from = "components/seed/templates/article-magazine.md"
 
@@ -1383,6 +1387,46 @@ from = "components/seed/templates/workflow-diagram.md"
 [[components.seed]]
 slug = "packs/design-pack/templates/workflow-diagram-zh"
 from = "components/seed/templates/workflow-diagram-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-compare"
+from = "components/seed/templates/xhs-compare.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-compare-zh"
+from = "components/seed/templates/xhs-compare-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-content"
+from = "components/seed/templates/xhs-content.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-content-zh"
+from = "components/seed/templates/xhs-content-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-cover"
+from = "components/seed/templates/xhs-cover.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-cover-zh"
+from = "components/seed/templates/xhs-cover-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-cta"
+from = "components/seed/templates/xhs-cta.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-cta-zh"
+from = "components/seed/templates/xhs-cta-zh.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-quote"
+from = "components/seed/templates/xhs-quote.md"
+
+[[components.seed]]
+slug = "packs/design-pack/templates/xhs-quote-zh"
+from = "components/seed/templates/xhs-quote-zh.md"
 # <<< seeds (generated) <<<
 
 [components.dashboard]

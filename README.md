@@ -19,6 +19,10 @@ generate finished, on-brand UI from it, either from a visual dashboard or straig
     data-flow** graph, a **mechanism** close-up, a **case walkthrough**, and a results **evidence board** —
     each on a distinct layout grammar, with real **recolorable icons**, fully hand-editable and bilingual.
     Backed by a CS "framework-figure drawing method" spec and a searchable icon library.
+  - **A 小红书图文 / XHS Carousel set** — 5 editable **HTML** card archetypes (cover, content, quote,
+    compare, CTA) at 1080×1440, all sharing one **visual master** (a `:root` token block) so a set reads
+    as one carousel. Notion-card aesthetic, fully editable and bilingual; export each to PNG from the
+    Canvas to post. Backed by a 小红书 "visual-director" method spec.
   - **137 modern web-platform guides** — accessibility, CSS, forms, performance, user-experience,
     view transitions, anchor positioning, passkeys… concrete patterns, gotchas, and fallbacks.
   - **13 design-taste systems** — brutalist, minimalist, soft/premium, brand-kit, the anti-slop
@@ -47,6 +51,9 @@ Ship interfaces that are **modern, accessible, responsive, and not templated** �
 - Apply a chosen **aesthetic direction** (minimalist, brutalist, premium…) consistently.
 - Draw a **CS-paper figure** — architecture, method pipeline, agent workflow, mechanism… — as **editable
   vector HTML/SVG** you can recolor and fine-tune, not a flattened screenshot.
+- Direct a **小红书 / XHS carousel** as editable **HTML** cards — pick the cover / content / quote /
+  compare / CTA archetypes, keep one locked visual master across pages, then export to PNG — instead of
+  prompting a model for flattened images.
 - Keep a growing, **bilingual, team-shareable** design memory the agent can always pull from.
 
 ## The two skills
@@ -124,6 +131,7 @@ node scripts/import-guides.mjs      # (re)import modern-web-guidance guides
 node scripts/import-taste.mjs       # (re)import taste-skill skills
 node scripts/render-thumbs.mjs      # render template preview thumbnails
 node scripts/build-paper-templates.mjs  # rebuild the 论文图 / CS-paper figure seeds (EN + 中文)
+node scripts/build-xhs-cards.mjs        # rebuild the 小红书图文 / XHS Carousel seeds (EN + 中文)
 node scripts/sync-pack-seeds.mjs    # sync pack.toml's seed list from seed/**
 node scripts/build-dashboard.mjs    # rebuild the dashboard (dist/index.html)
 node scripts/validate-pack.mjs      # invariant checks
